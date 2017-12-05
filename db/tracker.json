@@ -195,6 +195,14 @@
     "Cybernetic Eyes": "Cybernetic eyes provide +1 Vigilance and Perception",
     "Cybernetic Legs": "Mod II cyberlegs provide +1 Brawn, while Mod III cyberlegs provide +1 Agility. Must be a pair to receive the characteristic bonus. ",
     "Cyberscanner Limb": "The Mod IV Scanner Limb incorporates a portable scanner and, unlike most cybernetics, is concealed by a synthflesh covering.",
-    "Comm Jammer": "Cutting through the noise created by a comm jammer requires a Computers check, with a difficulty proportional to the distance from the jammer and the power of the device. The closer and more powerful the jammer, the harder the difficulty. The 'Hail' forces an Average difficulty check, which becomes more difficult at close ranges (the exact difficulty is up to the CM, but should increase to Hard or Daunting if at medium range or closer to the device)."
+    "Comm Jammer": "Cutting through the noise created by a comm jammer requires a Computers check, with a difficulty proportional to the distance from the jammer and the power of the device. The closer and more powerful the jammer, the harder the difficulty. The 'Hail' forces an Average difficulty check, which becomes more difficult at close ranges (the exact difficulty is up to the CM, but should increase to Hard or Daunting if at medium range or closer to the device).",
+    "Electrobinoculars": "Electrobinoculars allow the user to see normally in low light or extremely bring condiditons. Provide magnification of targets up to 10 km away. When using electrobinoculars, characters may also remove 1 seyback die imposed due to long range or poor light.",
+    "Macrobinoculars": "Allows users to see over long distances.",
+    "Scanner Goggles": "When worn, scanner goggles allow the wearer to see normally in dark conditions",
+    "Stimpack": "One-use items, and they automatically heal 5 wounds.",
+    "Binders": "Simple Retraint. Breaking free from a set of binders requires either brute force or incredible feats of agility and flexibility. The difficulty varies by the make and model of binders, but the most common restraints require a Daunting Athetics or Coordination check to escape.",
+    "Restraining Bolt": "Most droids cannot withstand the powerful programming overrides in a restraining bolt. However PC droids may make a Daunting Discipline check to shake off the effects of a restraining bolt and act normally after one is applied.",
+    "Datapad": "Can be connected to the galactic HoloNet. Can be encrypted, and many have emergency data destructs that wipe their memory if they are lost or stolen.",
+    "Extra Reload": "Allows a character to overcome an 'out of ammo' Despair result by spending a maneuver."
   }
 }
