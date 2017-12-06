@@ -1,1 +1,41 @@
 {{create1}}
+<div id="newUnit1">
+  <h1>Create</h1>
+
+  <form novalidate neame="newUnitForm" ng-submit="addNew(unitInfo)">
+    <div class="form-group">
+      <label for="difficultyRadio">Difficulty</label>
+      <div>
+        <label class="radio-inline">
+          <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Minion">Minion</label>
+        <label class="radio-inline">
+          <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Rival">Rival</label>
+        <label class="radio-inline">
+          <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Nemesis">Nemesis</label>
+      </div>
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Count
+    <span class="caret"></span>
+  </button>
+  <ul ng-model="unitInfo.unitCount" class="dropdown-menu">
+    <li>
+      <a ng-value="1">1</a>
+    </li>
+    <li>
+      <a ng-value="2">2</a>
+    </li>
+    <li>
+      <a ng-value="3">3</a>
+    </li>
+    <li>
+      <a ng-value="4">4</a>
+    </li>
+    <li>
+      <a ng-value="5">5</a>
+    </li>
+  </ul>
+</div>
+    </div>
+  </form>
+</div>
