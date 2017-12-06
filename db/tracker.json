@@ -3,7 +3,7 @@
     "unitId1": {
       "name": "NecroDroids",
       "description": "Mutliates the remains of dead droids. For fun.",
-      "folder": "My Rivals",
+      "folder": "folder1",
       "isFavourite": "true",
       "brawn": "3",
       "agility": "2",
@@ -29,7 +29,7 @@
     "unitId2": {
       "name": "Super Troopers",
       "description": "Tells horrible jokes. For fun.",
-      "folder": "Alex's common minions",
+      "folder": "folder2",
       "isFavourite": "true",
       "brawn": "1",
       "agility": "3",
@@ -55,7 +55,7 @@
     "unitId3": {
       "name": "Zombie Rebels",
       "description": "Fights for the undead rebel alliance. For fun.",
-      "folder": "Alex's common minions",
+      "folder": "folder2",
       "isFavourite": "false",
       "brawn": "5",
       "agility": "3",
@@ -81,7 +81,7 @@
     "unitId4": {
       "name": "Mean bugs",
       "description": "Flies around spitting hate instead of poison. For fun.",
-      "folder": "Alex's common minions",
+      "folder": "folder2",
       "isFavourite": "true",
       "brawn": "2",
       "agility": "3",
@@ -107,7 +107,7 @@
     "unitId5": {
       "name": "Bork Rat",
       "description": "From birth they were different from common bark rats, the bork rat is determined to bork a name for itself. For fun.",
-      "folder": "Alex's undying Nemesis",
+      "folder": "folder3",
       "isFavourite": "true",
       "brawn": "5",
       "agility": "2",
@@ -131,17 +131,27 @@
       "uid": "12345"
     }
   },
-  "group1": {
-    "groupName": "bad guys",
-    "id": "5432"
+  "groups": {
+    "5432": {
+      "groupName": "bad guys"
+    },
+    "9876": {
+      "groupName": "THE WORST bad guys"
+    },
+    "666": {
+      "groupName": "Evil dood"
+    }
   },
-  "group2": {
-    "groupName": "THE WORST bad guys",
-    "id": "9876"
-  },
-  "group3": {
-    "groupName": "Evil dood",
-    "id": "666"
+  "folders": {
+    "folder1": {
+      "name": "Alex's common units"
+    },
+    "folder2": {
+      "name": "Alex's strong units"
+    },
+    "folder3": {
+      "name": "Unique Nemeses"
+    }
   },
   "states": {
     "Concealment": "Occus when a character is hard to spot because of environmental effects such as darkness, smoke, tall grass, or mist. Concealment imposes penalties on ranged attacks and sight-based skil checks such as many Perception checks. Conversely, it can probide bonuses for checks on the other skills, such as Stealth.",
@@ -181,7 +191,7 @@
     "Vibroknife": "Melee, Damage +1, Crit 2, Range: Engaged",
     "Vibrosword": "Melee, Damage +2, Crit 2, Range: Engaged"
   },
-  "Gear and Equipment": {
+  "gearAndEquipment": {
     "Adverse Environment Gear": "Defense 0, Soak 1",
     "Armoured Clothing": "Defense 1, Soak 1",
     "Armoured Robes": "Defense 1, Soak 2",
