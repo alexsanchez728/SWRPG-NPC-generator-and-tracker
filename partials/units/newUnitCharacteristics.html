@@ -82,6 +82,35 @@
         </div>
       </div>
       <div>
+        <h2>Name:</h2>
+        <input type="text" ng-model="unitInfo.name" class="">
+
+        <h2>Description</h2>
+        <input type="text" ng-model="unitInfo.description" class="">
+
+        <h4>Abilites</h4>
+        <input type="text" ng-model="unitInfo.abilities" class="">
+
+        <h4>Weapons</h4>
+        <div class="btn-group">
+          <label for="weaponSelect"> Weapons: </label>
+          <br>
+          <select name="weaponSelect" ng-model="unitInfo.weaponSelect" ng-repeat="weapon in weapons">
+            <option value="{{weapon.id}}">{{weapon.name}}</option>
+          </select>
+          <br>
+        </div>
+        <h4>Equipment</h4>
+        <div class="btn-group">
+          <label for="equipmentSelect"> Equipment: </label>
+          <br>
+          <select name="equipmentSelect" ng-model="unitInfo.equipmentSelect" ng-repeat="equipment in equipments">
+            <option value="{{equipment.id}}">{{equipment.name}}</option>
+          </select>
+          <br>
+        </div>
+      </div>
+      <div>
         <button ng-if="newUnitForm.$valid" type="submit" class="btn btn-default" value="Save">Save Unit</button>
       </div>
       <div>
