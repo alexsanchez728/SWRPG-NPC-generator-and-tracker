@@ -1,1 +1,63 @@
-{{theBattle}}
+<div id="battlePageWrapper">
+  <div class="unitCard">
+    <div>
+      <h5>this will hold the name</h5>
+      <p>this will hold the groupId</p>
+    </div>
+    <!-- END NAME AND GROUP BLOCK !-->
+    <div>
+      <label for="statusCheckbox">Has Status</label>
+      <input name="statusCheckbox" type="checkbox">
+      <p>This will hold the states applied</p>
+    </div>
+    <!-- END STATES BLOCK !-->
+    <div>
+      <div>
+        <p>Soak</p>
+        <p>This will hold soak value</p>
+      </div>
+      <!-- END SOAK BLOCK !-->
+      <div>
+        <p>M / R Defense</p>
+        <p>this will hold melee | ranged Def</p>
+      </div>
+      <!-- END DEFENSE BLOCK !-->
+      <div>
+        <div>
+          <p>Wound</p>
+          <p>Threshold Current</p>
+        </div>
+        <div>
+          <p>this will hold static #</p>
+          <p>This will hold input</p>
+        </div>
+      </div>
+      <!-- END WOUND BLOCK !-->
+      <div>
+        <div>
+          <p>Strain</p>
+          <p>Strain Current</p>
+        </div>
+        <div>
+          <p>this will hold static #</p>
+          <p>This will hold input</p>
+        </div>
+      </div>
+      <!-- END STRAIN BLOCK !-->
+    </div>
+    <!-- END BOTTOM HALF OF CARD !-->
+    <div>
+      <button>Edit</button>
+      <button>Details</button>
+      <button>Dead</button>
+    </div>
+    <!-- END BUTTONS BLOCK !-->
+  </div>
+  <!-- END UNIT CARD !-->
+
+  <div id="buttonWrapper">
+    <button ng-click="toCreate()">Add New</button>
+    <button ng-click="toLibrary()">Add From Library</button>
+    <button>End Battle</button>
+  </div>
+</div>
