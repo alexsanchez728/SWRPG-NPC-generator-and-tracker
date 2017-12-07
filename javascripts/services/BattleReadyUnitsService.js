@@ -1,11 +1,10 @@
 'use strict';
 
 app.service("BattleReadyUnitsService", function ($http, $q, FIREBASE_CONFIG) {
-  
+
   const getMyBattleReadyUnits = (userUid) => {
     let units = [];
     return $q((resolve, reject) => {
-      console.log(userUid);
       $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json?orderBy="uid"&equalTo="${userUid}"`).then((results) => {
         let fbUnits = results.data;
         if (fbUnits != null) {

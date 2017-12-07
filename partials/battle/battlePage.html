@@ -1,63 +1,78 @@
 <div id="battlePageWrapper">
-  <div class="unitCard" ng-repeat="unit in units">
+  <div class="unitCard col-sm-6" ng-repeat="unit in units">
     <div>
-      <h5>this will hold the name</h5>
-      <p>this will hold the groupId</p>
+      <h5>{{unit.name}}</h5>
+      <p>{{unit.groupId}}</p>
     </div>
     <!-- END NAME AND GROUP BLOCK !-->
     <div>
       <label for="statusCheckbox">Has Status</label>
       <input name="statusCheckbox" type="checkbox">
-      <p>This will hold the states applied</p>
+      <div class="btn-group" uib-dropdown is-open="states.isopen">
+        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+          Pick One
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li ng-repeat="state in states" role="menuitem">
+            <a value="{{state.id}}" ng-model="unit.statusEffects">{{state.name}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <!-- END STATES BLOCK !-->
     <div>
       <div>
         <p>Soak</p>
-        <p>This will hold soak value</p>
+        <p>{{unit.soak}}</p>
       </div>
       <!-- END SOAK BLOCK !-->
       <div>
         <p>M / R Defense</p>
-        <p>this will hold melee | ranged Def</p>
+        <p>{{unit.meleeDef}} | {{unit.rangeDef}}</p>
       </div>
       <!-- END DEFENSE BLOCK !-->
       <div>
         <div>
           <p>Wound</p>
-          <p>Threshold Current</p>
+          <p>Threshold | Current</p>
+
         </div>
         <div>
-          <p>this will hold static #</p>
-          <p>This will hold input</p>
+          <p>{{unit.woundThreshold}}</p>
+          <div class="col-sm-2 input-group input-group-lg">
+            <input type="number" ng-model="unitInfo.currentWound" name="currentWoundSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+          </div>
         </div>
       </div>
       <!-- END WOUND BLOCK !-->
       <div>
         <div>
           <p>Strain</p>
-          <p>Strain Current</p>
+          <p>Threshold | Current</p>
         </div>
         <div>
-          <p>this will hold static #</p>
-          <p>This will hold input</p>
+          <p>{{unit.strainThreshold}}</p>
+          <div class="col-sm-2 input-group input-group-lg">
+            <input type="number" ng-model="unitInfo.currentStrain" name="currentStrainSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+          </div>
         </div>
       </div>
       <!-- END STRAIN BLOCK !-->
     </div>
     <!-- END BOTTOM HALF OF CARD !-->
     <div>
-      <button>Edit</button>
-      <button>Details</button>
-      <button>Dead</button>
+      <button class="btn btn-warning">Edit</button>
+      <button class="btn btn-info">Details</button>
+      <button class="btn btn-danger">Dead</button>
     </div>
     <!-- END BUTTONS BLOCK !-->
   </div>
   <!-- END UNIT CARD !-->
 
   <div id="buttonWrapper">
-    <button ng-click="toCreate()">Add New</button>
-    <button ng-click="toLibrary()">Add From Library</button>
+    <button class="btn btn-primary" ng-click="toCreate()">Add New</button>
+    <button class="btn btn-primary" ng-click="toLibrary()">Add From Library</button>
     <button>End Battle</button>
   </div>
 </div>
