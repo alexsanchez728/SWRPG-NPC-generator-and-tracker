@@ -1,1 +1,93 @@
 {{create1}}
+<div id="newUnit1">
+  <h1 class="text-center">Create</h1>
+
+  <form novalidate name="newUnitForm" class="form-inline" ng-submit="addNew(unitInfo)">
+    <div class="form-group">
+      <div class="col-sm-6">
+        <label for="difficultyRadio">Difficulty</label>
+        <div>
+          <label class="radio-inline">
+            <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Minion">Minion</label>
+          <label class="radio-inline">
+            <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Rival">Rival</label>
+          <label class="radio-inline">
+            <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Nemesis">Nemesis</label>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <h2>Characteristics</h2>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="brawnSelector">Brawn</label>
+          <input type="number" ng-model="unitInfo.brawn" name="brawnSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="agilitySelector">Agility</label>
+          <input type="number" ng-model="unitInfo.agility" name="agilitySelector" class="form-control" aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="intellectSelector">Intellect</label>
+          <input type="number" ng-model="unitInfo.intellect" name="intellectSelector" class="form-control" aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="cunningSelector">Cunning</label>
+          <input type="number" ng-model="unitInfo.cunning" name="cunningSelector" class="form-control" aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="willpowerSelector">Willpower</label>
+          <input type="number" ng-model="unitInfo.willpower" name="willpowerSelector" class="form-control" aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="presenceSelector">Presence</label>
+          <input type="number" ng-model="unitInfo.presence" name="presenceSelector" class="form-control" aria-describedby="sizing-addon1">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="btn-group">
+          <label for="unitCount"> Unit Count: </label>
+          <br>
+          <select name="unitCount" ng-model="unitInfo.unitCount">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <br>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="col-offset-2 col-sm-2 input-group input-group-lg">
+          <label for="soakSelector">Soak</label>
+          <input type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="woundThresholdSelector">Wound Threshold</label>
+          <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" class="form-control" placeholder="0"
+            aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="strainThresholdSelector">Strain Threshold</label>
+          <input type="number" ng-model="unitInfo.strainThreshold" name="strainThresholdSelector" class="form-control" placeholder="0"
+            aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="meleeDefSelector">Melee Defense</label>
+          <input type="number" ng-model="unitInfo.meleeDef" name="meleeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+        </div>
+        <div class="col-sm-2 input-group input-group-lg">
+          <label for="rangeDefSelector">Ranged Defense</label>
+          <input type="number" ng-model="unitInfo.rangeDef" name="rangeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+        </div>
+      </div>
+      <div>
+        <button ng-if="newUnitForm.$valid" type="submit" class="btn btn-default" value="Save">Save Unit</button>
+      </div>
+      <div>
+        <button class="btn btn-primary btn-large center" type="reset" ng-click="reset()">Clear
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
