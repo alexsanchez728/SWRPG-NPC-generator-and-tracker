@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("NewUnitCharacteristicsCtrl", function ($rootScope, $scope, FoldersService, WeaponsService, GearAndEquipmentService) {
+app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $scope, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
 
   const getWeapons = () => {
     WeaponsService.getAllWeapons().then((results) => {
@@ -29,9 +29,16 @@ app.controller("NewUnitCharacteristicsCtrl", function ($rootScope, $scope, Folde
   };
   getFolders();
 
-  $scope.addNew = (unitInfo) => {
-    console.log("submitted", unitInfo);
-  };
+  $scope.addNew = ((unitInfo) => {
+    unitInfo.uid= $rootScope.uid;
+    $scope.unitWithuid = angular.copy(unitInfo);
+    console.log("submitted", $scope.unitWithuid);
+    let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+    console.log("submitted", newUnit);
+    UnitsService.postNewUnit(newUnit).then(() => {
+      $location.path(`/battlePage`);
+    });
+  });
 
   $scope.reset = function () {
     $scope.unitInfo = {};
