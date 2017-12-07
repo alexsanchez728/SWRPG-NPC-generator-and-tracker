@@ -2,4 +2,4 @@
 
 "use strict";
 
-const app = angular.module('SwrpgApp', ["ngAnimate", "ngRoute", "ngSanitize"]);
+const app = angular.module('SwrpgApp', ["ngAnimate", "ngRoute", "ngSanitize", "ui.bootstrap"]);
