@@ -1,4 +1,3 @@
-{{create1}}
 <div id="newUnit1">
   <h1 class="text-center">Create</h1>
 
@@ -83,45 +82,54 @@
       </div>
       <div>
         <h2>Name:</h2>
-        <input type="text" ng-model="unitInfo.name" class="">
+        <input type="text" ng-model="unitInfo.name">
 
         <h2>Description</h2>
-        <input type="text" ng-model="unitInfo.description" class="">
+        <input type="text" ng-model="unitInfo.description">
 
         <h4>Abilites</h4>
-        <input type="text" ng-model="unitInfo.abilities" class="">
+        <input type="text" ng-model="unitInfo.abilities">
+
+        <h4>Abilites</h4>
+        <input type="text" ng-model="unitInfo.skills">
 
         <h4>Weapons</h4>
-            <!-- Single button -->
-    <div class="btn-group" uib-dropdown is-open="status.isopen">
-      <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-        Button dropdown <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-        <li role="menuitem"><a href="#">Action</a></li>
-        <li role="menuitem"><a href="#">Another action</a></li>
-        <li role="menuitem"><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li role="menuitem"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
-        <!-- <div class="btn-group">
-          <label for="weaponSelect"> Weapons: </label>
-          <br>
-          <select name="weaponSelect" ng-model="unitInfo.weaponSelect" ng-repeat="weapon in weapons">
-            <option value="{{weapon.id}}">{{weapon.name}}</option>
-          </select>
-          <br>
-        </div> -->
-        <h4>Equipment</h4>
-        <div class="btn-group">
-          <label for="equipmentSelect"> Equipment: </label>
-          <br>
-          <select name="equipmentSelect" ng-model="unitInfo.equipmentSelect" ng-repeat="equipment in equipments">
-            <option value="{{equipment.id}}">{{equipment.name}}</option>
-          </select>
-          <br>
+        <!-- Single button -->
+        <div class="btn-group" uib-dropdown is-open="weaponDropDown.isopen">
+          <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            Pick One
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li ng-repeat="weapon in weapons" role="menuitem">
+              <a value="{{weapon.id}}" ng-model="unitInfo.weaponId">{{weapon.name}}</a>
+            </li>
+          </ul>
         </div>
+        <h4>Equipment</h4>
+        <div class="btn-group" uib-dropdown is-open="equipmentDropDown.isopen">
+          <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            Pick One
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li ng-repeat="equipment in equipments" role="menuitem">
+              <a value="{{equipment.id}}" ng-model="unitInfo.equipmentId">{{equipment.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h4>Add to a Folder</h4>
+      <div class="btn-group" uib-dropdown is-open="foldersDropDown.isopen">
+        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+          Your Folders
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li ng-repeat="folder in folders" role="menuitem">
+            <a value="{{folder.id}}" ng-model="unitInfo.folder">{{folder.name}}</a>
+          </li>
+        </ul>
       </div>
       <div>
         <button ng-if="newUnitForm.$valid" type="submit" class="btn btn-default" value="Save">Save Unit</button>

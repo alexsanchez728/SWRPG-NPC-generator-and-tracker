@@ -1,16 +1,14 @@
 'use strict';
 
-app.controller("NewUnitCharacteristicsCtrl", function ($rootScope, $scope, WeaponsService, GearAndEquipmentService) {
+app.controller("NewUnitCharacteristicsCtrl", function ($rootScope, $scope, FoldersService, WeaponsService, GearAndEquipmentService) {
 
   const getWeapons = () => {
     WeaponsService.getAllWeapons().then((results) => {
-      console.log("results from weapons", results);
       $scope.weapons = results;
     }).catch((error) => {
       console.log("error in getWeapons", error);
     });
   };
-  console.log("results from weapons", $scope.weapons);
   getWeapons();
 
   const getEquipment = () => {
@@ -20,8 +18,16 @@ app.controller("NewUnitCharacteristicsCtrl", function ($rootScope, $scope, Weapo
       console.log("error in getEquipment", error);
     });
   };
-console.log("results from equipment", $scope.equipments);
   getEquipment();
+
+  const getFolders = () => {
+    FoldersService.getAllMyFolders().then((results) => {
+      $scope.folders = results;
+    }).catch((error) => {
+      console.log("error in getEquipment", error);
+    });
+  };
+  getFolders();
 
   $scope.addNew = (unitInfo) => {
     console.log("submitted", unitInfo);
@@ -31,6 +37,14 @@ console.log("results from equipment", $scope.equipments);
     $scope.unitInfo = {};
   };
 
-
+  $scope.weaponDropDown = {
+    isopen: false
+  };
+  $scope.equipmentDropDown = {
+    isopen: false
+  };
+  $scope.foldersDropDown = {
+    isopen: false
+  };
 
 });
