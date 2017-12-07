@@ -29,14 +29,22 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
   };
   getFolders();
 
-  $scope.addNew = ((unitInfo) => {
-    unitInfo.uid= $rootScope.uid;
+  $scope.addAndBattle = ((unitInfo) => {
+    unitInfo.uid = $rootScope.uid;
     $scope.unitWithuid = angular.copy(unitInfo);
-    console.log("submitted", $scope.unitWithuid);
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
-    console.log("submitted", newUnit);
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/battlePage`);
+    });
+  });
+
+  $scope.addAndAgain = ((unitInfo) => {
+    unitInfo.uid = $rootScope.uid;
+    $scope.unitWithuid = angular.copy(unitInfo);
+    let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+    UnitsService.postNewUnit(newUnit).then(() => {
+      $location.path(`/newUnit1`);
+      $scope.reset();
     });
   });
 
