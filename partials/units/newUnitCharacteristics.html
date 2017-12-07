@@ -1,7 +1,7 @@
 <div id="newUnit1">
   <h1 class="text-center">Create</h1>
 
-  <form novalidate name="newUnitForm" class="form-inline" ng-submit="addNew(unitInfo)">
+  <form novalidate name="newUnitForm" class="form-inline">
     <div class="form-group">
       <div class="col-sm-6">
         <label for="difficultyRadio">Difficulty</label>
@@ -135,10 +135,13 @@
         </ul>
       </div>
       <div>
-        <button ng-if="newUnitForm.$valid" type="submit" class="btn btn-default" value="Save">Save Unit</button>
+        <button ng-click="addAndBattle(unitInfo)" type="submit" class="btn btn-default" value="Save">Save And Proceed To Battle</button>
       </div>
       <div>
-        <button class="btn btn-primary btn-large center" type="reset" ng-click="reset()">Clear
+        <button ng-click="addAndAgain(unitInfo)" type="submit" class="btn btn-default" value="Save">Save Unit And Make Another</button>
+      </div>
+      <div>
+        <button class="btn btn-primary btn-large center" type="reset" ng-click="reset()">Clear All
         </button>
       </div>
     </div>
