@@ -1,0 +1,9 @@
+.unitCard {
+  border: 2px solid black; }
+
+.statusEffectDisplay {
+  border: 2px solid black; }
+
+.unitButtons {
+  display: flex;
+  justify-content: space-around; }

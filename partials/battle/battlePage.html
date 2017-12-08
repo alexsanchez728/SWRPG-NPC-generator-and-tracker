@@ -1,63 +1,114 @@
 <div id="battlePageWrapper">
-  <div class="unitCard">
-    <div>
-      <h5>this will hold the name</h5>
-      <p>this will hold the groupId</p>
+  <div class="unitCard col-sm-6" ng-repeat="unit in units">
+    <div class="col-sm-12">
+      <h4 class="col-sm-6">{{unit.name}}</h4>
+      <h5 class="col-sm-6">{{unit.groupId}}</h5>
     </div>
     <!-- END NAME AND GROUP BLOCK !-->
-    <div>
+    <div class="col-sm-12">
+      <div class="col-sm-2">
+        <p>{{unit.brawn}}</p>
+        <p>BRAWN</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.agility}}</p>
+        <p>AGILITY</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.intellect}}</p>
+        <p>INTELLECT</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.cunning}}</p>
+        <p>CUNNING</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.willpower}}</p>
+        <p>WILLPOWER</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.presence}}</p>
+        <p>PRESENCE</p>
+      </div>
+
+    </div>
+    <div class="col-sm-12" ng-init="this['states'+$index+'.isopen']=false">
       <label for="statusCheckbox">Has Status</label>
       <input name="statusCheckbox" type="checkbox">
-      <p>This will hold the states applied</p>
+      <div class="btn-group" uib-dropdown is-open="this['states'+$index+'.isopen']">
+        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+          Pick One
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li ng-repeat="state in states" role="menuitem">
+            <a value="{{state.id}}" ng-model="unit.statusEffects">{{state.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-12 statusEffectDisplay">
+        <h5>{{unit.statusEffectNames}}</h5>
+        <p>{{unit.statusEffectDescription}}</p>
+      </div>
     </div>
     <!-- END STATES BLOCK !-->
-    <div>
-      <div>
-        <p>Soak</p>
-        <p>This will hold soak value</p>
-      </div>
-      <!-- END SOAK BLOCK !-->
-      <div>
-        <p>M / R Defense</p>
-        <p>this will hold melee | ranged Def</p>
+    <div class="col-sm-12">
+      <div class="col-sm-12">
+        <div class="col-sm-6">
+          <p>Soak</p>
+          <p>{{unit.soak}}</p>
+        </div>
+        <!-- END SOAK BLOCK !-->
+        <div class="col-sm-6">
+          <p>M / R Defense</p>
+          <p>{{unit.meleeDef}} | {{unit.rangeDef}}</p>
+        </div>
       </div>
       <!-- END DEFENSE BLOCK !-->
-      <div>
-        <div>
-          <p>Wound</p>
-          <p>Threshold Current</p>
+      <div class="col-sm-12">
+        <div class="col-sm-6">
+          <div class="col-sm-12 text-center">
+            <p>Wound</p>
+            <p>Threshold | Current</p>
+          </div>
+          <div class="col-sm-12">
+            <div>
+              <p class="col-sm-6">{{unit.woundThreshold}}</p>
+              <div class="col-sm-4 input-group input-group-lg">
+                <input type="number" ng-model="unitInfo.currentWound" name="currentWoundSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <p>this will hold static #</p>
-          <p>This will hold input</p>
+        <!-- END WOUND BLOCK !-->
+        <div class="col-sm-6">
+          <div class="col-sm-12 text-center">
+            <p>Strain</p>
+            <p>Threshold | Current</p>
+          </div>
+          <div class="col-sm-12">
+            <p class="col-sm-6">{{unit.strainThreshold}}</p>
+            <div class="col-sm-4 input-group input-group-lg">
+              <input type="number" ng-model="unitInfo.currentStrain" name="currentStrainSelector" class="form-control" placeholder="0"
+                aria-describedby="sizing-addon2">
+            </div>
+          </div>
+          <!-- END STRAIN BLOCK !-->
         </div>
+        <!-- END BOTTOM HALF OF CARD !-->
       </div>
-      <!-- END WOUND BLOCK !-->
-      <div>
-        <div>
-          <p>Strain</p>
-          <p>Strain Current</p>
-        </div>
-        <div>
-          <p>this will hold static #</p>
-          <p>This will hold input</p>
-        </div>
-      </div>
-      <!-- END STRAIN BLOCK !-->
     </div>
-    <!-- END BOTTOM HALF OF CARD !-->
-    <div>
-      <button>Edit</button>
-      <button>Details</button>
-      <button>Dead</button>
+    <div class="col-sm-12 unitButtons">
+      <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
+      <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
     </div>
     <!-- END BUTTONS BLOCK !-->
   </div>
   <!-- END UNIT CARD !-->
 
-  <div id="buttonWrapper">
-    <button ng-click="toCreate()">Add New</button>
-    <button ng-click="toLibrary()">Add From Library</button>
+  <div class="col-sm-12" id="buttonWrapper">
+    <button class="btn btn-primary" ng-click="toCreate()">Add New</button>
+    <button class="btn btn-primary" ng-click="toLibrary()">Add From Library</button>
     <button>End Battle</button>
   </div>
 </div>

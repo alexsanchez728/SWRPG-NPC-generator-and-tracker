@@ -79,7 +79,7 @@ app.config(function ($routeProvider) {
       resolve: { isAuth }
     })
     .when("/unitDetails:id", {
-      templateUrl: "partials/unitDetails.html",
+      templateUrl: "partials/units/unitDetails.html",
       controller: "UnitDetailsCtrl",
       resolve: { isAuth }
     })
