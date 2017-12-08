@@ -63,7 +63,7 @@ app.config(function ($routeProvider) {
       controller: "ProfileCtrl",
       resolve: { isAuth }
     })
-    .when("/editUnit:id", {
+    .when("/editUnit/:id", {
       templateUrl: "partials/units/editUnit.html",
       controller: "EditUnitCtrl",
       resolve: { isAuth }
@@ -78,7 +78,7 @@ app.config(function ($routeProvider) {
       controller: "NewUnitDescriptionCtrl",
       resolve: { isAuth }
     })
-    .when("/unitDetails:id", {
+    .when("/unitDetails/:id", {
       templateUrl: "partials/units/unitDetails.html",
       controller: "UnitDetailsCtrl",
       resolve: { isAuth }
