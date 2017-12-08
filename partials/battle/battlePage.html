@@ -49,6 +49,7 @@
       <div class="col-sm-12 statusEffectDisplay">
         <h5>{{unit.statusEffectNames}}</h5>
         <p>{{unit.statusEffectDescription}}</p>
+        <button class="btn btn-danger" ng-show="unit.statusEffects != 'none' || undefined" ng-click="removeState(unit.statusEffects, unit.id)"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
     </div>
     <!-- END STATES BLOCK !-->

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleReadyUnitsService, StatesService) {
+app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleReadyUnitsService, StatesService, UnitsService) {
 
   const getMyBattleReadyUnits = () => {
     BattleReadyUnitsService.getMyBattleReadyUnits($rootScope.uid).then((results) => {
@@ -16,7 +16,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
     }).then(() => {
       let units = $scope.units;
       units.forEach((unit) => {
-        if (unit.statusEffects != "none") {
+        if (unit.statusEffects != "none" || unit.statusEffects === undefined) {
           $scope.states.forEach((state) => {
             if (unit.statusEffects === state.id) {
               unit.statusEffectNames = state.name;
@@ -24,6 +24,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
             }
           });
         } else {
+          unit.statusEffects = "none";
           unit.statusEffectNames = "none";
           unit.statusEffectDescription = undefined;
         }
@@ -35,7 +36,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
   const getStates = () => {
     StatesService.getAllStates().then((results) => {
-      $scope.states = results;      
+      $scope.states = results;
       return getMyBattleReadyUnits();
     }).catch((error) => {
       console.log("error in getWeapons", error);
@@ -50,6 +51,15 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
   const toLibrary = () => {
     $location.path(`userLibrary`);
+  };
+
+  $scope.removeState = (unitEffect, unitId) => {
+    UnitsService.removeUnitState(unitEffect, unitId).then(() => {
+      getStates();
+      console.log($scope.units);
+    }).catch((error) => {
+      console.log("error in removeState", error);
+    });
   };
 
   $scope.toEditUnit = (id) => {

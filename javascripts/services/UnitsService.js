@@ -3,6 +3,9 @@
 app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
 
   const createSingleUnitObject = (unitInfo) => {
+    if (unitInfo.statusEffects === undefined) {
+      unitInfo.statusEffects = "none";
+    }
     return {
       "abilities": unitInfo.abilities,
       "agility": unitInfo.agility,
@@ -22,7 +25,7 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
       "rangeDef": unitInfo.rangeDef,
       "skills": unitInfo.skills,
       "soak": unitInfo.soak,
-      "statusEffects": "none",
+      "statusEffects": unitInfo.statusEffects,
       "strainThreshold": 0,
       "talents": unitInfo.talents,
       "uid": unitInfo.uid,
@@ -40,9 +43,13 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
     return $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
 
+  const removeUnitState = (unitEffect, unitId) => {
+    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}/statusEffects.json`);
+  };
+
   const postNewUnit = (newUnit) => {
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 
-  return { createSingleUnitObject, editUnit, getUnit, postNewUnit };
+  return { createSingleUnitObject, editUnit, getUnit, removeUnitState, postNewUnit };
 });
