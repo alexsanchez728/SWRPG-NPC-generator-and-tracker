@@ -36,6 +36,11 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
     return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(editedUnit));
   };
 
+
+  const deleteSingleUnit = (unitId) => {
+    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
+  };
+
   const getUnit = (unitId) => {
     return $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
@@ -44,5 +49,5 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 
-  return { createSingleUnitObject, editUnit, getUnit, postNewUnit };
+  return { createSingleUnitObject, deleteSingleUnit, editUnit, getUnit, postNewUnit };
 });
