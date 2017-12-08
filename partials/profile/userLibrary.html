@@ -1,1 +1,40 @@
-{{theLibrary}}
+<div id="library-wrapper">
+  <div class="col-sm-12">
+    <div id="library-creations" class="col-sm-6">
+      <h2>My Creations</h2>
+      <div class="col-sm-12" ng-repeat="unit in units">
+        <h3>{{unit.name}}</h3>
+        <p>{{unit.description}}</p>
+        <div class="col-sm-12">
+          <h5>Characteristics</h5>
+          <div class="col-sm-2">
+            <p>{{unit.brawn}}</p>
+            <p>BRAWN</p>
+          </div>
+          <div class="col-sm-2">
+            <p>{{unit.agility}}</p>
+            <p>AGILITY</p>
+          </div>
+          <div class="col-sm-2">
+            <p>{{unit.intellect}}</p>
+            <p>INTELLECT</p>
+          </div>
+          <div class="col-sm-2">
+            <p>{{unit.cunning}}</p>
+            <p>CUNNING</p>
+          </div>
+          <div class="col-sm-2">
+            <p>{{unit.willpower}}</p>
+            <p>WILLPOWER</p>
+          </div>
+          <div class="col-sm-2">
+            <p>{{unit.presence}}</p>
+            <p>PRESENCE</p>
+          </div>
+
+        </div>
+        <h4>Assigned Fodler: {{unit.folderName}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
