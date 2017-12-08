@@ -52,12 +52,12 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
     $location.path(`userLibrary`);
   };
 
-  $scope.toEditUnit = (unitId) => {
-    $location.path(`/editUnit:unitId`);
+  $scope.toEditUnit = (id) => {
+    $location.path(`/editUnit/${id}`);
   };
 
-  $scope.toDetails = (unitId) => {
-    $location.path(`/unitDetails:unitId`);
+  $scope.toDetails = (id) => {
+    $location.path(`/unitDetails/${id}`);
   };
 
 }); // end controller
