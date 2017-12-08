@@ -10,7 +10,6 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
     });
   }; // end getMyBattleReadyUnits()
 
-
   const getStates = () => {
     StatesService.getAllStates().then((results) => {
       $scope.states = results;
@@ -21,6 +20,17 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
   };
   getStates();
 
+  // const getUnitStates = () => {
+  //   BattleReadyUnitsService.getMyBattleReadyUnits($rootScope.uid).then((results) => {
+  //     let units = results;
+  //     console.log("units", units);
+  //     $scope.units.forEach((unit) => {
+  //       console.log("unit", unit);
+  //     });
+  //   });
+  // };
+
+  // getUnitStates();
 
   const toCreate = () => {
     $location.path(`/newUnit1`);
@@ -29,7 +39,15 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
   const toLibrary = () => {
     $location.path(`userLibrary`);
   };
-  
+
+  $scope.toEditUnit = (unitId) => {
+    $location.path(`/editUnit:unitId`);
+  };
+
+  $scope.toDetails = (unitId) => {
+    $location.path(`/unitDetails:unitId`);
+  };
+
   $scope.statesDropDown = {
     isopen: false
   };

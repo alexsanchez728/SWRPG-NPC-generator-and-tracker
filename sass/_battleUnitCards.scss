@@ -1,0 +1,14 @@
+@import 'variables';
+
+.unitCard {
+  border: $border;
+}
+
+.statusEffectDisplay {
+  border: $border;
+}
+
+.unitButtons {
+  display: flex;
+  justify-content: space-around;
+}
