@@ -1,10 +1,37 @@
 <div id="battlePageWrapper">
-  <div class="unitCard col-sm-offset-1 col-sm-5" ng-repeat="unit in units">
+  <div class="unitCard col-sm-6" ng-repeat="unit in units">
     <div class="col-sm-12">
       <h4 class="col-sm-6">{{unit.name}}</h4>
       <h5 class="col-sm-6">{{unit.groupId}}</h5>
     </div>
     <!-- END NAME AND GROUP BLOCK !-->
+    <div class="col-sm-12">
+      <div class="col-sm-2">
+        <p>{{unit.brawn}}</p>
+        <p>BRAWN</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.agility}}</p>
+        <p>AGILITY</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.intellect}}</p>
+        <p>INTELLECT</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.cunning}}</p>
+        <p>CUNNING</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.willpower}}</p>
+        <p>WILLPOWER</p>
+      </div>
+      <div class="col-sm-2">
+        <p>{{unit.presence}}</p>
+        <p>PRESENCE</p>
+      </div>
+
+    </div>
     <div class="col-sm-12" ng-init="this['states'+$index+'.isopen']=false">
       <label for="statusCheckbox">Has Status</label>
       <input name="statusCheckbox" type="checkbox">
@@ -66,11 +93,11 @@
                 aria-describedby="sizing-addon2">
             </div>
           </div>
+          <!-- END STRAIN BLOCK !-->
         </div>
+        <!-- END BOTTOM HALF OF CARD !-->
       </div>
     </div>
-    <!-- END STRAIN BLOCK !-->
-    <!-- END BOTTOM HALF OF CARD !-->
     <div class="col-sm-12 unitButtons">
       <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
       <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>

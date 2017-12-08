@@ -13,8 +13,6 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
   const getUnitStates = () => {
     BattleReadyUnitsService.getMyBattleReadyUnits($rootScope.uid).then((results) => {
-      // $scope.units = results;
-      // return getStates();
     }).then(() => {
       let units = $scope.units;
       units.forEach((unit) => {
@@ -23,8 +21,6 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
             if (unit.statusEffects === state.id) {
               unit.statusEffectNames = state.name;
               unit.statusEffectDescription = state.description;
-              console.log("unit with state name", unit);
-              console.log("units with state name", units);
             }
           });
         } else {
