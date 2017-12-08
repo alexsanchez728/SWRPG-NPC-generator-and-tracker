@@ -44,7 +44,7 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
   };
 
   const removeUnitState = (unitEffect, unitId) => {
-    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}/statusEffects.json`);
+    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}/statusEffects/${unitEffect}.json`);
   };
 
   const postNewUnit = (newUnit) => {
