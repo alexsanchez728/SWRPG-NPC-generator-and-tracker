@@ -49,7 +49,7 @@
       <div class="col-sm-12 statusEffectDisplay">
         <h5>{{unit.statusEffectNames}}</h5>
         <p>{{unit.statusEffectDescription}}</p>
-        <button class="btn btn-danger" ng-show="unit.statusEffects != 'none' || undefined" ng-click="removeState(unit.statusEffects, unit.id)"><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="btn btn-danger" ng-show="unit.statusEffects != 'none' || undefined" ng-click="removeState(unit)"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
     </div>
     <!-- END STATES BLOCK !-->
@@ -76,7 +76,7 @@
             <div>
               <p class="col-sm-6">{{unit.woundThreshold}}</p>
               <div class="col-sm-4 input-group input-group-lg">
-                <input type="number" ng-model="unitInfo.currentWound" name="currentWoundSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+                <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitWound(unit)" ng-model="unit.currentWound" name="currentWoundSelector" class="form-control"  aria-describedby="sizing-addon1">
               </div>
             </div>
           </div>
@@ -90,8 +90,7 @@
           <div class="col-sm-12">
             <p class="col-sm-6">{{unit.strainThreshold}}</p>
             <div class="col-sm-4 input-group input-group-lg">
-              <input type="number" ng-model="unitInfo.currentStrain" name="currentStrainSelector" class="form-control" placeholder="0"
-                aria-describedby="sizing-addon2">
+              <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitStrain(unit)" ng-model="unit.currentStrain" name="currentStrainSelector" class="form-control" aria-describedby="sizing-addon1">
             </div>
           </div>
           <!-- END STRAIN BLOCK !-->
@@ -102,6 +101,7 @@
     <div class="col-sm-12 unitButtons">
       <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
       <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
+      <button ng-click="isDead(unit)" class="btn btn-danger">Dead</button>
     </div>
     <!-- END BUTTONS BLOCK !-->
   </div>

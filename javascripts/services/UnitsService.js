@@ -1,6 +1,6 @@
 'use strict';
 
-app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
+app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
 
   const createSingleUnitObject = (unitInfo) => {
     if (unitInfo.statusEffects === undefined) {
@@ -25,18 +25,53 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
       "rangeDef": unitInfo.rangeDef,
       "skills": unitInfo.skills,
       "soak": unitInfo.soak,
-      "statusEffects": unitInfo.statusEffects,
-      "strainThreshold": 0,
+      "statusEffects": "none",
+      "strainThreshold": unitInfo.strainThreshold,
       "talents": unitInfo.talents,
       "uid": unitInfo.uid,
       "willpower": unitInfo.willpower,
-      "woundThreshold": unitInfo.woundThreshold
+      "woundThreshold": unitInfo.woundThreshold,
+      "inBattle": unitInfo.inBattle
+    };
+  };
+  const updateUnit = (unitInfo) => {
+    return {
+      "abilities": unitInfo.abilities,
+      "agility": unitInfo.agility,
+      "brawn": unitInfo.brawn,
+      "cunning": unitInfo.cunning,
+      "currentStrain": unitInfo.currentStrain,
+      "currentWound": unitInfo.currentWound,
+      "description": unitInfo.description,
+      "difficultyName": unitInfo.difficultyName,
+      "folder": unitInfo.folder,
+      "unitsOfKind": unitInfo.unitCount,
+      "groupId": unitInfo.groupId,
+      "intellect": unitInfo.intellect,
+      "isFavourite": unitInfo.isFavourite,
+      "meleeDef": unitInfo.meleeDef,
+      "name": unitInfo.name,
+      "presence": unitInfo.presence,
+      "rangeDef": unitInfo.rangeDef,
+      "skills": unitInfo.skills,
+      "soak": unitInfo.soak,
+      "statusEffects": unitInfo.statusEffects,
+      "strainThreshold": unitInfo.strainThreshold,
+      "talents": unitInfo.talents,
+      "uid": unitInfo.uid,
+      "willpower": unitInfo.willpower,
+      "woundThreshold": unitInfo.woundThreshold,
+      "inBattle": unitInfo.inBattle
     };
   };
 
   const editUnit = (editedUnit, unitId) => {
     let unitObject = createSingleUnitObject(editedUnit);
-    return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(editedUnit));
+    return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(unitObject));
+  };
+
+  const deleteSingleUnit = (unitId) => {
+    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
 
   const getUnit = (unitId) => {
@@ -44,12 +79,35 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
   };
 
   const removeUnitState = (unitEffect, unitId) => {
-    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}/statusEffects/${unitEffect}.json`);
+      return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}/statusEffects/${unitEffect}.json`);
+  };
+  
+  const getAllMyUnits = (userUid) => {
+    let units = [];
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json?orderBy="uid"&equalTo="${userUid}"`).then((results) => {
+        let fbUnits = results.data;
+        if (fbUnits != null) {
+          Object.keys(fbUnits).forEach((key) => {
+              fbUnits[key].id = key;
+              units.push(fbUnits[key]);
+              resolve(units);
+          });
+        }
+      }).catch((error) => {
+        console.log("error in getMyBattleReadyUnits", error);
+      });
+    });
+  };
+
+  const updateUnitInfo = (editedUnit, unitId) => {
+    let unitObject = updateUnit(editedUnit);
+    return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(unitObject));
   };
 
   const postNewUnit = (newUnit) => {
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 
-  return { createSingleUnitObject, editUnit, getUnit, removeUnitState, postNewUnit };
+return { createSingleUnitObject, deleteSingleUnit, editUnit, getUnit, removeUnitState, getAllMyUnits, updateUnitInfo, postNewUnit };
 });

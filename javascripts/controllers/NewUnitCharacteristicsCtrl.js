@@ -52,9 +52,6 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
     $scope.unitInfo = {};
   };
 
-  $scope.weaponDropDown = {
-    isopen: false
-  };
   $scope.equipmentDropDown = {
     isopen: false
   };
@@ -62,4 +59,106 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
     isopen: false
   };
 
-});
+  $scope.weaponDropDown = {
+    isopen: false
+  };
+
+  const characteristicsByDifficulty = (difficultyName) => {
+    if (difficultyName === "Minion") {
+      let min = Math.ceil(1);
+      let max = Math.floor(3);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else if (difficultyName === "Rival") {
+      let min = Math.ceil(1);
+      let max = Math.floor(5);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else if (difficultyName === "Nemesis") {
+      let min = Math.ceil(1);
+      let max = Math.floor(7);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  };
+
+  const soakByDifficulty = (difficultyName) => {
+    if (difficultyName === "Minion") {
+      let min = Math.ceil(1);
+      let max = Math.floor(5);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else if (difficultyName === "Rival") {
+      let min = Math.ceil(2);
+      let max = Math.floor(6);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else if (difficultyName === "Nemesis") {
+      let min = Math.ceil(3);
+      let max = Math.floor(12);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  };
+
+  const strainThresholdByDifficulty = (difficultyName) => {
+    if (difficultyName === "Minion" || "Rival") {
+      return 0;
+    } else if (difficultyName === "Nemesis") {
+      let min = Math.ceil(12);
+      let max = Math.floor(30);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  };
+
+  const woundThresholdByDifficulty = (difficultyName) => {
+    if (difficultyName === "Minion") {
+      let min = Math.ceil(3);
+      let max = Math.floor(9);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else if (difficultyName === "Rival") {
+      let min = Math.ceil(4);
+      let max = Math.floor(12);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else if (difficultyName === "Nemesis") {
+      let min = Math.ceil(15);
+      let max = Math.floor(30);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  };
+
+  const meleeDefenseByDifficulty = (difficultyName) => {
+    if (difficultyName === "Minion") {
+      return 0;
+    } else if (difficultyName === "Rival" || "Nemesis") {
+      let min = Math.ceil(0);
+      let max = Math.floor(1);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  };
+
+  const rangeDefenseByDifficulty = (difficultyName) => {
+    if (difficultyName === "Minion") {
+      return 0;
+    } else if (difficultyName === "Rival" || "Nemesis") {
+      let min = Math.ceil(0);
+      let max = Math.floor(1);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  };
+
+  $scope.randomStatsForDifficulty = ((difficultyName) => {
+    if (difficultyName != undefined) {
+      $scope.userError = null;
+      $scope.unitInfo.brawn = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.agility = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.intellect = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.cunning = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.willpower = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.presence = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.soak = soakByDifficulty(difficultyName);
+      $scope.unitInfo.woundThreshold = woundThresholdByDifficulty(difficultyName);
+      $scope.unitInfo.strainThreshold = strainThresholdByDifficulty(difficultyName);
+      $scope.unitInfo.meleeDef = meleeDefenseByDifficulty(difficultyName);
+      $scope.unitInfo.rangeDef = rangeDefenseByDifficulty(difficultyName);
+    } else if (!difficultyName) {
+      $scope.userError = "Select a Difficulty First";
+    }
+
+  }); // END RANDOMSTATESFORDIFFICULTY
+
+}); // END CONTROLLER
