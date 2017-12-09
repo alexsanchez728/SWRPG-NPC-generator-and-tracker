@@ -7,3 +7,6 @@
 .unitButtons {
   display: flex;
   justify-content: space-around; }
+
+#battlePageWrapper input {
+  width: 58px; }
