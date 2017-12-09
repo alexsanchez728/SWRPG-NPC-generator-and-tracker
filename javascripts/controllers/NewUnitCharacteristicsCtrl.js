@@ -142,18 +142,23 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
   };
 
   $scope.randomStatsForDifficulty = ((difficultyName) => {
-    $scope.unitInfo.brawn = characteristicsByDifficulty(difficultyName);
-    $scope.unitInfo.agility = characteristicsByDifficulty(difficultyName);
-    $scope.unitInfo.intellect = characteristicsByDifficulty(difficultyName);
-    $scope.unitInfo.cunning = characteristicsByDifficulty(difficultyName);
-    $scope.unitInfo.willpower = characteristicsByDifficulty(difficultyName);
-    $scope.unitInfo.presence = characteristicsByDifficulty(difficultyName);
-    $scope.unitInfo.soak = soakByDifficulty(difficultyName);
-    $scope.unitInfo.woundThreshold = woundThresholdByDifficulty(difficultyName);
-    $scope.unitInfo.strainThreshold = strainThresholdByDifficulty(difficultyName);
-    $scope.unitInfo.meleeDef = meleeDefenseByDifficulty(difficultyName);
-    $scope.unitInfo.rangeDef = rangeDefenseByDifficulty(difficultyName);
-    console.log("random outcome", $scope.unitInfo);
+    if (difficultyName != undefined) {
+      $scope.userError = null;
+      $scope.unitInfo.brawn = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.agility = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.intellect = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.cunning = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.willpower = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.presence = characteristicsByDifficulty(difficultyName);
+      $scope.unitInfo.soak = soakByDifficulty(difficultyName);
+      $scope.unitInfo.woundThreshold = woundThresholdByDifficulty(difficultyName);
+      $scope.unitInfo.strainThreshold = strainThresholdByDifficulty(difficultyName);
+      $scope.unitInfo.meleeDef = meleeDefenseByDifficulty(difficultyName);
+      $scope.unitInfo.rangeDef = rangeDefenseByDifficulty(difficultyName);
+    } else if (!difficultyName) {
+      $scope.userError = "Select a Difficulty First";
+    }
+
   }); // END RANDOMSTATESFORDIFFICULTY
 
 }); // END CONTROLLER

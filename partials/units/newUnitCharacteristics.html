@@ -3,6 +3,9 @@
   <div class="col-sm-12">
     <button class="btn btn-success" ng-click="randomStatsForDifficulty(unitInfo.difficultyName)">Randomize</button>
   </div>
+  <div ng-if="userError">
+    <h2>{{userError}}</h2>
+  </div>
   <form novalidate name="newUnitForm" class="form-inline">
     <div class="form-group">
       <div class="col-sm-6">
