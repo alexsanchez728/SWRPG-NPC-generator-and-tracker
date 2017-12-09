@@ -71,15 +71,20 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
   $scope.updateUnitWound = (unit) => {
     let updatedUnit = unit;
-    // updatedUnit.currentWound = wound;
-    console.log("updated unit", updatedUnit.currentWound);
     UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
       getStates();
     }).catch((error) => {
-      console.log("error in isDead", error);
+      console.log("error in updateUnitWound", error);
     });
   };
 
-  // $scope.updateUnitStrain(strainChange)
+  $scope.updateUnitStrain = (unit) => {
+    let updatedUnit = unit;
+    UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
+      getStates();
+    }).catch((error) => {
+      console.log("error in updateUnitStrain", error);
+    });
+  };
 
 }); // end controller
