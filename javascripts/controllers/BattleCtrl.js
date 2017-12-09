@@ -62,7 +62,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
 $scope.isDead = (unitInfo) => {
   unitInfo.inBattle = false;
-  UnitsService.markUnitDead(unitInfo, unitInfo.id).then(() => {
+  UnitsService.updateUnitInfo(unitInfo, unitInfo.id).then(() => {
     getStates();
   }).catch((error) => {
     console.log("error in isDead", error);

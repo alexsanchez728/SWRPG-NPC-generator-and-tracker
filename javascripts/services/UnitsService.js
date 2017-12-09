@@ -1,6 +1,6 @@
 'use strict';
 
-app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
+app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
 
   const createSingleUnitObject = (unitInfo) => {
     return {
@@ -74,14 +74,33 @@ app.service("UnitsService", function ($http, FIREBASE_CONFIG) {
     return $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
 
-  const markUnitDead = (editedUnit, unitId) => {
+  const getAllMyUnits = (userUid) => {
+    let units = [];
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json?orderBy="uid"&equalTo="${userUid}"`).then((results) => {
+        let fbUnits = results.data;
+        if (fbUnits != null) {
+          Object.keys(fbUnits).forEach((key) => {
+              fbUnits[key].id = key;
+              units.push(fbUnits[key]);
+              resolve(units);
+          });
+        }
+      }).catch((error) => {
+        console.log("error in getMyBattleReadyUnits", error);
+      });
+    });
+  };
+
+  const updateUnitInfo = (editedUnit, unitId) => {
     let unitObject = updateUnit(editedUnit);
+    console.log(unitObject);
     return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(unitObject));
   };
-  
+
   const postNewUnit = (newUnit) => {
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 
-  return { createSingleUnitObject, deleteSingleUnit, editUnit, getUnit, markUnitDead, postNewUnit };
+  return { createSingleUnitObject, deleteSingleUnit, editUnit, getUnit, getAllMyUnits, updateUnitInfo, postNewUnit };
 });
