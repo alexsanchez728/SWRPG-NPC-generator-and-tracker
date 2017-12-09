@@ -75,7 +75,7 @@
             <div>
               <p class="col-sm-6">{{unit.woundThreshold}}</p>
               <div class="col-sm-4 input-group input-group-lg">
-                <input type="number" ng-model="unitInfo.currentWound" name="currentWoundSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+                <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitWound(unit)" ng-model="unit.currentWound" name="currentWoundSelector" class="form-control"  aria-describedby="sizing-addon1">
               </div>
             </div>
           </div>
@@ -89,8 +89,7 @@
           <div class="col-sm-12">
             <p class="col-sm-6">{{unit.strainThreshold}}</p>
             <div class="col-sm-4 input-group input-group-lg">
-              <input type="number" ng-model="unitInfo.currentStrain" name="currentStrainSelector" class="form-control" placeholder="0"
-                aria-describedby="sizing-addon2">
+              <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitStrain(unit)" ng-model="unit.currentStrain" name="currentStrainSelector" class="form-control" aria-describedby="sizing-addon1">
             </div>
           </div>
           <!-- END STRAIN BLOCK !-->

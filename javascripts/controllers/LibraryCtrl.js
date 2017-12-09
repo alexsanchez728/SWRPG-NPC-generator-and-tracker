@@ -51,4 +51,5 @@ app.controller("LibraryCtrl", function ($location, $rootScope, $scope, BattleRea
       console.log("error in toBattle", error);
     });
   });
+  
 });
