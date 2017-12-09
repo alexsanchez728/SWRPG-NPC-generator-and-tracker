@@ -5,14 +5,14 @@ app.controller("LibraryCtrl", function ($location, $rootScope, $scope, BattleRea
   const getFolderNames = () => {
     FoldersService.getAllMyFolders().then((results) => {
       $scope.MyFolders = results;
-      return getMyBattleReadyUnitsWithFolderNames();
+      return getMyUnitsWithFolderNames();
     }).catch((error) => {
       console.log("error in getFolderNames", error);
     });
   };
 
-  const getMyBattleReadyUnitsWithFolderNames = () => {
-    BattleReadyUnitsService.getMyBattleReadyUnits($rootScope.uid).then((results) => {
+  const getMyUnitsWithFolderNames = () => {
+    UnitsService.getAllMyUnits($rootScope.uid).then((results) => {
       $scope.units = results;
       let units = $scope.units;
       let folders = $scope.MyFolders;
@@ -34,7 +34,7 @@ app.controller("LibraryCtrl", function ($location, $rootScope, $scope, BattleRea
       getFolderNames();
     });
   });
-  
+
   $scope.toEditUnit = ((unitId) => {
     $location.path(`/editUnit/${unitId}`);
   });
@@ -43,4 +43,12 @@ app.controller("LibraryCtrl", function ($location, $rootScope, $scope, BattleRea
     $location.path(`/unitDetails/${unitId}`);
   });
 
+  $scope.toBattle = ((unit) => {
+    unit.inBattle = true;
+    UnitsService.updateUnitInfo(unit, unit.id).then(() => {
+      getFolderNames();
+    }).catch((error) => {
+      console.log("error in toBattle", error);
+    });
+  });
 });

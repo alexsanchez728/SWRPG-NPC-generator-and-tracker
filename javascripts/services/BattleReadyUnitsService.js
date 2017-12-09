@@ -9,9 +9,11 @@ app.service("BattleReadyUnitsService", function ($http, $q, FIREBASE_CONFIG) {
         let fbUnits = results.data;
         if (fbUnits != null) {
           Object.keys(fbUnits).forEach((key) => {
-            fbUnits[key].id = key;
-            units.push(fbUnits[key]);
-            resolve(units);
+            if (fbUnits[key].inBattle) {
+              fbUnits[key].id = key;
+              units.push(fbUnits[key]);
+              resolve(units);
+            }
           });
         }
       }).catch((error) => {
