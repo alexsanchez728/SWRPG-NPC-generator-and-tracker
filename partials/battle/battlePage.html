@@ -1,5 +1,5 @@
 <div id="battlePageWrapper">
-  <div class="unitCard col-sm-6" ng-repeat="unit in units">
+  <div class="unitCard col-sm-6" ng-show="units != undefined" ng-repeat="unit in units">
     <div class="col-sm-12">
       <h4 class="col-sm-6">{{unit.name}}</h4>
       <h5 class="col-sm-6">{{unit.groupId}}</h5>
@@ -110,6 +110,6 @@
   <div class="col-sm-12" id="buttonWrapper">
     <button class="btn btn-primary" ng-click="toCreate()">Add New</button>
     <button class="btn btn-primary" ng-click="toLibrary()">Add From Library</button>
-    <button>End Battle</button>
+    <button class="btn btn-primary" ng-show="units != undefined" ng-click="endBattle()">End Battle</button>
   </div>
 </div>
