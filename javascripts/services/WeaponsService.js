@@ -17,5 +17,6 @@ app.service("WeaponsService", function ($http, $q, FIREBASE_CONFIG) {
       });
     });
   };
+  
   return { getAllWeapons};
 });
