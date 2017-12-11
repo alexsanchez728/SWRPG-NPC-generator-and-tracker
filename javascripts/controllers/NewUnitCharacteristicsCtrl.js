@@ -33,6 +33,7 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
     unitInfo.uid = $rootScope.uid;
     $scope.unitWithuid = angular.copy(unitInfo);
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+    newUnit.inBattle = true;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/battlePage`);
     });
@@ -42,6 +43,7 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
     unitInfo.uid = $rootScope.uid;
     $scope.unitWithuid = angular.copy(unitInfo);
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+    newUnit.inBattle = false;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/newUnit1`);
       $scope.reset();

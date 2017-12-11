@@ -3,9 +3,7 @@
 app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
 
   const createSingleUnitObject = (unitInfo) => {
-    if (unitInfo.statusEffects === undefined) {
-      unitInfo.statusEffects = "none";
-    }
+
     return {
       "abilities": unitInfo.abilities,
       "agility": unitInfo.agility,
@@ -26,6 +24,8 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "skills": unitInfo.skills,
       "soak": unitInfo.soak,
       "statusEffects": "none",
+      "statusEffectNames": "none",
+      "statusEffectDescription": "none",
       "strainThreshold": unitInfo.strainThreshold,
       "talents": unitInfo.talents,
       "uid": unitInfo.uid,
@@ -34,6 +34,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "inBattle": unitInfo.inBattle
     };
   };
+  
   const updateUnit = (unitInfo) => {
     return {
       "abilities": unitInfo.abilities,
@@ -56,6 +57,8 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "skills": unitInfo.skills,
       "soak": unitInfo.soak,
       "statusEffects": unitInfo.statusEffects,
+      "statusEffectNames": unitInfo.statusEffectNames,
+      "statusEffectDescription": unitInfo.statusEffectDescription,
       "strainThreshold": unitInfo.strainThreshold,
       "talents": unitInfo.talents,
       "uid": unitInfo.uid,
@@ -63,11 +66,6 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "woundThreshold": unitInfo.woundThreshold,
       "inBattle": unitInfo.inBattle
     };
-  };
-
-  const editUnit = (editedUnit, unitId) => {
-    let unitObject = createSingleUnitObject(editedUnit);
-    return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(unitObject));
   };
 
   const deleteSingleUnit = (unitId) => {
@@ -105,5 +103,5 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 
-  return { createSingleUnitObject, deleteSingleUnit, editUnit, getUnit, getAllMyUnits, updateUnitInfo, postNewUnit };
+  return { createSingleUnitObject, deleteSingleUnit, getUnit, getAllMyUnits, updateUnitInfo, postNewUnit };
 });

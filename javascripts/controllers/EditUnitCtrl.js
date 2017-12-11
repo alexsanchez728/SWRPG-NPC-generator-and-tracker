@@ -41,7 +41,7 @@ app.controller("EditUnitCtrl", function ($location, $rootScope, $routeParams, $s
 
   $scope.editUnit = (unitInfo) => {
     let editedUnit = $scope.unitInfo;
-    UnitsService.editUnit(editedUnit, $routeParams.id).then((results) => {
+    UnitsService.updateUnitInfo(editedUnit, $routeParams.id).then((results) => {
       $location.path("/battlePage");
     }).catch((error) => {
       console.log("error in editUnit", error);
