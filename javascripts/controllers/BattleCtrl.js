@@ -16,7 +16,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
     }).then(() => {
       let units = $scope.units;
       units.forEach((unit) => {
-        if (unit.statusEffects != "none") {
+        if (unit.statusEffects != "none" || unit.statusEffects === undefined) {
           $scope.states.forEach((state) => {
             if (unit.statusEffects === state.id) {
               unit.statusEffectNames = state.name;
@@ -50,6 +50,19 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
   $scope.toLibrary = () => {
     $location.path(`userLibrary`);
+  };
+
+  $scope.removeState = (unit) => {
+    if (unit.statusEffects != "none") {
+      let updatedUnit = unit;
+      updatedUnit.statusEffects = "none";
+      UnitsService.editUnit(updatedUnit, unit.id).then(() => {
+        getStates();
+      }).catch((error) => {
+        console.log("error in removeState", error);
+      });
+    }
+    console.log($scope.units);
   };
 
   $scope.toEditUnit = (id) => {

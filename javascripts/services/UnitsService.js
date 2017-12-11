@@ -3,6 +3,9 @@
 app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
 
   const createSingleUnitObject = (unitInfo) => {
+    if (unitInfo.statusEffects === undefined) {
+      unitInfo.statusEffects = "none";
+    }
     return {
       "abilities": unitInfo.abilities,
       "agility": unitInfo.agility,
@@ -82,9 +85,9 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
         let fbUnits = results.data;
         if (fbUnits != null) {
           Object.keys(fbUnits).forEach((key) => {
-              fbUnits[key].id = key;
-              units.push(fbUnits[key]);
-              resolve(units);
+            fbUnits[key].id = key;
+            units.push(fbUnits[key]);
+            resolve(units);
           });
         }
       }).catch((error) => {
