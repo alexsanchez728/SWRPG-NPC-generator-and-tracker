@@ -42,7 +42,7 @@
         </button>
         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
           <li ng-repeat="state in states" role="menuitem">
-            <a value="{{state.id}}" ng-model="unit.statusEffects">{{state.name}}</a>
+            <a value="{{state.id}}" ng-click="addState(unit, state.id)" ng-model="unit.statusEffects">{{state.name}}</a>
           </li>
         </ul>
       </div>

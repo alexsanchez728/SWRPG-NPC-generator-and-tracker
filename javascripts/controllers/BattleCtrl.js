@@ -62,7 +62,16 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
         console.log("error in removeState", error);
       });
     }
-    console.log($scope.units);
+  };
+
+  $scope.addState = (unit, stateId) => {
+    let updatedUnit = unit;
+    updatedUnit.statusEffects = stateId;
+    UnitsService.updateUnitInfo(updatedUnit, updatedUnit.id).then(() => {
+      getStates();
+    }).catch((error) => {
+      console.log("error in updateUnitWound", error);
+    });
   };
 
   $scope.toEditUnit = (id) => {
