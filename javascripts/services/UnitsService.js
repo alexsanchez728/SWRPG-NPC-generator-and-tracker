@@ -78,10 +78,6 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
     return $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
 
-  const removeUnitState = (unitEffect, unitId) => {
-      return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}/statusEffects/${unitEffect}.json`);
-  };
-  
   const getAllMyUnits = (userUid) => {
     let units = [];
     return $q((resolve, reject) => {
@@ -89,9 +85,9 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
         let fbUnits = results.data;
         if (fbUnits != null) {
           Object.keys(fbUnits).forEach((key) => {
-              fbUnits[key].id = key;
-              units.push(fbUnits[key]);
-              resolve(units);
+            fbUnits[key].id = key;
+            units.push(fbUnits[key]);
+            resolve(units);
           });
         }
       }).catch((error) => {
@@ -109,5 +105,5 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 
-return { createSingleUnitObject, deleteSingleUnit, editUnit, getUnit, removeUnitState, getAllMyUnits, updateUnitInfo, postNewUnit };
+  return { createSingleUnitObject, deleteSingleUnit, editUnit, getUnit, getAllMyUnits, updateUnitInfo, postNewUnit };
 });
