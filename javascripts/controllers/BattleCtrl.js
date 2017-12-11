@@ -56,7 +56,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
     if (unit.statusEffects != "none") {
       let updatedUnit = unit;
       updatedUnit.statusEffects = "none";
-      UnitsService.editUnit(updatedUnit, unit.id).then(() => {
+      UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
         getStates();
       }).catch((error) => {
         console.log("error in removeState", error);
@@ -84,6 +84,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
   $scope.isDead = (unitInfo) => {
     unitInfo.inBattle = false;
+    unitInfo.statusEffects = "none";
     UnitsService.updateUnitInfo(unitInfo, unitInfo.id).then(() => {
       getStates();
     }).catch((error) => {
