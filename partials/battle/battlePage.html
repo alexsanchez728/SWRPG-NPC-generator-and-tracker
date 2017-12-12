@@ -51,6 +51,14 @@
         <p>{{unit.statusEffectDescription}}</p>
         <button class="btn btn-danger" ng-show="unit.statusEffects != 'none' || undefined" ng-click="removeState(unit)"><span class="glyphicon glyphicon-trash"></span></button>
       </div>
+      <div class="col-sm-12 statusEffectDisplay weaponDisplay">
+        <h5>{{unit.weaponName}}</h5>
+        <p>{{unit.weaponDescription}}</p>
+      </div>
+      <div class="col-sm-12 statusEffectDisplay equipmentDisplay">
+        <h5>{{unit.equipmentName}}</h5>
+        <p>{{unit.equipmentDescription}}</p>
+      </div>
     </div>
     <!-- END STATES BLOCK !-->
     <div class="col-sm-12">

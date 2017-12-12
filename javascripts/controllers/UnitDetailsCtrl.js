@@ -32,7 +32,6 @@ app.controller("UnitDetailsCtrl", function ($location, $rootScope, $routeParams,
   const getSingleUnit = () => {
     UnitsService.getUnit($routeParams.id).then((results) => {
       $scope.unitInfo = results.data;
-      console.log("unit", $scope.unitInfo);
       if ($scope.unitInfo.folder != undefined) {
         $scope.folders.forEach((folder) => {
           if ($scope.unitInfo.folder === folder.id) {
@@ -42,7 +41,6 @@ app.controller("UnitDetailsCtrl", function ($location, $rootScope, $routeParams,
       }
       if ($scope.unitInfo.weapons != undefined) {
         $scope.weapons.forEach((weapon) => {
-          console.log("weapon", $scope.unitInfo.weapons);
           if ($scope.unitInfo.weapons === weapon.id) {
             $scope.unitInfo.weaponName = weapon.name;
             $scope.unitInfo.weaponDescription = weapon.description;
@@ -51,7 +49,7 @@ app.controller("UnitDetailsCtrl", function ($location, $rootScope, $routeParams,
       }
       if ($scope.unitInfo.equipment != undefined) {
         $scope.equipments.forEach((equipment) => {
-          if ($scope.unitInfo.equipments === equipment.id) {
+          if ($scope.unitInfo.equipment === equipment.id) {
             $scope.unitInfo.equipmentName = equipment.name;
             $scope.unitInfo.equipmentDescription = equipment.description;
           }

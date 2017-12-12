@@ -1,6 +1,34 @@
 'use strict';
 
-app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleReadyUnitsService, UnitsService, StatesService) {
+app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleReadyUnitsService, GearAndEquipmentService, UnitsService, StatesService, WeaponsService) {
+
+  const getStates = () => {
+    StatesService.getAllStates().then((results) => {
+      $scope.states = results;
+      return getUnitStates();
+    }).catch((error) => {
+      console.log("error in getWeapons", error);
+    });
+  };
+  getStates();
+
+  const getWeapons = () => {
+    WeaponsService.getAllWeapons().then((results) => {
+      $scope.weapons = results;
+    }).catch((error) => {
+      console.log("error in getWeapons", error);
+    });
+  };
+  getWeapons();
+
+  const getEquipment = () => {
+    GearAndEquipmentService.getAllGearAndEquipment().then((results) => {
+      $scope.equipments = results;
+    }).catch((error) => {
+      console.log("error in getEquipment", error);
+    });
+  };
+  getEquipment();
 
   const getUnitStates = () => {
     BattleReadyUnitsService.getMyBattleReadyUnits($rootScope.uid).then((results) => {
@@ -18,23 +46,29 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
           unit.statusEffectNames = "none";
           unit.statusEffectDescription = undefined;
         }
+        if (unit.weapons != undefined) {
+          $scope.weapons.forEach((weapon) => {
+            if (unit.weapons === weapon.id) {
+              unit.weaponName = weapon.name;
+              unit.weaponDescription = weapon.description;
+            }
+          });
+        }
+        if (unit.equipment != undefined) {
+          $scope.equipments.forEach((equipment) => {
+            if (unit.equipment === equipment.id) {
+              unit.equipmentName = equipment.name;
+              unit.equipmentDescription = equipment.description;
+            }
+          });
+        }
       });
     }).catch((error) => {
       console.log("error in getUnitStates", error);
     });
   };
 
-  const getStates = () => {
-    StatesService.getAllStates().then((results) => {
-      $scope.states = results;
-      return getUnitStates();
-    }).catch((error) => {
-      console.log("error in getWeapons", error);
-    });
-  };
-  getStates();
-
-
+ 
 
   $scope.toCreate = () => {
     $location.path(`/newUnit1`);
@@ -72,6 +106,9 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
       unit.inBattle = false;
       unit.currentWound = 0;
       unit.currentStrain = 0;
+      unit.statusEffects = "none";
+      unit.statusEffectNames = "none";
+      unit.statusEffectDescription = "none";
       UnitsService.updateUnitInfo(unit, unit.id).then(() => {
         getUnitStates();
       }).catch((error) => {
@@ -92,6 +129,8 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
     let updatedUnit = unit;
     updatedUnit.inBattle = false;
     updatedUnit.statusEffects = "none";
+    updatedUnit.statusEffectNames = "none";
+    updatedUnit.statusEffectDescription = "none";
     updatedUnit.currentWound = 0;
     updatedUnit.currentStrain = 0;
     UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
