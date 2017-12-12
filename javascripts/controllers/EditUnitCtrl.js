@@ -1,11 +1,10 @@
 'use strict';
 
-app.controller("EditUnitCtrl", function ($location, $rootScope, $routeParams, $scope, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
+app.controller("EditUnitCtrl", function ($location, $routeParams, $scope, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
 
   const getSingleUnit = () => {
     UnitsService.getUnit($routeParams.id).then((results) => {
       $scope.unitInfo = results.data;
-      console.log("units", $scope.unitInfo);
     }).catch((error) => {
       console.log("error in getSingleUnit", error);
     });
