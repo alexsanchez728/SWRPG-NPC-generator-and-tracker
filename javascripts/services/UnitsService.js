@@ -13,6 +13,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "currentWound": 0,
       "description": unitInfo.description,
       "difficultyName": unitInfo.difficultyName,
+      "equipment": unitInfo.equipmentId,
       "folder": unitInfo.folder,
       "unitsOfKind": unitInfo.unitCount,
       "intellect": unitInfo.intellect,
@@ -29,6 +30,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "strainThreshold": unitInfo.strainThreshold,
       "talents": unitInfo.talents,
       "uid": unitInfo.uid,
+      "weapon": unitInfo.weaponId,
       "willpower": unitInfo.willpower,
       "woundThreshold": unitInfo.woundThreshold,
       "inBattle": unitInfo.inBattle
@@ -45,6 +47,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "currentWound": unitInfo.currentWound,
       "description": unitInfo.description,
       "difficultyName": unitInfo.difficultyName,
+      "equipment": unitInfo.equipmentId,
       "folder": unitInfo.folder,
       "unitsOfKind": unitInfo.unitCount,
       "groupId": unitInfo.groupId,
@@ -62,6 +65,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "strainThreshold": unitInfo.strainThreshold,
       "talents": unitInfo.talents,
       "uid": unitInfo.uid,
+      "weapon": unitInfo.weaponId,
       "willpower": unitInfo.willpower,
       "woundThreshold": unitInfo.woundThreshold,
       "inBattle": unitInfo.inBattle
