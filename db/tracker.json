@@ -19,12 +19,14 @@
       "currentStrain": 6,
       "meleeDef": 1,
       "rangeDef": 0,
+      "equipment": "equipment0",
       "statusEffects": "state7",
       "skills": "none",
       "talents": "none",
       "abilities": "dark vision",
       "groupId": "group0",
       "inBattle": true,
+      "weapons": "weapon22",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
     "unitId2": {
@@ -46,12 +48,14 @@
       "currentStrain": 0,
       "meleeDef": 0,
       "rangeDef": 0,
+      "equipment": "equipment20",
       "statusEffects": "state5",
       "skills": "none",
       "talents": "none",
       "abilities": "none",
       "groupId": "group0",
       "inBattle": true,
+      "weapons": "weapon10",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
     "unitId3": {
@@ -73,12 +77,14 @@
       "currentStrain": 0,
       "meleeDef": 0,
       "rangeDef": 0,
+      "equipment": "equipment16",
       "statusEffects": "none",
       "skills": "none",
       "talents": "none",
       "abilities": "Strength in numbers",
       "groupId": "group1",
       "inBattle": false,
+      "weapons": "weapon2",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
     "unitId4": {
@@ -100,13 +106,15 @@
       "currentStrain": 0,
       "meleeDef": 1,
       "rangeDef": 0,
+      "equipment": "equipment10",
       "statusEffects": "state0",
       "skills": "none",
       "talents": "none",
       "abilities": "none",
       "inBattle": false,
       "groupId": "group1",
-      "uid": "12345"
+      "weapons": "weapon16",
+      "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
     "unitId5": {
       "name": "Bork Rat",
@@ -127,12 +135,14 @@
       "currentStrain": 6,
       "meleeDef": 1,
       "rangeDef": 0,
+      "equipment": "equipmen19",
       "statusEffects": "state7",
       "skills": "none",
       "talents": "none",
       "abilities": "dark vision, Life on four legs.",
       "groupId": "group2",
       "inBattle": true,
+      "weapons": "weapon25",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     }
   },
