@@ -14,6 +14,9 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
               unit.statusEffectDescription = state.description;
             }
           });
+        } else if (unit.statusEffects === "none") {
+          unit.statusEffectNames = "none";
+          unit.statusEffectDescription = undefined;
         }
       });
     }).catch((error) => {

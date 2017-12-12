@@ -1,1 +1,107 @@
-{{details}}
+<div id="details-wrapper">
+  <div id="unit-details" class="col-sm-12">
+    <h2>{{unitInfo.name}}</h2>
+    <div class="col-sm-12">
+      <h3>{{unitInfo.difficultyName}}</h3>
+      <p>{{unitInfo.description}}</p>
+      <div class="col-sm-12">
+        <h5>Characteristics</h5>
+        <div class="col-sm-2">
+          <p>{{unitInfo.brawn}}</p>
+          <p>BRAWN</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{unitInfo.agility}}</p>
+          <p>AGILITY</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{unitInfo.intellect}}</p>
+          <p>INTELLECT</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{unitInfo.cunning}}</p>
+          <p>CUNNING</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{unitInfo.willpower}}</p>
+          <p>WILLPOWER</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{unitInfo.presence}}</p>
+          <p>PRESENCE</p>
+        </div>
+        <!-- END CHAR BLOCK -->
+      </div>
+      <div class="col-sm-12">
+        <div class="col-sm-2">
+          <p>{{unitInfo.soak}}</p>
+          <p>soak</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{unitInfo.woundThreshold}}</p>
+          <p>Wound Threshold</p>
+        </div>
+        <div class="col-sm-2">
+          <p>{{unitInfo.strainThreshold}}</p>
+          <p>Strain Threshold</p>
+        </div>
+        <!-- END HEALTH BLOCK -->
+      </div>
+      <div class="col-sm-12">
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <p>Soak</p>
+            <p>{{unitInfo.soak}}</p>
+          </div>
+          <!-- END SOAK BLOCK !-->
+          <div class="col-sm-6">
+            <p>M / R Defense</p>
+            <p>{{unitInfo.meleeDef}} | {{unitInfo.rangeDef}}</p>
+          </div>
+        </div>
+        <!-- END DEFENSE BLOCK !-->
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <div class="col-sm-12 text-center">
+              <p>Wound</p>
+              <p>Threshold | Current</p>
+            </div>
+            <div class="col-sm-12">
+              <div>
+                <p class="col-sm-offset-2 col-sm-4">{{unitInfo.woundThreshold}}</p>
+                <p class="col-sm-4">{{unitInfo.currentStrain}}</p>
+              </div>
+            </div>
+          </div>
+          <!-- END WOUND BLOCK !-->
+          <div class="col-sm-6">
+            <div class="col-sm-12 text-center">
+              <p>Strain</p>
+              <p>Threshold | Current</p>
+            </div>
+            <div class="col-sm-12">
+              <p class="col-sm-offset-2 col-sm-4">{{unitInfo.strainThreshold}}</p>
+              <p class="col-sm-4">{{unitInfo.currentStrain}}</p>
+            </div>
+            <!-- END STRAIN BLOCK !-->
+          </div>
+        </div>
+      </div>
+      <div>
+        <p>{{unitInfo.weaponName}}</p>
+        <p>{{unitInfo.weaponDescription}}</p>
+      </div>
+      <div>
+        <p>{{unitInfo.equipmentName}}</p>
+        <p>{{unitInfo.equipmentDescription}}</p>
+      </div>
+      <h4>Assigned Folder:</h4>
+      <p>{{unitInfo.folderName}}</p>
+      <div class="col-sm-12 unitButtons">
+        <button ng-click="toEditUnit(unitInfo.id)" class="btn btn-warning">Edit</button>
+        <button ng-click="toBattle(unitInfo.id)" class="btn btn-default">Back to battle</button>
+      </div>
+      <!-- END #unit-details -->
+    </div>
+    <!-- END PAGE WRAPPER -->
+  </div>
