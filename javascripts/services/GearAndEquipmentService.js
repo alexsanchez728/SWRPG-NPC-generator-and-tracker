@@ -17,5 +17,7 @@ app.service("GearAndEquipmentService", function ($http, $q, FIREBASE_CONFIG) {
       });
     });
   };
+
   return { getAllGearAndEquipment };
+
 });

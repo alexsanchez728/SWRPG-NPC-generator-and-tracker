@@ -75,11 +75,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
   const deleteSingleUnit = (unitId) => {
     return $http.delete(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
-
-  const getUnit = (unitId) => {
-    return $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
-  };
-
+  
   const getAllMyUnits = (userUid) => {
     let units = [];
     return $q((resolve, reject) => {
@@ -96,6 +92,10 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
         console.log("error in getMyBattleReadyUnits", error);
       });
     });
+  };
+
+  const getUnit = (unitId) => {
+    return $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
 
   const updateUnitInfo = (editedUnit, unitId) => {
