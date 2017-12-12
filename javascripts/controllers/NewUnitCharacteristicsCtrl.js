@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $scope, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
+app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthService, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
 
   const getWeapons = () => {
     WeaponsService.getAllWeapons().then((results) => {
@@ -30,7 +30,7 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
   getFolders();
 
   $scope.addAndBattle = ((unitInfo) => {
-    unitInfo.uid = $rootScope.uid;
+    unitInfo.uid = AuthService.getCurrentUid();
     $scope.unitWithuid = angular.copy(unitInfo);
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
     newUnit.inBattle = true;
@@ -40,7 +40,7 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $rootScope, $s
   });
 
   $scope.addAndAgain = ((unitInfo) => {
-    unitInfo.uid = $rootScope.uid;
+    unitInfo.uid = AuthService.getCurrentUid();
     $scope.unitWithuid = angular.copy(unitInfo);
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
     newUnit.inBattle = false;

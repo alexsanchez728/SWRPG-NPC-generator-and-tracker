@@ -17,9 +17,8 @@ app.run(function ($location, $rootScope, FIREBASE_CONFIG, AuthService) {
   //prevRoute is information about the route you came from
   $rootScope.$on('$routeChangeStart', function (event, currRoute, prevRoute) {
     // checks to see if there is a current user
-    var logged = AuthService.isAuthenticated();
-
-    var appTo;
+    let logged = AuthService.isAuthenticated();
+    let appTo;
 
     // to keep error from being thrown on page refresh
     if (currRoute.originalPath) {
@@ -32,9 +31,20 @@ app.run(function ($location, $rootScope, FIREBASE_CONFIG, AuthService) {
 
     //if not on /auth page AND not logged in redirect to /auth
     if (!appTo && !logged) {
+      //if not on /auth page AND not logged in redirect to /auth 
       event.preventDefault();
+      $rootScope.navbar = false;
       $location.path('/auth');
-      // $location.path('/login');
+    } else if (appTo && !logged) {
+      //if on /auth page AND not logged in, no redirect only authentiate in navbar
+      $rootScope.navbar = false;
+    } else if (appTo && logged) {
+      //if on /auth page AND logged in, redirect to search page
+      $rootScope.navbar = true;
+      $location.path('/battlePage');
+    } else if (!appTo && logged) {
+      //if not on /auth page AND logged in see other navbar
+      $rootScope.navbar = true;
     }
   });
 });
@@ -87,7 +97,7 @@ app.config(function ($routeProvider) {
       templateUrl: "partials/auth.html",
       controller: "AuthCtrl"
     })
-    
+
     .otherwise("/auth");
 });
 

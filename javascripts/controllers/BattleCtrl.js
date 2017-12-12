@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleReadyUnitsService, GearAndEquipmentService, UnitsService, StatesService, WeaponsService) {
+app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleReadyUnitsService, GearAndEquipmentService, UnitsService, StatesService, WeaponsService) {
 
   const getStates = () => {
     StatesService.getAllStates().then((results) => {
@@ -31,7 +31,7 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
   getEquipment();
 
   const getUnitStates = () => {
-    BattleReadyUnitsService.getMyBattleReadyUnits($rootScope.uid).then((results) => {
+    BattleReadyUnitsService.getMyBattleReadyUnits(AuthService.getCurrentUid()).then((results) => {
       $scope.units = results;
       let units = $scope.units;
       units.forEach((unit) => {
