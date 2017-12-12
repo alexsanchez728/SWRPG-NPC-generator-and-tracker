@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("LibraryCtrl", function ($location, $rootScope, $scope, BattleReadyUnitsService, FoldersService, UnitsService) {
+app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleReadyUnitsService, FoldersService, UnitsService) {
 
   const getFolderNames = () => {
     FoldersService.getAllMyFolders().then((results) => {
@@ -12,7 +12,7 @@ app.controller("LibraryCtrl", function ($location, $rootScope, $scope, BattleRea
   };
 
   const getMyUnitsWithFolderNames = () => {
-    UnitsService.getAllMyUnits($rootScope.uid).then((results) => {
+    UnitsService.getAllMyUnits(AuthService.getCurrentUid()).then((results) => {
       $scope.units = results;
       let units = $scope.units;
       let folders = $scope.MyFolders;

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("UnitDetailsCtrl", function ($location, $rootScope, $routeParams, $scope, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
+app.controller("UnitDetailsCtrl", function ($location, $routeParams, $scope, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
 
   const getFolders = () => {
     FoldersService.getAllMyFolders().then((results) => {
