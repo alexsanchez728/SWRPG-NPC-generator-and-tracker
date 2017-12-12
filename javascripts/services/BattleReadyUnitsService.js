@@ -12,9 +12,9 @@ app.service("BattleReadyUnitsService", function ($http, $q, FIREBASE_CONFIG) {
             if (fbUnits[key].inBattle) {
               fbUnits[key].id = key;
               units.push(fbUnits[key]);
-              resolve(units);
             }
           });
+          resolve(units);
         }
       }).catch((error) => {
         console.log("error in getMyBattleReadyUnits", error);

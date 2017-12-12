@@ -14,9 +14,6 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
               unit.statusEffectDescription = state.description;
             }
           });
-        } else {
-          unit.statusEffectNames = "none";
-          unit.statusEffectDescription = undefined;
         }
       });
     }).catch((error) => {
@@ -68,20 +65,16 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
 
   $scope.endBattle = () => {
     let units = $scope.units;
-    console.log("units", units);
-    units.forEach((updatedUnit) => {
-      updatedUnit.inBattle = false;
-      UnitsService.updateUnitInfo(updatedUnit, updatedUnit.id).then(() => {
-        console.log("units in forEach loop", $scope.units);
-        return getUnitStates();
+    units.forEach((unit) => {
+      unit.inBattle = false;
+      unit.currentWound = 0;
+      unit.currentStrain = 0;
+      UnitsService.updateUnitInfo(unit, unit.id).then(() => {
+        getUnitStates();
       }).catch((error) => {
         console.log("error in updateUnitWound", error);
       });
-      // getStates();
     });
-    console.log("units after foreach loop", $scope.units);
-
-    // return getUnitStates();
   };
 
   $scope.toEditUnit = (id) => {
@@ -92,10 +85,13 @@ app.controller("BattleCtrl", function ($location, $rootScope, $scope, BattleRead
     $location.path(`/unitDetails/${id}`);
   };
 
-  $scope.isDead = (unitInfo) => {
-    unitInfo.inBattle = false;
-    unitInfo.statusEffects = "none";
-    UnitsService.updateUnitInfo(unitInfo, unitInfo.id).then(() => {
+  $scope.isDead = (unit) => {
+    let updatedUnit = unit;
+    updatedUnit.inBattle = false;
+    updatedUnit.statusEffects = "none";
+    updatedUnit.currentWound = 0;
+    updatedUnit.currentStrain = 0;
+    UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
       getUnitStates();
     }).catch((error) => {
       console.log("error in isDead", error);
