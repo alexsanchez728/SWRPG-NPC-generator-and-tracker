@@ -1,11 +1,37 @@
 @import 'variables';
 
-.unitCard {
-  border: $border;
+#battlePageWrapper {
+  input {
+    width: 58px;
+  }
+}
+.characteristic-block {
+  padding: 0;
+
+  .char {
+    font-size: 1.1rem;
+    padding: 6px 2px 0 2px;
+    border: $border;
+    border-radius: 5px;
+  }
 }
 
-.statusEffectDisplay {
+.unitCard {
+  
   border: $border;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: .45em;
+
+  .card-top {
+    max-height: 350px;
+    overflow-y: scroll;
+  }
+
+  .detailDisplay {
+    padding: 5px 0;
+    border-bottom: 1px solid black;
+  }
 }
 
 .unitButtons {
@@ -13,8 +39,3 @@
   justify-content: space-around;
 }
 
-#battlePageWrapper {
-  input {
-    width: 58px;
-  }
-}

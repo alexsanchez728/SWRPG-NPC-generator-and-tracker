@@ -1,15 +1,33 @@
-.unitCard {
-  border: 2px solid black; }
+#battlePageWrapper input {
+  width: 58px; }
 
-.statusEffectDisplay {
-  border: 2px solid black; }
+.characteristic-block {
+  padding: 0; }
+  .characteristic-block .char {
+    font-size: 1.1rem;
+    padding: 6px 2px 0 2px;
+    border: 2px solid black;
+    border-radius: 5px; }
+
+.unitCard {
+  border: 2px solid black;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: .45em; }
+  .unitCard .card-top {
+    max-height: 350px;
+    overflow-y: scroll; }
+  .unitCard .detailDisplay {
+    padding: 5px 0;
+    border-bottom: 1px solid black; }
 
 .unitButtons {
   display: flex;
   justify-content: space-around; }
 
-#battlePageWrapper input {
-  width: 58px; }
-
 #newUnit1 input {
   width: 68px; }
+
+.dropdown-choice {
+  max-height: 200px;
+  overflow-y: scroll; }
