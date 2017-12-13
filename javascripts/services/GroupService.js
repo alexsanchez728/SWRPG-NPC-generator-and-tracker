@@ -28,7 +28,6 @@ app.service("GroupService", function ($http, $q, FIREBASE_CONFIG) {
         reject(error);
       });
     });
-    // return $http.get(`${FIREBASE_CONFIG.databaseURL}/groups/${uid}.json`);
   };
 
   return { createGroup, getUserGroups};

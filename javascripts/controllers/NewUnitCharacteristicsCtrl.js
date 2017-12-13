@@ -29,68 +29,50 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
   };
   getFolders();
 
-
-
-
-
-
-
-
   // function to create multiple instances for a unit 
   const makeUnitCopies = ((unitInfo, howManyUnits) => {
     // gets the unit info from the model
     // gets the number value of 'unit count' so we know how many units to make
 
-    // sticks the uid in that unitInfo
-    unitInfo.uid = AuthService.getCurrentUid();
 
     // creates a group in the collection "groups" according to the user's input
-    // and ties the name the user put in with that
+      // and ties the name the user put in with that
     GroupService.createGroup(unitInfo).then((results) => {
-      console.log("results from createGroup", results.data);
       // Once it creates the group it gives the newly created groupId to the unit(s) being created
-      unitInfo.groupId = results.data;
+      unitInfo.groupId = results.data.name;
     }).catch((error) => {
       console.log("error in makeUnitCopies");
     }); // END CREATEGROUP
 
     //for however many there are, make a unit
     for (let i = 1; i < howManyUnits; i++) {
-      console.log("unitInfo", unitInfo);
+      console.log(unitInfo);
 
       let newUnit = UnitsService.createSingleUnitObject(unitInfo);
-      console.log("unit output", newUnit);
       newUnit.inBattle = true;
       UnitsService.postNewUnit(newUnit).then(() => {
       }); // END POSTNEWUNIT
     } // END FOR LOOP
     $location.path(`/battlePage`);
-
   }); // END MAKEUNITCOPIES
-
-
-
-
-
-
-
-
-
 
 
   $scope.addAndBattle = ((unitInfo) => {
 
+    // sticks the uid in that unitInfo
+    unitInfo.uid = AuthService.getCurrentUid();
 
     let howManyUnits = Math.floor(unitInfo.unitCount);
+
+    // Runs only when unitCount is more than one,
+      // giving a group of units a groupId to tie them to each other
     if (howManyUnits > 1) {
       makeUnitCopies(unitInfo, howManyUnits);
     }
 
-
-    unitInfo.uid = AuthService.getCurrentUid();
-    $scope.unitWithuid = angular.copy(unitInfo);
+    // runs every time
+    // if there is only one then the makeUnitCopies function will not run, since 1 does not comprise a group
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
-    // console.log("unit output", newUnit);
     newUnit.inBattle = true;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/battlePage`);
@@ -122,6 +104,12 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
   $scope.weaponDropDown = {
     isopen: false
   };
+
+  $scope.checkModel = {
+    isGroup: false
+  };
+
+  $scope.checkResults = [];
 
   const characteristicsByDifficulty = (difficultyName) => {
     if (difficultyName === "Minion") {
