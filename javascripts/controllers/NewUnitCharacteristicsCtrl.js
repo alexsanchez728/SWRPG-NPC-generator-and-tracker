@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthService, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
+app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthService, FoldersService, GearAndEquipmentService, GroupService, UnitsService, WeaponsService) {
 
   const getWeapons = () => {
     WeaponsService.getAllWeapons().then((results) => {
@@ -29,10 +29,68 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
   };
   getFolders();
 
+
+
+
+
+
+
+
+  // function to create multiple instances for a unit 
+  const makeUnitCopies = ((unitInfo, howManyUnits) => {
+    // gets the unit info from the model
+    // gets the number value of 'unit count' so we know how many units to make
+
+    // sticks the uid in that unitInfo
+    unitInfo.uid = AuthService.getCurrentUid();
+
+    // creates a group in the collection "groups" according to the user's input
+    // and ties the name the user put in with that
+    GroupService.createGroup(unitInfo).then((results) => {
+      console.log("results from createGroup", results.data);
+      // Once it creates the group it gives the newly created groupId to the unit(s) being created
+      unitInfo.groupId = results.data;
+    }).catch((error) => {
+      console.log("error in makeUnitCopies");
+    }); // END CREATEGROUP
+
+    //for however many there are, make a unit
+    for (let i = 1; i < howManyUnits; i++) {
+      console.log("unitInfo", unitInfo);
+
+      let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+      console.log("unit output", newUnit);
+      newUnit.inBattle = true;
+      UnitsService.postNewUnit(newUnit).then(() => {
+      }); // END POSTNEWUNIT
+    } // END FOR LOOP
+    $location.path(`/battlePage`);
+
+  }); // END MAKEUNITCOPIES
+
+
+
+
+
+
+
+
+
+
+
   $scope.addAndBattle = ((unitInfo) => {
+
+
+    let howManyUnits = Math.floor(unitInfo.unitCount);
+    if (howManyUnits > 1) {
+      makeUnitCopies(unitInfo, howManyUnits);
+    }
+
+
     unitInfo.uid = AuthService.getCurrentUid();
     $scope.unitWithuid = angular.copy(unitInfo);
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+    // console.log("unit output", newUnit);
     newUnit.inBattle = true;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/battlePage`);
