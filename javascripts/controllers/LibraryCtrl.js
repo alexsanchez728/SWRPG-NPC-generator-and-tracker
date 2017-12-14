@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleReadyUnitsService, FoldersService, UnitsService) {
+app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleReadyUnitsService, FoldersService, GroupService, UnitsService) {
 
   const getFolderNames = () => {
     FoldersService.getAllMyFolders().then((results) => {
@@ -29,6 +29,16 @@ app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleRe
   }; // end getMyBattleReadyUnits()
   getFolderNames();
 
+
+
+
+
+
+
+  $scope.checkModel = {
+    isGroup: false
+  };
+
   $scope.deleteUnit = ((unitId) => {
     UnitsService.deleteSingleUnit(unitId).then(() => {
       getFolderNames();
@@ -43,13 +53,39 @@ app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleRe
     $location.path(`/unitDetails/${unitId}`);
   });
 
-  $scope.toBattle = ((unit) => {
-    unit.inBattle = true;
-    UnitsService.updateUnitInfo(unit, unit.id).then(() => {
-      getFolderNames();
+  const createGrouping = ((unit, howManyUnits) => {
+    GroupService.createGroup(unit).then((results) => {
+      unit.groupId = results.data.name;
+      console.log("unit group id", results.data.name);
+      return makeUnitCopies(unit, howManyUnits);
     }).catch((error) => {
-      console.log("error in toBattle", error);
-    });
+      console.log("error in makeUnitCopies");
+    }); // END CREATEGROUP 
   });
-  
+
+  const makeUnitCopies = ((unit, howManyUnits) => {
+
+    for (let i = 0; i < howManyUnits; i++) {
+
+      unit.inBattle = true;
+      if (i === 0) {
+        UnitsService.updateUnitInfo(unit, unit.id);
+      } else {
+        let newUnit = UnitsService.createSingleUnitObject(unit);
+        UnitsService.postNewUnit(newUnit).then(() => {
+        }); // END POSTNEWUNIT
+      }
+      console.log("units in for loop", unit);
+    } // END FOR LOOP
+    $location.path(`/battlePage`);
+  }); // END MAKEUNITCOPIES
+
+  $scope.toBattle = ((unit) => {
+
+    let howManyUnits = Math.floor(unit.unitCount);
+
+    createGrouping(unit, howManyUnits);
+
+  });
+
 });

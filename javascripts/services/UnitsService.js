@@ -16,7 +16,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "equipment": unitInfo.equipment,
       "folder": unitInfo.folder,
       "groupId": unitInfo.groupId,
-      // "unitsOfKind": unitInfo.unitCount,
+      "groupName": unitInfo.groupName,
       "intellect": unitInfo.intellect,
       "isFavourite": false,
       "meleeDef": unitInfo.meleeDef,
@@ -50,8 +50,8 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "difficultyName": unitInfo.difficultyName,
       "equipment": unitInfo.equipment,
       "folder": unitInfo.folder,
-      "unitsOfKind": unitInfo.unitCount,
       "groupId": unitInfo.groupId,
+      "groupName": unitInfo.groupName,
       "intellect": unitInfo.intellect,
       "isFavourite": unitInfo.isFavourite,
       "meleeDef": unitInfo.meleeDef,
@@ -101,6 +101,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
 
   const updateUnitInfo = (editedUnit, unitId) => {
     let unitObject = updateUnit(editedUnit);
+    console.log("the unit object", unitObject);
     return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(unitObject));
   };
 

@@ -9,8 +9,9 @@ app.service("GroupService", function ($http, $q, FIREBASE_CONFIG) {
     };
   };
 
-  const createGroup = (newGroup) => {
-    let newGroupObject = createGroupObject(newGroup);
+  const createGroup = (unitInforForGrouping) => {
+    let newGroupObject = createGroupObject(unitInforForGrouping);
+    console.log("the group object", newGroupObject);
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/groups.json`, JSON.stringify(newGroupObject));
   };
 

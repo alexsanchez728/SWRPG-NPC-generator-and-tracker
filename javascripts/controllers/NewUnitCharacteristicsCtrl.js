@@ -46,7 +46,6 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
 
     //for however many there are, make a unit
     for (let i = 1; i < howManyUnits; i++) {
-      console.log(unitInfo);
 
       let newUnit = UnitsService.createSingleUnitObject(unitInfo);
       newUnit.inBattle = true;
