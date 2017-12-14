@@ -107,6 +107,9 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
         UnitsService.deleteSingleUnit(unit.id);
       } else {
         unit.inBattle = false;
+        unit.groupId = undefined;
+        unit.groupName = undefined;
+        unit.placeInGroup = undefined;
         unit.currentWound = 0;
         unit.currentStrain = 0;
         unit.statusEffects = "none";

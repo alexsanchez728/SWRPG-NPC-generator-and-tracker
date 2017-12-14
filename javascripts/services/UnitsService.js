@@ -20,9 +20,10 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "intellect": unitInfo.intellect,
       "isFavourite": false,
       "isMaster": unitInfo.isMaster,
+      "presence": unitInfo.presence,
+      "placeInGroup": unitInfo.placeInGroup,
       "meleeDef": unitInfo.meleeDef,
       "name": unitInfo.name,
-      "presence": unitInfo.presence,
       "rangeDef": unitInfo.rangeDef,
       "skills": unitInfo.skills,
       "soak": unitInfo.soak,
@@ -56,9 +57,10 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "intellect": unitInfo.intellect,
       "isFavourite": unitInfo.isFavourite,
       "isMaster": unitInfo.isMaster,
+      "presence": unitInfo.presence,
+      "placeInGroup": unitInfo.placeInGroup,
       "meleeDef": unitInfo.meleeDef,
       "name": unitInfo.name,
-      "presence": unitInfo.presence,
       "rangeDef": unitInfo.rangeDef,
       "skills": unitInfo.skills,
       "soak": unitInfo.soak,
@@ -97,19 +99,40 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
     });
   };
 
+  const getAllMyMasterUnits = (userUid) => {
+    let units = [];
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json?orderBy="uid"&equalTo="${userUid}"`).then((results) => {
+        let fbUnits = results.data;
+        if (fbUnits != null) {
+          Object.keys(fbUnits).forEach((key) => {
+            fbUnits[key].id = key;
+            if (fbUnits[key].isMaster) {
+              units.push(fbUnits[key]);
+            }
+            resolve(units);
+          });
+        }
+      }).catch((error) => {
+        console.log("error in getAllMyMasterUnits", error);
+      });
+    });
+  };
+
   const getUnit = (unitId) => {
     return $http.get(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`);
   };
 
   const updateUnitInfo = (editedUnit, unitId) => {
     let unitObject = updateUnit(editedUnit);
-    console.log("the unit object", unitObject);
+    console.log("the unit object before update", unitObject);
     return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(unitObject));
   };
 
   const postNewUnit = (newUnit) => {
+    console.log("the unit just before it gets posted", newUnit);
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 
-  return { createSingleUnitObject, deleteSingleUnit, getUnit, getAllMyUnits, updateUnitInfo, postNewUnit };
+  return { createSingleUnitObject, deleteSingleUnit, getUnit, getAllMyUnits, getAllMyMasterUnits, updateUnitInfo, postNewUnit };
 });
