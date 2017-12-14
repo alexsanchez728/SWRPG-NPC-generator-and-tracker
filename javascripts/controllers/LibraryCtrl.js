@@ -56,36 +56,29 @@ app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleRe
   const createGrouping = ((unit, howManyUnits) => {
     GroupService.createGroup(unit).then((results) => {
       unit.groupId = results.data.name;
-      console.log("unit group id", results.data.name);
       return makeUnitCopies(unit, howManyUnits);
     }).catch((error) => {
       console.log("error in makeUnitCopies");
-    }); // END CREATEGROUP 
-  });
+    }); 
+  });// END CREATEGROUPING
 
   const makeUnitCopies = ((unit, howManyUnits) => {
-
     for (let i = 0; i < howManyUnits; i++) {
-
       unit.inBattle = true;
       if (i === 0) {
         UnitsService.updateUnitInfo(unit, unit.id);
       } else {
         let newUnit = UnitsService.createSingleUnitObject(unit);
+        newUnit.isMaster = false;
         UnitsService.postNewUnit(newUnit).then(() => {
         }); // END POSTNEWUNIT
       }
-      console.log("units in for loop", unit);
     } // END FOR LOOP
     $location.path(`/battlePage`);
   }); // END MAKEUNITCOPIES
 
   $scope.toBattle = ((unit) => {
-
     let howManyUnits = Math.floor(unit.unitCount);
-
     createGrouping(unit, howManyUnits);
-
-  });
-
-});
+  }); // END TOBATTLE
+}); // END CONTROLLER

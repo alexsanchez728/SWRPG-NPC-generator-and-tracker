@@ -73,6 +73,7 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
     // if there is only one then the makeUnitCopies function will not run, since 1 does not comprise a group
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
     newUnit.inBattle = true;
+    newUnit.isMaster = true;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/battlePage`);
     });
