@@ -54,9 +54,9 @@ app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleRe
     $location.path(`/battlePage`);
   }); // END MAKEUNITCOPIES
 
-  $scope.checkModel = {
-    isGroup: false
-  };
+  // $scope.checkModel = {
+  //   isGroup: false
+  // };
 
   $scope.deleteUnit = ((unitId) => {
     UnitsService.deleteSingleUnit(unitId).then(() => {
