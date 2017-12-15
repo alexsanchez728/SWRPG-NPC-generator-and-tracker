@@ -125,12 +125,10 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
 
   const updateUnitInfo = (editedUnit, unitId) => {
     let unitObject = updateUnit(editedUnit);
-    console.log("the unit object before update", unitObject);
     return $http.put(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits/${unitId}.json`, JSON.stringify(unitObject));
   };
 
   const postNewUnit = (newUnit) => {
-    console.log("the unit just before it gets posted", newUnit);
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/battleReadyUnits.json`, JSON.stringify(newUnit));
   };
 

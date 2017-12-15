@@ -1,15 +1,11 @@
 <div id="battlePageWrapper">
-  <div class="unitCard col-sm-6" ng-repeat="unitOrderedByGroup in unitsOrderedByGroup">
-    <div ng-repeat="unit in units">
-      <div ng-click="showThisUnit(unit)" class="col-sm-12">
-        <h4 class="col-sm-6">{{unit.name}}</h4>
-        <h5 class="col-sm-6" ng-if="!unit.placeInGroup">Group: {{unit.groupName}}</h5>
-        <h5 class="col-sm-6" ng-if="unit.placeInGroup">Group: {{unit.groupName}}, #{{unit.placeInGroup}}</h5>
-        <span ng-init="showThisUnit(unit)"></span>
-      </div>
+  <div class="unitCard col-sm-6" ng-repeat="unit in units">
+    <div class="col-sm-12">
+      <h4 class="col-sm-6">{{unit.name}}</h4>
+      <h5 class="col-sm-6" ng-if="!unit.placeInGroup">Group: {{unit.groupName}}</h5>
+      <h5 class="col-sm-6" ng-if="unit.placeInGroup">Group: {{unit.groupName}}, #{{unit.placeInGroup}}</h5>
     </div>
     <!-- END NAME AND GROUP BLOCK !-->
-    <h4>showing unit {{unit.groupName}}, #{{unit.placeInGroup}}</h4>
     <div ng-if="unit" class="col-sm-12">
       <div class="col-sm-12">
         <div class="col-sm-2">

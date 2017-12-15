@@ -30,52 +30,7 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
   };
   getEquipment();
 
-  const unitsByGroup = () => {
-    $scope.unitGroups = {};
-    $scope.unitsOrderedByGroup = [];
-    // let theGroups = $scope.unitGroups;
-    // $scope.units.forEach((unit) => {
-    let theUnits = $scope.units;
-    // $scope.units.forEach((unit) => {
-    //   if (theGroups) {
-    //     theGroups.grouping = unit.groupId;
-    //     console.log(theGroups);
-    //     theGroups.forEach((group) => {
-    //       console.log(theGroups);
-    //     });
-    //   }
-    // });
 
-    
-    
-    for (let i = 0; i < theUnits.length; i++) {
-      
-      $scope.unitGroups[0] = theUnits[0].groupId;
-      
-      if (theUnits[i].groupId != $scope.unitGroups[i] || $scope.unitGroups.length === 0) {
-        
-        console.log("theUnits[i].groupId", theUnits[i].groupId);
-        console.log("$scope.unitGroups[i]", $scope.unitGroups[i]);
-        
-        $scope.unitGroups[i] = theUnits[i].groupId;
-        // console.log("units in the if", $scope.units);
-        
-      } else {
-        console.log("skipped");
-      }
-      // if ([i] in $scope.unitGroups) {
-        //   console.log("unit group id", theUnits[i].groupId);
-        //   console.log("group", $scope.unitGroups);
-        //   $scope.unitsOrderedByGroup.push(theUnits[i]);
-        //   console.log("ordered by grouping?", $scope.unitsOrderedByGroup);
-        // }
-      }
-      console.log("groups from unitGroups", $scope.unitGroups);
-
-    // });
-    // for (let i = 0; i < $scope.units.length; i++) {
-    // }
-  };
 
   const getUnitStates = () => {
     BattleReadyUnitsService.getMyBattleReadyUnits(AuthService.getCurrentUid()).then((results) => {
@@ -110,7 +65,7 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
           });
         }
       });
-      unitsByGroup();
+
     }).catch((error) => {
       console.log("error in getUnitStates", error);
     });
@@ -175,12 +130,9 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
       updatedUnit.statusEffects = "none";
       updatedUnit.statusEffectNames = "none";
       updatedUnit.statusEffectDescription = "none";
-      UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
-        getUnitStates();
-      }).catch((error) => {
-        console.log("error in isDead", error);
-      });
+      UnitsService.updateUnitInfo(updatedUnit, unit.id);
     }
+    getUnitStates();
   };
 
   $scope.updateUnitWound = (unit) => {
@@ -201,8 +153,5 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
     });
   };
 
-  $scope.showThisUnit = (selectedUnit) => {
-    $scope.unit = selectedUnit;
-  };
 
 }); // end controller

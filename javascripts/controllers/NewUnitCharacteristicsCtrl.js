@@ -2,6 +2,8 @@
 
 app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthService, FoldersService, GearAndEquipmentService, GroupService, UnitsService, WeaponsService) {
 
+  $scope.unitInfo = {};
+
   const getWeapons = () => {
     WeaponsService.getAllWeapons().then((results) => {
       $scope.weapons = results;
@@ -80,15 +82,24 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
   });
 
   $scope.addAndAgain = ((unitInfo) => {
-    unitInfo.uid = AuthService.getCurrentUid();
-    $scope.unitWithuid = angular.copy(unitInfo);
-    let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+    $scope.unitInfo.uid = AuthService.getCurrentUid();
+    let newUnit = UnitsService.createSingleUnitObject($scope.unitInfo);
     newUnit.inBattle = false;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/newUnit1`);
       $scope.reset();
     });
   });
+
+  $scope.addWeapon = (weapon) => {
+    $scope.unitInfo.weapons = weapon;
+  };
+  $scope.addEquipment = (equipment) => {
+    $scope.unitInfo.equipment = equipment;
+  };
+  $scope.addFolder = (folder) => {
+    $scope.unitInfo.folder = folder;
+  };
 
   $scope.reset = function () {
     $scope.unitInfo = {};
