@@ -13,7 +13,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "currentWound": 0,
       "description": unitInfo.description,
       "difficultyName": unitInfo.difficultyName,
-      "equipmentId": unitInfo.equipmentId,
+      "equipment": unitInfo.equipment,
       "folder": unitInfo.folder,
       "unitsOfKind": unitInfo.unitCount,
       "intellect": unitInfo.intellect,
@@ -30,7 +30,7 @@ app.service("UnitsService", function ($http, $q, FIREBASE_CONFIG) {
       "strainThreshold": unitInfo.strainThreshold,
       "talents": unitInfo.talents,
       "uid": unitInfo.uid,
-      "weaponId": unitInfo.weaponId,
+      "weapons": unitInfo.weapons,
       "willpower": unitInfo.willpower,
       "woundThreshold": unitInfo.woundThreshold,
       "inBattle": unitInfo.inBattle
