@@ -31,9 +31,11 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
 
   $scope.addAndBattle = ((unitInfo) => {
     unitInfo.uid = AuthService.getCurrentUid();
-    $scope.unitWithuid = angular.copy(unitInfo);
+    console.log(unitInfo);
+    // $scope.unitWithuid = angular.copy(unitInfo);
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
     newUnit.inBattle = true;
+    console.log(newUnit);
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/battlePage`);
     });

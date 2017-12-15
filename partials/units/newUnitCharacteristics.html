@@ -47,20 +47,7 @@
           <input type="number" ng-model="unitInfo.presence" name="presenceSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="btn-group">
-          <label for="unitCount"> Unit Count: </label>
-          <br>
-          <select name="unitCount" ng-model="unitInfo.unitCount">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <br>
-        </div>
-      </div>
+
       <div class="col-sm-6">
         <div class="col-offset-2 col-sm-2 input-group input-group-lg">
           <label for="soakSelector">Soak</label>
@@ -68,8 +55,8 @@
         </div>
         <div class="col-sm-2 input-group input-group-lg">
           <label for="woundThresholdSelector">Wound Threshold</label>
-          <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" placeholder="0" class="form-control" placeholder="0"
-            aria-describedby="sizing-addon1">
+          <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" placeholder="0" class="form-control"
+            placeholder="0" aria-describedby="sizing-addon1">
         </div>
         <div class="col-sm-2 input-group input-group-lg">
           <label for="strainThresholdSelector">Strain Threshold</label>
@@ -110,12 +97,15 @@
           </button>
           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
             <li ng-repeat="weapon in weapons" role="menuitem">
-              <a value="{{weapon.id}}" ng-model="unitInfo.weaponId">{{weapon.name}}</a>
+              <a value="weapon.id" ng-model="unitInfo.weaponId">{{weapon.name}}</a>
             </li>
           </ul>
         </div>
-        <p>{{weapon.description}}</p>
         <h4>Equipment</h4>
+        <p>equipment {{unitInfo.equipmentId}}</p>
+        <p>weapon {{unitInfo.weaponId}}</p>
+        <p>folder {{unitInfo.folder}}</p>
+
         <div class="btn-group" uib-dropdown is-open="equipmentDropDown.isopen">
           <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
             Pick One
