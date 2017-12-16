@@ -118,7 +118,9 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
 
   $scope.isDead = (unit) => {
     if (!unit.isMaster) {
-      UnitsService.deleteSingleUnit(unit.id);
+      UnitsService.deleteSingleUnit(unit.id).then(() => {
+        getUnitStates();
+      });
     } else {
       let updatedUnit = unit;
       updatedUnit.inBattle = false;
@@ -130,9 +132,11 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
       updatedUnit.statusEffects = "none";
       updatedUnit.statusEffectNames = "none";
       updatedUnit.statusEffectDescription = "none";
-      UnitsService.updateUnitInfo(updatedUnit, unit.id);
+      UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
+
+        getUnitStates();
+      });
     }
-    getUnitStates();
   };
 
   $scope.updateUnitWound = (unit) => {
