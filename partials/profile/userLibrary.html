@@ -38,7 +38,24 @@
           <button ng-click="deleteUnit(unit.id)" class="btn btn-danger">Delete</button>
           <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
           <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
-          <button ng-click="toBattle(unit)" class="btn btn-success">Add to Battle</button>
+          <button ng-model="checkModel.isGroup" uib-btn-checkbox>Add to Battle</button>
+        </div>
+        <div ng-if="checkModel.isGroup" class="btn-group">
+          <label for="unitCount"> Add this many:</label>
+          <br>
+          <select name="unitCount" ng-model="unit.unitCount">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+          <br>
+          <label for="groupName">Group Name</label>
+          <input type="text" ng-model="unit.groupName" name="groupName" class="form-control" aria-describedby="sizing-addon1">
+          <div>
+            <button class="btn btn-primary" ng-click="toBattle(unit, unit.unitCount)">ADD THEM</button>
+          </div>
         </div>
       </div>
     </div>

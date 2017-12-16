@@ -30,6 +30,8 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
   };
   getEquipment();
 
+
+
   const getUnitStates = () => {
     BattleReadyUnitsService.getMyBattleReadyUnits(AuthService.getCurrentUid()).then((results) => {
       $scope.units = results;
@@ -63,12 +65,11 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
           });
         }
       });
+
     }).catch((error) => {
       console.log("error in getUnitStates", error);
     });
   };
-
- 
 
   $scope.toCreate = () => {
     $location.path(`/newUnit1`);
@@ -103,17 +104,7 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
   $scope.endBattle = () => {
     let units = $scope.units;
     units.forEach((unit) => {
-      unit.inBattle = false;
-      unit.currentWound = 0;
-      unit.currentStrain = 0;
-      unit.statusEffects = "none";
-      unit.statusEffectNames = "none";
-      unit.statusEffectDescription = "none";
-      UnitsService.updateUnitInfo(unit, unit.id).then(() => {
-        getUnitStates();
-      }).catch((error) => {
-        console.log("error in updateUnitWound", error);
-      });
+      $scope.isDead(unit);
     });
   };
 
@@ -126,18 +117,26 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
   };
 
   $scope.isDead = (unit) => {
-    let updatedUnit = unit;
-    updatedUnit.inBattle = false;
-    updatedUnit.statusEffects = "none";
-    updatedUnit.statusEffectNames = "none";
-    updatedUnit.statusEffectDescription = "none";
-    updatedUnit.currentWound = 0;
-    updatedUnit.currentStrain = 0;
-    UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
-      getUnitStates();
-    }).catch((error) => {
-      console.log("error in isDead", error);
-    });
+    if (!unit.isMaster) {
+      UnitsService.deleteSingleUnit(unit.id).then(() => {
+        getUnitStates();
+      });
+    } else {
+      let updatedUnit = unit;
+      updatedUnit.inBattle = false;
+      updatedUnit.groupId = undefined;
+      updatedUnit.groupName = undefined;
+      updatedUnit.placeInGroup = undefined;
+      updatedUnit.currentWound = 0;
+      updatedUnit.currentStrain = 0;
+      updatedUnit.statusEffects = "none";
+      updatedUnit.statusEffectNames = "none";
+      updatedUnit.statusEffectDescription = "none";
+      UnitsService.updateUnitInfo(updatedUnit, unit.id).then(() => {
+
+        getUnitStates();
+      });
+    }
   };
 
   $scope.updateUnitWound = (unit) => {
@@ -157,5 +156,6 @@ app.controller("BattleCtrl", function ($location, $scope, AuthService, BattleRea
       console.log("error in updateUnitStrain", error);
     });
   };
+
 
 }); // end controller
