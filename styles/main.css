@@ -1,12 +1,27 @@
 .unitCard {
-  border: 2px solid black; }
+  border: 2px solid black;
+  min-height: 725px;
+  margin-bottom: 45px;
+  padding: 0; }
+  .unitCard :nth-child(2) {
+    padding: 0 5px; }
+  .unitCard .char {
+    padding-left: 0;
+    padding-right: 0; }
+  .unitCard .char-block {
+    padding: 0; }
+  .unitCard .unitButtons {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 5px; }
 
 .statusEffectDisplay {
   border: 2px solid black; }
 
-.unitButtons {
-  display: flex;
-  justify-content: space-around; }
+.defences {
+  margin-bottom: 20px;
+  border-bottom: 1px solid black; }
 
 #battlePageWrapper input {
   width: 58px; }

@@ -1,5 +1,5 @@
 <div id="battlePageWrapper">
-  <div class="unitCard col-sm-6" ng-repeat="unit in units">
+  <div class="unitCard col-sm-offset-1 col-sm-4" ng-repeat="unit in units">
     <div class="col-sm-12">
       <h4 class="col-sm-6">{{unit.name}}</h4>
       <h5 class="col-sm-6" ng-if="!unit.placeInGroup">Group: {{unit.groupName}}</h5>
@@ -7,28 +7,28 @@
     </div>
     <!-- END NAME AND GROUP BLOCK !-->
     <div ng-if="unit" class="col-sm-12">
-      <div class="col-sm-12">
-        <div class="col-sm-2">
+      <div class=" char-block col-sm-12">
+        <div class="char col-sm-2 text-center">
           <p>{{unit.brawn}}</p>
           <p>BRAWN</p>
         </div>
-        <div class="col-sm-2">
+        <div class="char col-sm-2 text-center">
           <p>{{unit.agility}}</p>
           <p>AGILITY</p>
         </div>
-        <div class="col-sm-2">
+        <div class="char col-sm-2 text-center">
           <p>{{unit.intellect}}</p>
           <p>INTELLECT</p>
         </div>
-        <div class="col-sm-2">
+        <div class="char col-sm-2 text-center">
           <p>{{unit.cunning}}</p>
           <p>CUNNING</p>
         </div>
-        <div class="col-sm-2">
+        <div class="char col-sm-2 text-center">
           <p>{{unit.willpower}}</p>
           <p>WILLPOWER</p>
         </div>
-        <div class="col-sm-2">
+        <div class="char col-sm-2 text-center">
           <p>{{unit.presence}}</p>
           <p>PRESENCE</p>
         </div>
@@ -65,13 +65,13 @@
       </div>
       <!-- END STATES BLOCK !-->
       <div class="col-sm-12">
-        <div class="col-sm-12">
-          <div class="col-sm-6">
+        <div class="col-sm-12 defences">
+          <div class="col-sm-6 text-center">
             <p>Soak</p>
             <p>{{unit.soak}}</p>
           </div>
           <!-- END SOAK BLOCK !-->
-          <div class="col-sm-6">
+          <div class="col-sm-6 text-center">
             <p>M / R Defense</p>
             <p>{{unit.meleeDef}} | {{unit.rangeDef}}</p>
           </div>
@@ -111,13 +111,13 @@
           <!-- END BOTTOM HALF OF CARD !-->
         </div>
       </div>
-      <div class="col-sm-12 unitButtons">
-        <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
-        <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
-        <button ng-click="isDead(unit)" class="btn btn-danger">Dead</button>
-      </div>
       <!-- END BUTTONS BLOCK !-->
     </div>
+          <div class="col-sm-12 unitButtons">
+            <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
+            <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
+            <button ng-click="isDead(unit)" class="btn btn-danger">Dead</button>
+          </div>
   </div>
 </div>
 
