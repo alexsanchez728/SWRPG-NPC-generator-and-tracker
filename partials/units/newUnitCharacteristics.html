@@ -1,14 +1,11 @@
 <div id="newUnit1">
   <h1 class="text-center">Create</h1>
-  <div class="col-sm-12">
-    <button class="btn btn-success" ng-click="randomStatsForDifficulty(unitInfo.difficultyName)">Randomize</button>
-  </div>
   <div ng-if="userError">
     <h2>{{userError}}</h2>
   </div>
   <form novalidate name="newUnitForm" class="form-inline">
     <div class="form-group">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <label for="difficultyRadio">Difficulty</label>
         <div>
           <label class="radio-inline">
@@ -18,36 +15,39 @@
           <label class="radio-inline">
             <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Nemesis">Nemesis</label>
         </div>
+        <div>
+          <button class="btn btn-success" ng-click="randomStatsForDifficulty(unitInfo.difficultyName)">Randomize</button>
+        </div>
       </div>
 
-      <div class="col-sm-6">
+      <div class="col-sm-8">
         <h2>Characteristics</h2>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="brawnSelector">Brawn</label>
           <input type="number" ng-model="unitInfo.brawn" name="brawnSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="agilitySelector">Agility</label>
           <input type="number" ng-model="unitInfo.agility" name="agilitySelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="intellectSelector">Intellect</label>
           <input type="number" ng-model="unitInfo.intellect" name="intellectSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="cunningSelector">Cunning</label>
           <input type="number" ng-model="unitInfo.cunning" name="cunningSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="willpowerSelector">Willpower</label>
           <input type="number" ng-model="unitInfo.willpower" name="willpowerSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="presenceSelector">Presence</label>
           <input type="number" ng-model="unitInfo.presence" name="presenceSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-2">
         <div class="btn-group">
           <label class="btn btn-primary" ng-model="checkModel.isGroup" uib-btn-checkbox>More than one baddie?</label>
         </div>
@@ -66,31 +66,31 @@
           <input type="text" ng-model="unitInfo.groupName" name="groupName" class="form-control" aria-describedby="sizing-addon1">
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="col-offset-2 col-sm-2 input-group input-group-lg">
+      <div class="col-sm-offset-2 col-sm-8">
+        <div class=" col-sm-3 input-group input-group-lg">
           <label for="soakSelector">Soak</label>
           <input type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="woundThresholdSelector">Wound Threshold</label>
           <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" placeholder="0" class="form-control"
             placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="strainThresholdSelector">Strain Threshold</label>
           <input type="number" ng-model="unitInfo.strainThreshold" name="strainThresholdSelector" placeholder="0" class="form-control"
             aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="meleeDefSelector">Melee Defense</label>
           <input type="number" ng-model="unitInfo.meleeDef" name="meleeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
-        <div class="col-sm-2 input-group input-group-lg">
+        <div class="col-sm-3 input-group input-group-lg">
           <label for="rangeDefSelector">Ranged Defense</label>
           <input type="number" ng-model="unitInfo.rangeDef" name="rangeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
         </div>
       </div>
-      <div>
+      <div class="col-sm-6">
         <h2>Name:</h2>
         <input type="text" ng-model="unitInfo.name">
 
@@ -132,27 +132,29 @@
           </ul>
         </div>
       </div>
-      <h4>Add to a Folder</h4>
-      <div class="btn-group" uib-dropdown is-open="foldersDropDown.isopen">
-        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-          Your Folders
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-          <li ng-repeat="folder in folders" role="menuitem">
-            <a ng-click="addFolder(folder.id)" ng-model="unitInfo.folder">{{folder.name}}</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <button ng-click="addAndBattle(unitInfo)" type="submit" class="btn btn-default" value="Save">Save And Proceed To Battle</button>
-      </div>
-      <div>
-        <button ng-click="addAndAgain(unitInfo)" type="submit" class="btn btn-default" value="Save">Save Unit And Make Another</button>
-      </div>
-      <div>
-        <button class="btn btn-primary btn-large center" type="reset" ng-click="reset()">Clear All
-        </button>
+      <div class="col-sm-6">
+        <h4>Add to a Folder</h4>
+        <div class="btn-group" uib-dropdown is-open="foldersDropDown.isopen">
+          <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+            Your Folders
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li ng-repeat="folder in folders" role="menuitem">
+              <a ng-click="addFolder(folder.id)" ng-model="unitInfo.folder">{{folder.name}}</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button ng-click="addAndBattle(unitInfo)" type="submit" class="btn btn-default" value="Save">Save And Proceed To Battle</button>
+        </div>
+        <div>
+          <button ng-click="addAndAgain(unitInfo)" type="submit" class="btn btn-default" value="Save">Save Unit And Make Another</button>
+        </div>
+        <div>
+          <button class="btn btn-primary btn-large center" type="reset" ng-click="reset()">Clear All
+          </button>
+        </div>
       </div>
     </div>
   </form>
