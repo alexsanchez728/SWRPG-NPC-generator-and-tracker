@@ -1,14 +1,14 @@
 <div id="battlePageWrapper">
   <div class="unitCard col-sm-offset-1 col-sm-4 col-xs-12" ng-repeat="unit in units">
-    <div class="col-sm-12 unit-name">
+    <div class="col-xs-12 unit-name">
       <h4 class="col-sm-6">{{unit.name}}</h4>
       <h5 class="col-sm-6" ng-if="!unit.placeInGroup">Group: {{unit.groupName}}</h5>
       <h5 class="col-sm-6" ng-if="unit.placeInGroup">Group: {{unit.groupName}}, #{{unit.placeInGroup}}</h5>
     </div>
     <!-- END NAME AND GROUP BLOCK !-->
-    <div ng-if="unit" class="col-xs-12">
+    <div ng-if="unit" class="col-xs-12 unitInfo">
       <div class="col-xs-12 card-top">
-        <div class="char-block col-sm-12">
+        <div class="char-block col-xs-12">
           <div class="char col-xs-4 text-center">
             <p>{{unit.brawn}}</p>
             <p>BRAWN</p>
@@ -68,44 +68,42 @@
         </div>
       </div>
       <!-- END STATES BLOCK !-->
-      <div class="col-sm-12">
-        <div class="col-sm-12 defences">
-          <div class="col-sm-6 text-center">
+      <div class="col-xs-12 card-bottom">
+        <div class="col-xs-12 defences">
+          <div class="col-xs-6 text-center">
             <p>Soak</p>
             <p>{{unit.soak}}</p>
           </div>
           <!-- END SOAK BLOCK !-->
-          <div class="col-sm-6 text-center">
+          <div class="col-xs-6 text-center">
             <p>M / R Defense</p>
             <p>{{unit.meleeDef}} | {{unit.rangeDef}}</p>
           </div>
         </div>
         <!-- END DEFENSE BLOCK !-->
-        <div class="col-sm-12">
-          <div class="col-sm-6">
-            <div class="col-sm-12 text-center">
+        <div class="col-xs-12 thresholds">
+          <div class="col-xs-6">
+            <div class="col-xs-12 text-center">
               <p>Wound</p>
               <p>Threshold | Current</p>
             </div>
-            <div class="col-sm-12">
-              <div>
-                <p class="col-sm-6">{{unit.woundThreshold}}</p>
-                <div class="col-sm-4 input-group input-group-lg">
-                  <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitWound(unit)" ng-model="unit.currentWound"
-                    name="currentWoundSelector" class="form-control" aria-describedby="sizing-addon1">
-                </div>
+            <div class="col-xs-12 threshold-items">
+              <p class="col-xs-6 text-center">{{unit.woundThreshold}}</p>
+              <div class="col-xs-4 input-group input-group-lg">
+                <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitWound(unit)" ng-model="unit.currentWound"
+                  name="currentWoundSelector" class="form-control" aria-describedby="sizing-addon1">
               </div>
             </div>
           </div>
           <!-- END WOUND BLOCK !-->
-          <div class="col-sm-6">
-            <div class="col-sm-12 text-center">
+          <div class="col-xs-6">
+            <div class="col-xs-12 text-center">
               <p>Strain</p>
               <p>Threshold | Current</p>
             </div>
-            <div class="col-sm-12">
-              <p class="col-sm-6">{{unit.strainThreshold}}</p>
-              <div class="col-sm-4 input-group input-group-lg">
+            <div class="col-xs-12 threshold-items">
+              <p class="col-xs-6 text-center">{{unit.strainThreshold}}</p>
+              <div class="col-xs-4 input-group input-group-lg">
                 <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitStrain(unit)" ng-model="unit.currentStrain"
                   name="currentStrainSelector" class="form-control" aria-describedby="sizing-addon1">
               </div>
@@ -117,7 +115,7 @@
       </div>
       <!-- END BUTTONS BLOCK !-->
     </div>
-    <div class="col-sm-12 unitButtons">
+    <div class="col-xs-12 unitButtons">
       <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
       <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
       <button ng-click="isDead(unit)" class="btn btn-danger">Dead</button>
@@ -127,7 +125,7 @@
 
   <!-- END UNIT CARD !-->
 
-  <div class="col-sm-12" id="buttonWrapper">
+  <div class="col-xs-12 text-center" id="buttonWrapper">
     <button class="btn btn-primary" ng-click="toCreate()">Add New</button>
     <button class="btn btn-primary" ng-click="toLibrary()">Add From Library</button>
     <button class="btn btn-warning" ng-show="units.length >= 1" ng-click="endBattle()">End Battle</button>

@@ -1,5 +1,6 @@
 #battlePageWrapper input {
-  width: 58px; }
+  width: 48px;
+  padding: 0 0 0 15px; }
 
 .characteristic-block {
   padding: 0; }
@@ -11,16 +12,15 @@
 
 .unitCard {
   border: 2px solid black;
-  min-height: 675px;
+  height: 100%;
+  max-height: 752px;
   margin-bottom: 45px;
   padding: 0; }
-  .unitCard :nth-child(2) {
-    padding: 0 5px; }
+  .unitCard .unitInfo, .unitCard .char-block, .unitCard .thresholds, .unitCard .defences {
+    padding: 0; }
   .unitCard .char {
     padding-left: 0;
     padding-right: 0; }
-  .unitCard .char-block {
-    padding: 0; }
   .unitCard .unitButtons {
     display: flex;
     justify-content: space-around;
@@ -33,12 +33,20 @@
   margin-bottom: .45em; }
 
 .card-top {
-  max-height: 28em;
+  max-height: 400px;
   overflow-y: scroll; }
 
 .defences {
   margin-bottom: 20px;
   border-bottom: 1px solid black; }
+
+.threshold-items {
+  padding-left: 31px; }
+  .threshold-items p:first-of-type {
+    margin-top: 11px; }
+
+.card-bottom {
+  padding: 0 0 50px 0; }
 
 #newUnit1 input {
   width: 68px; }
