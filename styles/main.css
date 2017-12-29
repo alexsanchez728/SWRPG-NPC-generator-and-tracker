@@ -1,6 +1,17 @@
+#battlePageWrapper input {
+  width: 58px; }
+
+.characteristic-block {
+  padding: 0; }
+  .characteristic-block .char {
+    font-size: 1.1rem;
+    padding: 6px 2px 0 2px;
+    border: 2px solid black;
+    border-radius: 5px; }
+
 .unitCard {
   border: 2px solid black;
-  min-height: 725px;
+  min-height: 675px;
   margin-bottom: 45px;
   padding: 0; }
   .unitCard :nth-child(2) {
@@ -16,15 +27,22 @@
     position: absolute;
     bottom: 5px; }
 
-.statusEffectDisplay {
-  border: 2px solid black; }
+.detailDisplay {
+  border: 2px solid black;
+  padding: 5px 0;
+  margin-bottom: .45em; }
+
+.card-top {
+  max-height: 28em;
+  overflow-y: scroll; }
 
 .defences {
   margin-bottom: 20px;
   border-bottom: 1px solid black; }
 
-#battlePageWrapper input {
-  width: 58px; }
-
 #newUnit1 input {
   width: 68px; }
+
+.dropdown-choice {
+  max-height: 200px;
+  overflow-y: scroll; }

@@ -1,66 +1,70 @@
 <div id="battlePageWrapper">
-  <div class="unitCard col-sm-offset-1 col-sm-4" ng-repeat="unit in units">
-    <div class="col-sm-12">
+  <div class="unitCard col-sm-offset-1 col-sm-4 col-xs-12" ng-repeat="unit in units">
+    <div class="col-sm-12 unit-name">
       <h4 class="col-sm-6">{{unit.name}}</h4>
       <h5 class="col-sm-6" ng-if="!unit.placeInGroup">Group: {{unit.groupName}}</h5>
       <h5 class="col-sm-6" ng-if="unit.placeInGroup">Group: {{unit.groupName}}, #{{unit.placeInGroup}}</h5>
     </div>
     <!-- END NAME AND GROUP BLOCK !-->
-    <div ng-if="unit" class="col-sm-12">
-      <div class=" char-block col-sm-12">
-        <div class="char col-sm-2 text-center">
-          <p>{{unit.brawn}}</p>
-          <p>BRAWN</p>
-        </div>
-        <div class="char col-sm-2 text-center">
-          <p>{{unit.agility}}</p>
-          <p>AGILITY</p>
-        </div>
-        <div class="char col-sm-2 text-center">
-          <p>{{unit.intellect}}</p>
-          <p>INTELLECT</p>
-        </div>
-        <div class="char col-sm-2 text-center">
-          <p>{{unit.cunning}}</p>
-          <p>CUNNING</p>
-        </div>
-        <div class="char col-sm-2 text-center">
-          <p>{{unit.willpower}}</p>
-          <p>WILLPOWER</p>
-        </div>
-        <div class="char col-sm-2 text-center">
-          <p>{{unit.presence}}</p>
-          <p>PRESENCE</p>
-        </div>
+    <div ng-if="unit" class="col-xs-12">
+      <div class="col-xs-12 card-top">
+        <div class="char-block col-sm-12">
+          <div class="char col-xs-4 text-center">
+            <p>{{unit.brawn}}</p>
+            <p>BRAWN</p>
+          </div>
+          <div class="char col-xs-4 text-center">
+            <p>{{unit.agility}}</p>
+            <p>AGILITY</p>
+          </div>
+          <div class="char col-xs-4 text-center">
+            <p>{{unit.intellect}}</p>
+            <p>INTELLECT</p>
+          </div>
+          <div class="char col-xs-4 text-center">
+            <p>{{unit.cunning}}</p>
+            <p>CUNNING</p>
+          </div>
+          <div class="char col-xs-4 text-center">
+            <p>{{unit.willpower}}</p>
+            <p>WILLPOWER</p>
+          </div>
+          <div class="char col-xs-4 text-center">
+            <p>{{unit.presence}}</p>
+            <p>PRESENCE</p>
+          </div>
 
-      </div>
-      <div class="col-sm-12" ng-init="this['states'+$index+'.isopen']=false">
-        <h4>Status</h4>
-        <div class="btn-group" uib-dropdown is-open="this['states'+$index+'.isopen']">
-          <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-            Pick One
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-            <li ng-repeat="state in states" role="menuitem">
-              <a value="{{state.id}}" ng-click="addState(unit, state.id)" ng-model="unit.statusEffects">{{state.name}}</a>
-            </li>
-          </ul>
         </div>
-        <div class="col-sm-12 statusEffectDisplay">
-          <h5>{{unit.statusEffectNames}}</h5>
-          <p>{{unit.statusEffectDescription}}</p>
-          <button class="btn btn-danger" ng-show="unit.statusEffects != 'none' || undefined" ng-click="removeState(unit)">
-            <span class="glyphicon glyphicon-trash"></span>
-          </button>
-        </div>
-        <div class="col-sm-12 statusEffectDisplay weaponDisplay">
-          <h5>{{unit.weaponName}}</h5>
-          <p>{{unit.weaponDescription}}</p>
-        </div>
-        <div class="col-sm-12 statusEffectDisplay equipmentDisplay">
-          <h5>{{unit.equipmentName}}</h5>
-          <p>{{unit.equipmentDescription}}</p>
+        <div class="col-sm-12" ng-init="this['states'+$index+'.isopen']=false">
+          <h4>Status</h4>
+          <div class="btn-group" uib-dropdown is-open="this['states'+$index+'.isopen']">
+            <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+              Pick One
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+              <li ng-repeat="state in states" role="menuitem">
+                <a value="{{state.id}}" ng-click="addState(unit, state.id)" ng-model="unit.statusEffects">{{state.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-12 detailDisplay">
+            <h5>{{unit.statusEffectNames}}</h5>
+            <p>{{unit.statusEffectDescription}}</p>
+            <button class="btn btn-danger" ng-show="unit.statusEffects != 'none' || undefined" ng-click="removeState(unit)">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </div>
+          <div class="col-sm-12 detailDisplay weaponDisplay">
+            <h4>Weapons</h4>
+            <h5>{{unit.weaponName}}</h5>
+            <p>{{unit.weaponDescription}}</p>
+          </div>
+          <div class="col-sm-12 detailDisplay equipmentDisplay">
+            <h4>Gear</h4>
+            <h5>{{unit.equipmentName}}</h5>
+            <p>{{unit.equipmentDescription}}</p>
+          </div>
         </div>
       </div>
       <!-- END STATES BLOCK !-->
@@ -113,19 +117,19 @@
       </div>
       <!-- END BUTTONS BLOCK !-->
     </div>
-          <div class="col-sm-12 unitButtons">
-            <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
-            <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
-            <button ng-click="isDead(unit)" class="btn btn-danger">Dead</button>
-          </div>
+    <div class="col-sm-12 unitButtons">
+      <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
+      <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
+      <button ng-click="isDead(unit)" class="btn btn-danger">Dead</button>
+    </div>
   </div>
-</div>
+  <!-- </div> -->
 
-<!-- END UNIT CARD !-->
+  <!-- END UNIT CARD !-->
 
-<div class="col-sm-12" id="buttonWrapper">
-  <button class="btn btn-primary" ng-click="toCreate()">Add New</button>
-  <button class="btn btn-primary" ng-click="toLibrary()">Add From Library</button>
-  <button class="btn btn-warning" ng-show="units.length >= 1" ng-click="endBattle()">End Battle</button>
-</div>
+  <div class="col-sm-12" id="buttonWrapper">
+    <button class="btn btn-primary" ng-click="toCreate()">Add New</button>
+    <button class="btn btn-primary" ng-click="toLibrary()">Add From Library</button>
+    <button class="btn btn-warning" ng-show="units.length >= 1" ng-click="endBattle()">End Battle</button>
+  </div>
 </div>

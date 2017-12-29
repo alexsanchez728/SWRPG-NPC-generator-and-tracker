@@ -113,7 +113,7 @@
             Pick One
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <ul class="dropdown-menu dropdown-choice" uib-dropdown-menu role="menu" aria-labelledby="single-button">
             <li ng-repeat="weapon in weapons" role="menuitem">
               <a ng-click="addWeapon(weapon.id)" ng-model="unitInfo.weapons">{{weapon.name}}</a>
             </li>
@@ -125,7 +125,7 @@
             Pick One
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <ul class="dropdown-menu dropdown-choice" uib-dropdown-menu role="menu" aria-labelledby="single-button">
             <li ng-repeat="equipment in equipments" role="menuitem">
               <a ng-click="addEquipment(equipment.id)" ng-model="unitInfo.equipment">{{equipment.name}}</a>
             </li>
@@ -139,7 +139,7 @@
             Your Folders
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <ul class="dropdown-menu dropdown-choice" uib-dropdown-menu role="menu" aria-labelledby="single-button">
             <li ng-repeat="folder in folders" role="menuitem">
               <a ng-click="addFolder(folder.id)" ng-model="unitInfo.folder">{{folder.name}}</a>
             </li>
