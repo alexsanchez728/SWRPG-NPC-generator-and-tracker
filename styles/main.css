@@ -1,6 +1,11 @@
-#battlePageWrapper input {
+#battle-page-wrapper input {
   width: 48px;
   padding: 0 0 0 15px; }
+
+.unit-name {
+  border-bottom: 2px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px; }
 
 .characteristic-block {
   padding: 0; }
@@ -10,27 +15,30 @@
     border: 2px solid black;
     border-radius: 5px; }
 
-.unitCard {
+.unit-card {
   border: 2px solid black;
   height: 100%;
-  max-height: 752px;
   margin-bottom: 45px;
   padding: 0; }
-  .unitCard .unitInfo, .unitCard .char-block, .unitCard .thresholds, .unitCard .defences {
+  .unit-card .unit-info, .unit-card .char-block, .unit-card .thresholds, .unit-card .defences, .unit-card .char {
     padding: 0; }
-  .unitCard .char {
-    padding-left: 0;
-    padding-right: 0; }
-  .unitCard .unitButtons {
+  .unit-card .unit-buttons {
     display: flex;
     justify-content: space-around;
     position: absolute;
     bottom: 5px; }
 
-.detailDisplay {
+.detail-display {
   border: 2px solid black;
   padding: 5px 0;
   margin-bottom: .45em; }
+  .detail-display div:first-of-type {
+    padding-left: 0;
+    padding-right: 2px;
+    display: flex;
+    justify-content: space-between; }
+    .detail-display div:first-of-type h4 {
+      padding: 0; }
 
 .card-top {
   max-height: 400px;

@@ -1,10 +1,16 @@
 @import 'variables';
 
-#battlePageWrapper {
+#battle-page-wrapper {
   input {
     width: 48px;
     padding: 0 0 0 15px;
   }
+}
+
+.unit-name {
+  border-bottom: $border;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .characteristic-block {
@@ -18,23 +24,17 @@
   }
 }
 
-.unitCard {
+.unit-card {
   border: $border;
   height: 100%;
-  max-height: 752px;
   margin-bottom: 45px;
   padding: 0;
 
-  .unitInfo, .char-block, .thresholds, .defences {
+  .unit-info, .char-block, .thresholds, .defences, .char {
     padding: 0;
   }
 
-  .char {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .unitButtons {
+  .unit-buttons {
     display: flex;
     justify-content: space-around;
     position: absolute;
@@ -42,7 +42,17 @@
   }
 }
 
-.detailDisplay {
+.detail-display {
+ div:first-of-type {
+   h4 {
+     padding: 0;
+   }
+    padding-left: 0;
+    padding-right: 2px;
+    display: flex;
+    justify-content: space-between;
+
+ }
   border: $border;
   padding: 5px 0;
   margin-bottom: .45em;
