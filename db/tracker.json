@@ -25,7 +25,9 @@
       "talents": "none",
       "abilities": "dark vision",
       "groupId": "group0",
+      "groupName": "bad guys",
       "inBattle": true,
+      "isMaster": true,
       "weapons": "weapon22",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
@@ -54,7 +56,9 @@
       "talents": "none",
       "abilities": "none",
       "groupId": "group0",
+      "groupName": "bad guys",
       "inBattle": true,
+      "isMaster": true,
       "weapons": "weapon10",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
@@ -83,7 +87,9 @@
       "talents": "none",
       "abilities": "Strength in numbers",
       "groupId": "group1",
+      "groupName": "THE WORST bad guys",
       "inBattle": false,
+      "isMaster": true,
       "weapons": "weapon2",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
@@ -112,7 +118,9 @@
       "talents": "none",
       "abilities": "none",
       "inBattle": false,
+      "isMaster": true,
       "groupId": "group1",
+      "groupName": "THE WORST bad guys",
       "weapons": "weapon16",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     },
@@ -141,7 +149,9 @@
       "talents": "none",
       "abilities": "dark vision, Life on four legs.",
       "groupId": "group2",
+      "groupName": "Evil dood",
       "inBattle": true,
+      "isMaster": true,
       "weapons": "weapon25",
       "uid": "0Y7NQmkUqZQSylQuSOC944oysgG3"
     }

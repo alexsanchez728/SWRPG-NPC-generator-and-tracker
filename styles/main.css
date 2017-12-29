@@ -11,19 +11,34 @@
 
 .unitCard {
   border: 2px solid black;
-  padding-left: 0;
-  padding-right: 0;
-  margin-bottom: .45em; }
-  .unitCard .card-top {
-    max-height: 350px;
-    overflow-y: scroll; }
-  .unitCard .detailDisplay {
-    padding: 5px 0;
-    border-bottom: 1px solid black; }
+  min-height: 675px;
+  margin-bottom: 45px;
+  padding: 0; }
+  .unitCard :nth-child(2) {
+    padding: 0 5px; }
+  .unitCard .char {
+    padding-left: 0;
+    padding-right: 0; }
+  .unitCard .char-block {
+    padding: 0; }
+  .unitCard .unitButtons {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 5px; }
 
-.unitButtons {
-  display: flex;
-  justify-content: space-around; }
+.detailDisplay {
+  border: 2px solid black;
+  padding: 5px 0;
+  margin-bottom: .45em; }
+
+.card-top {
+  max-height: 28em;
+  overflow-y: scroll; }
+
+.defences {
+  margin-bottom: 20px;
+  border-bottom: 1px solid black; }
 
 #newUnit1 input {
   width: 68px; }

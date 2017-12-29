@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleReadyUnitsService, FoldersService, UnitsService) {
+app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleReadyUnitsService, FoldersService, GroupService, UnitsService) {
 
   const getFolderNames = () => {
     FoldersService.getAllMyFolders().then((results) => {
@@ -12,22 +12,51 @@ app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleRe
   };
 
   const getMyUnitsWithFolderNames = () => {
-    UnitsService.getAllMyUnits(AuthService.getCurrentUid()).then((results) => {
-      $scope.units = results;
-      let units = $scope.units;
-      let folders = $scope.MyFolders;
+    UnitsService.getAllMyMasterUnits(AuthService.getCurrentUid()).then((results) => {
+      let units = results;
       units.forEach((unit) => {
-        folders.forEach((folder) => {
+        $scope.MyFolders.forEach((folder) => {
           if (unit.folder === folder.id) {
             unit.folderName = folder.name;
           }
         });
       });
+      $scope.units = units;
     }).catch((error) => {
       console.log("error in getMyBattleReadyUnits", error);
     });
   }; // end getMyBattleReadyUnits()
   getFolderNames();
+
+  const createGrouping = ((unit, howManyUnits) => {
+    GroupService.createGroup(unit).then((results) => {
+      unit.groupId = results.data.name;
+      return makeUnits(unit, howManyUnits);
+    }).catch((error) => {
+      console.log("error in makeUnitCopies");
+    });
+  });// END CREATEGROUPING
+
+  const makeUnits = ((unit, howManyUnits) => {
+    for (let i = 0; i < howManyUnits; i++) {
+      unit.inBattle = true;
+      if (i === 0) {
+        unit.placeInGroup = Math.floor(i + 1);
+        UnitsService.updateUnitInfo(unit, unit.id);
+      } else {
+        let newUnit = UnitsService.createSingleUnitObject(unit);
+        newUnit.placeInGroup = Math.floor(i + 1);
+        newUnit.isMaster = false;
+        UnitsService.postNewUnit(newUnit).then(() => {
+        }); // END POSTNEWUNIT
+      }
+    } // END FOR LOOP
+    $location.path(`/battlePage`);
+  }); // END MAKEUNITCOPIES
+
+  // $scope.checkModel = {
+  //   isGroup: false
+  // };
 
   $scope.deleteUnit = ((unitId) => {
     UnitsService.deleteSingleUnit(unitId).then(() => {
@@ -44,12 +73,15 @@ app.controller("LibraryCtrl", function ($location, $scope, AuthService, BattleRe
   });
 
   $scope.toBattle = ((unit) => {
-    unit.inBattle = true;
-    UnitsService.updateUnitInfo(unit, unit.id).then(() => {
-      getFolderNames();
-    }).catch((error) => {
-      console.log("error in toBattle", error);
-    });
+    let howManyUnits = Math.floor(unit.unitCount);
+    if (howManyUnits > 1) {
+      createGrouping(unit, howManyUnits);
+    } else {
+      // makeUnits(unit, howManyUnits);
+      unit.inBattle = true;
+      UnitsService.updateUnitInfo(unit, unit.id);
+      $location.path(`/battlePage`);
+    }
   });
-  
-});
+
+}); // END CONTROLLER

@@ -1,6 +1,8 @@
 'use strict';
 
-app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthService, FoldersService, GearAndEquipmentService, UnitsService, WeaponsService) {
+app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthService, FoldersService, GearAndEquipmentService, GroupService, UnitsService, WeaponsService) {
+
+  $scope.unitInfo = {};
 
   const getWeapons = () => {
     WeaponsService.getAllWeapons().then((results) => {
@@ -29,26 +31,75 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
   };
   getFolders();
 
+  // function to create multiple instances for a unit 
+  const makeUnitCopies = ((unitInfo, howManyUnits) => {
+    // gets the unit info from the model
+    // gets the number value of 'unit count' so we know how many units to make
+
+
+    // creates a group in the collection "groups" according to the user's input
+      // and ties the name the user put in with that
+    GroupService.createGroup(unitInfo).then((results) => {
+      // Once it creates the group it gives the newly created groupId to the unit(s) being created
+      unitInfo.groupId = results.data.name;
+    }).catch((error) => {
+      console.log("error in makeUnitCopies");
+    }); // END CREATEGROUP
+
+    //for however many there are, make a unit
+    for (let i = 1; i < howManyUnits; i++) {
+
+      let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+      newUnit.inBattle = true;
+      UnitsService.postNewUnit(newUnit).then(() => {
+      }); // END POSTNEWUNIT
+    } // END FOR LOOP
+    $location.path(`/battlePage`);
+  }); // END MAKEUNITCOPIES
+
+
   $scope.addAndBattle = ((unitInfo) => {
+
+    // sticks the uid in that unitInfo
     unitInfo.uid = AuthService.getCurrentUid();
-    $scope.unitWithuid = angular.copy(unitInfo);
+
+    let howManyUnits = Math.floor(unitInfo.unitCount);
+
+    // Runs only when unitCount is more than one,
+      // giving a group of units a groupId to tie them to each other
+    if (howManyUnits > 1) {
+      makeUnitCopies(unitInfo, howManyUnits);
+    }
+
+    // runs every time
+    // if there is only one then the makeUnitCopies function will not run, since 1 does not comprise a group
     let newUnit = UnitsService.createSingleUnitObject(unitInfo);
     newUnit.inBattle = true;
+    newUnit.isMaster = true;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/battlePage`);
     });
   });
 
   $scope.addAndAgain = ((unitInfo) => {
-    unitInfo.uid = AuthService.getCurrentUid();
-    $scope.unitWithuid = angular.copy(unitInfo);
-    let newUnit = UnitsService.createSingleUnitObject(unitInfo);
+    $scope.unitInfo.uid = AuthService.getCurrentUid();
+    let newUnit = UnitsService.createSingleUnitObject($scope.unitInfo);
     newUnit.inBattle = false;
     UnitsService.postNewUnit(newUnit).then(() => {
       $location.path(`/newUnit1`);
       $scope.reset();
     });
   });
+
+  $scope.addWeapon = (weapon) => {
+    $scope.unitInfo.weapons = weapon;
+  };
+  $scope.addEquipment = (equipment) => {
+    $scope.unitInfo.equipment = equipment;
+  };
+  $scope.addFolder = (folder) => {
+    $scope.unitInfo.folder = folder;
+  };
 
   $scope.reset = function () {
     $scope.unitInfo = {};
@@ -64,6 +115,12 @@ app.controller("NewUnitCharacteristicsCtrl", function ($location, $scope, AuthSe
   $scope.weaponDropDown = {
     isopen: false
   };
+
+  $scope.checkModel = {
+    isGroup: false
+  };
+
+  $scope.checkResults = [];
 
   const characteristicsByDifficulty = (difficultyName) => {
     if (difficultyName === "Minion") {

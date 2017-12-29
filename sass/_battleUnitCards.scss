@@ -15,27 +15,42 @@
     border-radius: 5px;
   }
 }
-
-.unitCard {
   
+.unitCard {
+  :nth-child(2) {
+    padding: 0 5px;
+  }
   border: $border;
-  padding-left: 0;
-  padding-right: 0;
+  min-height: 675px;
+  margin-bottom: 45px;
+  padding: 0;
+  .char {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .char-block {
+    padding: 0;
+  }
+  .unitButtons {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 5px;
+  }
+}
+.detailDisplay {
+  border: $border;
+  // border-bottom: 1px solid black;
+  padding: 5px 0;
   margin-bottom: .45em;
-
-  .card-top {
-    max-height: 350px;
-    overflow-y: scroll;
-  }
-
-  .detailDisplay {
-    padding: 5px 0;
-    border-bottom: 1px solid black;
-  }
 }
 
-.unitButtons {
-  display: flex;
-  justify-content: space-around;
+.card-top {
+  max-height: 28em;
+  // max-height: 450px;
+  overflow-y: scroll;
 }
-
+.defences {
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+} 
