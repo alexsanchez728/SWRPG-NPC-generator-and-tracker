@@ -1,10 +1,32 @@
 #newUnit1 {
-  input {
-    width: 68px;
+  margin-bottom: 450px;
+  .char-block {
+    padding: 15px 25px 0 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+    input {
+      border: 2px solid black;
+      padding: 0 0 0 18px;
+      border-radius: 50%;
+    }
+    label {
+      margin-top: 25%;
+      width: 50px;
+    }
+  }
+}
+
+.difficulty-block {
+  label {
+    font-size: 1.4em;
   }
 }
 
 .dropdown-choice {
   max-height: 200px;
   overflow-y: scroll;
+}
+
+#count-and-soak {
+  margin-top: 5%;
 }

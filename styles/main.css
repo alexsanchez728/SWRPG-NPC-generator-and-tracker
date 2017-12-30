@@ -30,10 +30,10 @@
 
 .detail-display {
   border: 2px solid black;
-  padding: 5px 0;
+  padding: 5px 2px;
   margin-bottom: .45em; }
   .detail-display div:first-of-type {
-    padding-left: 0;
+    padding-left: 5px;
     padding-right: 2px;
     display: flex;
     justify-content: space-between; }
@@ -56,9 +56,26 @@
 .card-bottom {
   padding: 0 0 50px 0; }
 
-#newUnit1 input {
-  width: 68px; }
+#newUnit1 {
+  margin-bottom: 450px; }
+  #newUnit1 .char-block {
+    padding: 15px 25px 0 25px;
+    border: 2px solid black;
+    border-radius: 10px; }
+    #newUnit1 .char-block input {
+      border: 2px solid black;
+      padding: 0 0 0 18px;
+      border-radius: 50%; }
+    #newUnit1 .char-block label {
+      margin-top: 25%;
+      width: 50px; }
+
+.difficulty-block label {
+  font-size: 1.4em; }
 
 .dropdown-choice {
   max-height: 200px;
   overflow-y: scroll; }
+
+#count-and-soak {
+  margin-top: 5%; }
