@@ -2,6 +2,15 @@
   width: 48px;
   padding: 0 0 0 15px; }
 
+#battle-page-wrapper .row {
+  overflow-x: auto;
+  white-space: nowrap; }
+  #battle-page-wrapper .row .unit-card {
+    display: inline-block;
+    float: none; }
+    #battle-page-wrapper .row .unit-card .detail-display {
+      white-space: normal; }
+
 .unit-name {
   border-bottom: 2px solid black;
   margin-top: 5px;
@@ -79,3 +88,12 @@
 
 #count-and-soak {
   margin-top: 5%; }
+  #count-and-soak .char-block {
+    height: 140px; }
+    #count-and-soak .char-block input {
+      border: 2px solid black;
+      padding: 0 0 0 30px;
+      border-radius: 50%; }
+    #count-and-soak .char-block label {
+      margin-top: 25%;
+      width: 75px; }

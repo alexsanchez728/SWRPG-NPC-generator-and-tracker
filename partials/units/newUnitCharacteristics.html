@@ -56,13 +56,13 @@
       </div>
       <!-- END CHARS AND DIFFICULTY -->
       <div class="col-xs-12" id="count-and-soak">
-        <div class="col-sm-offset-1 col-xs-3">
+        <div class="col-sm-3">
           <div class="btn-group">
             <label class="btn btn-primary" ng-model="checkModel.isGroup" uib-btn-checkbox>More than one baddie?</label>
           </div>
           <div ng-if="checkModel.isGroup" class="btn-group">
-            <label for="unitCount"> Unit Count: </label>
-            <br>
+            <label for="unitCount">Unit Count: </label>
+            <!-- <br> -->
             <select name="unitCount" ng-model="unitInfo.unitCount">
               <option value=1>1</option>
               <option value=2>2</option>
@@ -71,40 +71,43 @@
               <option value=5>5</option>
             </select>
             <br>
-            <label for="groupName">Group Name</label>
+            <label for="groupName">Group Name: </label>
             <input type="text" ng-model="unitInfo.groupName" name="groupName" class="form-control" aria-describedby="sizing-addon1">
           </div>
         </div>
         <!-- END ADD MORE -->
+        <div class="col-sm-offset-1 col-sm-7 text-center">
+          <div class=" col-sm-2 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+            <br />
+            <label for="soakSelector">Soak</label>
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" placeholder="0" class="form-control"
+              placeholder="0" aria-describedby="sizing-addon1">
+            <label for="woundThresholdSelector">Wound Threshold</label>
+            <br />
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.strainThreshold" name="strainThresholdSelector" placeholder="0" class="form-control"
+              aria-describedby="sizing-addon1">
+            <label for="strainThresholdSelector">Strain Threshold</label>
+            <br />
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.meleeDef" name="meleeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+            <br />
+            <label for="meleeDefSelector">Melee Defense</label>
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.rangeDef" name="rangeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+            <br />
+            <label for="rangeDefSelector">Ranged Defense</label>
+          </div>
+        </div>
+        <!-- END SOAK, THRESHOLDS -->
       </div>
-        <!-- END ADD UNITS AND SOAKS -->
-
-
-
-      <!-- <div class="col-sm-offset-2 col-sm-8">
-        <div class=" col-sm-3 input-group input-group-lg">
-          <label for="soakSelector">Soak</label>
-          <input type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-3 input-group input-group-lg">
-          <label for="woundThresholdSelector">Wound Threshold</label>
-          <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" placeholder="0" class="form-control"
-            placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-3 input-group input-group-lg">
-          <label for="strainThresholdSelector">Strain Threshold</label>
-          <input type="number" ng-model="unitInfo.strainThreshold" name="strainThresholdSelector" placeholder="0" class="form-control"
-            aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-3 input-group input-group-lg">
-          <label for="meleeDefSelector">Melee Defense</label>
-          <input type="number" ng-model="unitInfo.meleeDef" name="meleeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-3 input-group input-group-lg">
-          <label for="rangeDefSelector">Ranged Defense</label>
-          <input type="number" ng-model="unitInfo.rangeDef" name="rangeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-      </div> END SOAK, THRESHOLDS -->
+      <!-- END ADD UNITS AND SOAKS -->
     </div>
     <!-- END .FORM-GROUP -->
   </form>

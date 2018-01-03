@@ -5,6 +5,17 @@
     width: 48px;
     padding: 0 0 0 15px;
   }
+  .row {
+    overflow-x: auto;
+    white-space: nowrap;
+    .unit-card {
+      display: inline-block;
+      float: none;
+      .detail-display {
+        white-space: normal;
+      }
+    }
+  }
 }
 
 .unit-name {

@@ -29,4 +29,18 @@
 
 #count-and-soak {
   margin-top: 5%;
+  .char-block {
+    height: 140px;
+    input {
+      border: 2px solid black;
+      padding: 0 0 0 30px;
+      border-radius: 50%;
+    }
+    label {
+      margin-top: 25%;
+      width: 75px;
+    }
+  }
+
 }
+
