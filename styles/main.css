@@ -1,5 +1,50 @@
-#battlePageWrapper input {
-  width: 58px; }
+#no-units-img {
+  margin-top: 10%; }
+  #no-units-img img {
+    max-width: 280px; }
+  #no-units-img i {
+    font-size: 3em;
+    padding-left: 2.7em; }
+
+#battle-page-wrapper .char {
+  padding: 15px 25px 0 25px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #b7361a;
+  color: white;
+  margin-bottom: 5%;
+  margin-left: 6%; }
+  #battle-page-wrapper .char p:nth-of-type(2n-1) {
+    padding-top: 0.6em;
+    height: 45px;
+    width: 45px;
+    margin-left: 0.3em;
+    border: 2px solid black;
+    border-radius: 50%;
+    color: black;
+    background-color: white;
+    padding-bottom: 30px; }
+  #battle-page-wrapper .char p:nth-of-type(2n) {
+    margin-top: 25%;
+    font-size: 0.75em; }
+
+#battle-page-wrapper input {
+  width: 48px;
+  padding: 0 0 0 15px; }
+
+.row {
+  overflow-x: auto;
+  white-space: nowrap; }
+  .row .unit-card {
+    display: inline-block;
+    float: none; }
+    .row .unit-card .detail-display {
+      white-space: normal; }
+
+.unit-name {
+  border-bottom: 2px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px; }
 
 .characteristic-block {
   padding: 0; }
@@ -9,40 +54,107 @@
     border: 2px solid black;
     border-radius: 5px; }
 
-.unitCard {
+.unit-card {
   border: 2px solid black;
-  min-height: 675px;
-  margin-bottom: 45px;
-  padding: 0; }
-  .unitCard :nth-child(2) {
-    padding: 0 5px; }
-  .unitCard .char {
-    padding-left: 0;
-    padding-right: 0; }
-  .unitCard .char-block {
+  height: 100%;
+  min-height: 708px;
+  margin-bottom: 95px;
+  padding: 0;
+  background-color: white; }
+  .unit-card .unit-info, .unit-card .char-block, .unit-card .thresholds, .unit-card .defences, .unit-card .char {
     padding: 0; }
-  .unitCard .unitButtons {
+  .unit-card .unit-buttons {
     display: flex;
     justify-content: space-around;
     position: absolute;
     bottom: 5px; }
 
-.detailDisplay {
+.detail-display {
   border: 2px solid black;
-  padding: 5px 0;
+  padding: 5px 2px;
   margin-bottom: .45em; }
+  .detail-display div:first-of-type {
+    padding-left: 5px;
+    padding-right: 2px;
+    display: flex;
+    justify-content: space-between; }
+    .detail-display div:first-of-type h4 {
+      padding: 0; }
 
 .card-top {
-  max-height: 28em;
+  height: 375px;
   overflow-y: scroll; }
 
 .defences {
   margin-bottom: 20px;
   border-bottom: 1px solid black; }
 
-#newUnit1 input {
-  width: 68px; }
+.threshold-items {
+  padding-left: 31px; }
+  .threshold-items p:first-of-type {
+    margin-top: 11px; }
+
+.card-bottom {
+  padding: 0 0 50px 0; }
+
+#buttonWrapper {
+  border-top: 2px solid black;
+  padding: 15px 0; }
+
+#myNav, #buttonWrapper {
+  background-color: rgba(81, 61, 44, 0.6); }
+  #myNav a, #buttonWrapper a {
+    color: white; }
+  #myNav a:hover, #buttonWrapper a:hover {
+    text-decoration: underline; }
+
+body {
+  background-color: #fffaf4;
+  font-family: sans-serif; }
+
+#newUnit1, #editUnit {
+  margin-bottom: 150px; }
+  #newUnit1 .char-block, #editUnit .char-block {
+    padding: 15px 25px 0 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #b7361a;
+    color: white; }
+    #newUnit1 .char-block input, #editUnit .char-block input {
+      border: 2px solid black;
+      padding: 0 0 0 18px;
+      border-radius: 50%;
+      cursor: default; }
+    #newUnit1 .char-block label, #editUnit .char-block label {
+      margin-top: 25%;
+      width: 50px; }
+
+.difficulty-block label {
+  font-size: 1.4em; }
 
 .dropdown-choice {
   max-height: 200px;
   overflow-y: scroll; }
+
+#count-and-soak, #name-and-buttons, #unit-details {
+  margin-top: 5%; }
+
+#count-and-soak .count-block, #unit-details .count-block {
+  margin-left: 4%; }
+
+#count-and-soak .char-block, #unit-details .char-block {
+  padding: 0;
+  border: 4px solid black;
+  background-color: saddlebrown; }
+  #count-and-soak .char-block input, #unit-details .char-block input {
+    border: none;
+    border-radius: 0;
+    background-color: white;
+    padding-left: 47%; }
+  #count-and-soak .char-block label, #unit-details .char-block label {
+    margin-top: 0;
+    width: 100%;
+    color: white; }
+
+#name-and-buttons button {
+  margin: 10px; }

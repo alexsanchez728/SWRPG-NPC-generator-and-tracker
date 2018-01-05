@@ -1,147 +1,140 @@
 <div id="editUnit">
-  <h1 class="text-center">Edit</h1>
-
+  <h1 class="text-center">Editing: {{unitInfo.name}} #{{unitInfo.placeInGroup}} in group: {{unitInfo.groupName}}</h1>
   <form novalidate name="newUnitForm" class="form-inline">
     <div class="form-group">
-      <div class="col-sm-6" >
-        <label for="difficultyRadio">Difficulty</label>
-        <div>
-          <label class="radio-inline">
-            <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Minion">Minion</label>
-          <label class="radio-inline">
-            <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Rival">Rival</label>
-          <label class="radio-inline">
-            <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Nemesis">Nemesis</label>
+      <div class="col-xs-12">
+        <div class="col-sm-4 text-center difficulty-block">
+          <h2>Difficulty: {{unitInfo.difficultyName}}</h2>
         </div>
+        <div class="col-xs-8 text-center">
+          <h2>Characteristics</h2>
+          <div class="col-xs-1 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.brawn" name="brawnSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+            <br />
+            <label for="brawnSelector">Brawn</label>
+          </div>
+          <div class="col-xs-1 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.agility" name="agilitySelector" class="form-control" aria-describedby="sizing-addon1">
+            <br />
+            <label for="agilitySelector">Agility</label>
+          </div>
+          <div class="col-xs-1 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.intellect" name="intellectSelector" class="form-control" aria-describedby="sizing-addon1">
+            <br />
+            <label for="intellectSelector">Intellect</label>
+          </div>
+          <div class="col-xs-1 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.cunning" name="cunningSelector" class="form-control" aria-describedby="sizing-addon1">
+            <br />
+            <label for="cunningSelector">Cunning</label>
+          </div>
+          <div class="col-xs-1 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.willpower" name="willpowerSelector" class="form-control" aria-describedby="sizing-addon1">
+            <br />
+            <label for="willpowerSelector">Willpower</label>
+          </div>
+          <div class="col-xs-1 input-group input-group-lg char-block">
+            <input type="number" ng-model="unitInfo.presence" name="presenceSelector" class="form-control" aria-describedby="sizing-addon1">
+            <br />
+            <label for="presenceSelector">Presence</label>
+          </div>
+        </div>
+        <!-- END CHARACTERISTICS -->
       </div>
+      <!-- END CHARS AND DIFFICULTY -->
+      <div class="col-xs-12" id="count-and-soak">
+        <div class="col-sm-4 text-center">
+        </div>
+        <!-- END ADD MORE -->
+        <div class="col-sm-offset-1 col-xs-7 count-block text-center">
+          <div class=" col-sm-2 input-group input-group-lg char-block">
+            <label for="soakSelector">Soak</label>
+            <br />
+            <input type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" aria-describedby="sizing-addon1">
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <label for="woundThresholdSelector">Wound Threshold</label>
+            <br />
+            <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" class="form-control" aria-describedby="sizing-addon1">
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <label for="strainThresholdSelector">Strain Threshold</label>
+            <br />
+            <input type="number" ng-model="unitInfo.strainThreshold" name="strainThresholdSelector" class="form-control" aria-describedby="sizing-addon1">
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <label for="meleeDefSelector">Melee Defense</label>
+            <br />
+            <input type="number" ng-model="unitInfo.meleeDef" name="meleeDefSelector" class="form-control" aria-describedby="sizing-addon1">
+          </div>
+          <div class="col-sm-2 input-group input-group-lg char-block">
+            <label for="rangeDefSelector">Ranged Defense</label>
+            <br />
+            <input type="number" ng-model="unitInfo.rangeDef" name="rangeDefSelector" class="form-control" aria-describedby="sizing-addon1">
+          </div>
+        </div>
+        <!-- END SOAK, THRESHOLDS -->
+      </div>
+      <!-- END ADD UNITS AND SOAKS -->
 
-      <div class="col-sm-6">
-        <h2>Characteristics</h2>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="brawnSelector">Brawn</label>
-          <input type="number" ng-model="unitInfo.brawn" name="brawnSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="agilitySelector">Agility</label>
-          <input type="number" ng-model="unitInfo.agility" name="agilitySelector" class="form-control" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="intellectSelector">Intellect</label>
-          <input type="number" ng-model="unitInfo.intellect" name="intellectSelector" class="form-control" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="cunningSelector">Cunning</label>
-          <input type="number" ng-model="unitInfo.cunning" name="cunningSelector" class="form-control" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="willpowerSelector">Willpower</label>
-          <input type="number" ng-model="unitInfo.willpower" name="willpowerSelector" class="form-control" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="presenceSelector">Presence</label>
-          <input type="number" ng-model="unitInfo.presence" name="presenceSelector" class="form-control" aria-describedby="sizing-addon1">
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="btn-group">
-          <label for="unitCount"> Unit Count: </label>
-          <br>
-          <select name="unitCount" ng-model="unitInfo.unitCount">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <br>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="col-offset-2 col-sm-2 input-group input-group-lg">
-          <label for="soakSelector">Soak</label>
-          <input type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="woundThresholdSelector">Wound Threshold</label>
-          <input type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" class="form-control" placeholder="0"
-            aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="strainThresholdSelector">Strain Threshold</label>
-          <input type="number" ng-model="unitInfo.strainThreshold" name="strainThresholdSelector" class="form-control" placeholder="0"
-            aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="meleeDefSelector">Melee Defense</label>
-          <input type="number" ng-model="unitInfo.meleeDef" name="meleeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-        <div class="col-sm-2 input-group input-group-lg">
-          <label for="rangeDefSelector">Ranged Defense</label>
-          <input type="number" ng-model="unitInfo.rangeDef" name="rangeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
-        </div>
-      </div>
-      <div>
-        <h2>Name:</h2>
-        <input type="text" ng-model="unitInfo.name">
+      <!-- // NAME AND EXTRAS -->
+      <div id="name-and-buttons" class="col-sm-12">
+        <div class="col-sm-12">
+          <div class="col-sm-4 text-center">
+            <h2>Name:</h2>
+            <input type="text" ng-model="unitInfo.name">
 
-        <h2>Description</h2>
-        <input type="text" ng-model="unitInfo.description">
+            <h2>Description</h2>
+            <textarea cols="50" rows="3" type="text" ng-model="unitInfo.description"></textarea>
+          </div>
+          <div class="col-sm-offset-2 col-sm-6">
+            <div>
+              <button ng-click="editUnit(unitInfo)" type="submit" class="btn btn-primary" value="Save">Save And Return</button>
+            </div>
 
-        <h4>Abilites</h4>
-        <input type="text" ng-model="unitInfo.abilities">
-
-        <h4>Skills</h4>
-        <input type="text" ng-model="unitInfo.skills">
-
-        <h4>Talents</h4>
-        <input type="text" ng-model="unitInfo.talents">
-
-        <h4>Weapons</h4>
-        <!-- Single button -->
-        <div class="btn-group" uib-dropdown is-open="weaponDropDown.isopen">
-          <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-            Pick One
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-            <li ng-repeat="weapon in weapons" role="menuitem">
-              <a value="{{weapon.id}}" ng-model="unitInfo.weaponId">{{weapon.name}}</a>
-            </li>
-          </ul>
+            <div>
+              <button class="btn btn-danger btn-large center" type="button" ng-click="deleteUnit()">DELETE
+              </button>
+            </div>
+          </div>
         </div>
-        <h4>Equipment</h4>
-        <div class="btn-group" uib-dropdown is-open="equipmentDropDown.isopen">
-          <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-            Pick One
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-            <li ng-repeat="equipment in equipments" role="menuitem">
-              <a value="{{equipment.id}}" ng-model="unitInfo.equipmentId">{{equipment.name}}</a>
-            </li>
-          </ul>
+        <!--  END OF NAME AND DESCRIPTION -->
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <h4>Weapons</h4>
+            <div class="btn-group" uib-dropdown is-open="weaponDropDown.isopen">
+              <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                Pick One
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-choice" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li ng-repeat="weapon in weapons" role="menuitem">
+                  <a ng-click="addWeapon(weapon.id)" ng-model="unitInfo.weapons">{{weapon.name}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- END ONE BUTTON -->
+          </div>
+          <div class="col-sm-6">
+            <h4>Equipment</h4>
+            <div class="btn-group" uib-dropdown is-open="equipmentDropDown.isopen">
+              <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                Pick One
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-choice" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li ng-repeat="equipment in equipments" role="menuitem">
+                  <a ng-click="addEquipment(equipment.id)" ng-model="unitInfo.equipment">{{equipment.name}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- END ONE BUTTON -->
+          </div>
+          <!-- END NAME AND DESCRIPTION -->
         </div>
+        <!-- END NAME AND BUTTONS -->
       </div>
-      <h4>Add to a Folder</h4>
-      <div class="btn-group" uib-dropdown is-open="foldersDropDown.isopen">
-        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-          Your Folders
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-          <li ng-repeat="folder in folders" role="menuitem">
-            <a value="{{folder.id}}" ng-model="unitInfo.folder">{{folder.name}}</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <button ng-click="editUnit(unitInfo)" type="submit" class="btn btn-default" value="Save">Save And Return</button>
-      </div>
-
-      <div>
-        <button class="btn btn-danger btn-large center" type="button" ng-click="deleteUnit()">DELETE
-        </button>
-      </div>
+      <!-- END .FORM-GROUP -->
     </div>
   </form>
 </div>
