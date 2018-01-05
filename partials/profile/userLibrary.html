@@ -31,14 +31,12 @@
             <p>{{unit.presence}}</p>
             <p>PRESENCE</p>
           </div>
-
-          <h4>Assigned Folder: {{unit.folderName}}</h4>
         </div>
         <div class="col-sm-12 unitButtons">
           <button ng-click="deleteUnit(unit.id)" class="btn btn-danger">Delete</button>
           <button ng-click="toEditUnit(unit.id)" class="btn btn-warning">Edit</button>
           <button ng-click="toDetails(unit.id)" class="btn btn-info">Details</button>
-          <button ng-model="checkModel.isGroup" class="btn btn-default" uib-btn-checkbox>Add to Battle</button>
+          <button ng-model="checkModel.isGroup" class="btn btn-primary" uib-btn-checkbox>Add to Battle</button>
         </div>
         <div ng-if="checkModel.isGroup" class="btn-group">
           <label for="unitCount"> Add this many:</label>

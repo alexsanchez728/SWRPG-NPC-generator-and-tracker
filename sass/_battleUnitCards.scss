@@ -1,6 +1,7 @@
 @import 'variables';
 
 #battle-page-wrapper {
+
     .char {
     padding: 15px 25px 0 25px;
     border: 2px solid black;
@@ -21,6 +22,7 @@
       background-color: white;
       padding-bottom: 30px;
       }
+
     p:nth-of-type(2n) {
       margin-top: 25%;
       font-size: 0.75em;
@@ -65,8 +67,9 @@
   border: $border;
   height: 100%;
   min-height: 708px;
-  margin-bottom: 45px;
+  margin-bottom: 95px;
   padding: 0;
+  background-color: white;
 
   .unit-info, .char-block, .thresholds, .defences, .char {
     padding: 0;
@@ -119,5 +122,14 @@
 #buttonWrapper {
   border-top: $border;
   padding: 15px 0;
-  background-color: white;
+}
+
+#myNav, #buttonWrapper {
+  a {
+    color: white;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  background-color: rgba(81, 61, 44, 0.6);
 }

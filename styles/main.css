@@ -50,8 +50,9 @@
   border: 2px solid black;
   height: 100%;
   min-height: 708px;
-  margin-bottom: 45px;
-  padding: 0; }
+  margin-bottom: 95px;
+  padding: 0;
+  background-color: white; }
   .unit-card .unit-info, .unit-card .char-block, .unit-card .thresholds, .unit-card .defences, .unit-card .char {
     padding: 0; }
   .unit-card .unit-buttons {
@@ -90,27 +91,33 @@
 
 #buttonWrapper {
   border-top: 2px solid black;
-  padding: 15px 0;
-  background-color: white; }
+  padding: 15px 0; }
+
+#myNav, #buttonWrapper {
+  background-color: rgba(81, 61, 44, 0.6); }
+  #myNav a, #buttonWrapper a {
+    color: white; }
+  #myNav a:hover, #buttonWrapper a:hover {
+    text-decoration: underline; }
 
 body {
   background-color: #fffaf4;
   font-family: sans-serif; }
 
-#newUnit1 {
+#newUnit1, #editUnit {
   margin-bottom: 150px; }
-  #newUnit1 .char-block {
+  #newUnit1 .char-block, #editUnit .char-block {
     padding: 15px 25px 0 25px;
     border: 2px solid black;
     border-radius: 10px;
     background-color: #b7361a;
     color: white; }
-    #newUnit1 .char-block input {
+    #newUnit1 .char-block input, #editUnit .char-block input {
       border: 2px solid black;
       padding: 0 0 0 18px;
       border-radius: 50%;
       cursor: default; }
-    #newUnit1 .char-block label {
+    #newUnit1 .char-block label, #editUnit .char-block label {
       margin-top: 25%;
       width: 50px; }
 
