@@ -1,5 +1,11 @@
 <div id="battle-page-wrapper">
   <div class="row">
+    <div class="col-sm-offset-5" id="no-units-img" ng-show="units < 1">
+      <img src="http://1.bp.blogspot.com/-A6dIsjk6uPg/T6DAXmJ0ngI/AAAAAAAAEuI/U0jMsBfeIvQ/s1600/2Yoda(3).jpg">
+      <h2> Add units you should</h2>
+      <i class="fa fa-arrow-down text-center" aria-hidden="true"></i>
+
+    </div>
     <div class="unit-card col-sm-offset-1 col-sm-3 col-xs-12" ng-repeat="unit in units">
       <div class="col-xs-12 unit-name">
         <h4 class="col-sm-6">{{unit.name}}</h4>

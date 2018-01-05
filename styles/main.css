@@ -1,3 +1,11 @@
+#no-units-img {
+  margin-top: 10%; }
+  #no-units-img img {
+    max-width: 280px; }
+  #no-units-img i {
+    font-size: 3em;
+    padding-left: 2.7em; }
+
 #battle-page-wrapper .char {
   padding: 15px 25px 0 25px;
   border: 2px solid black;

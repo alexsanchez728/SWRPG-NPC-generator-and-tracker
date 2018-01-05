@@ -1,5 +1,16 @@
 @import 'variables';
 
+#no-units-img {
+  margin-top: 10%;
+  img {
+    max-width: 280px;
+  }
+  i {
+    font-size: 3em;
+    padding-left: 2.7em;
+  }
+}
+
 #battle-page-wrapper {
 
     .char {
