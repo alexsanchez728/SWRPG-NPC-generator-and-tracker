@@ -1,13 +1,21 @@
+body {
+  background-color: #fffaf4;
+  font-family: sans-serif;
+}
+
 #newUnit1 {
   margin-bottom: 150px;
   .char-block {
     padding: 15px 25px 0 25px;
     border: 2px solid black;
     border-radius: 10px;
+    background-color: #b7361a;
+    color: white;
     input {
       border: 2px solid black;
       padding: 0 0 0 18px;
       border-radius: 50%;
+      cursor: default;
     }
     label {
       margin-top: 25%;
@@ -27,26 +35,28 @@
   overflow-y: scroll;
 }
 
-#count-and-soak, #name-and-buttons {
+#count-and-soak, #name-and-buttons, #unit-details {
   margin-top: 5%;
 }
 
-#count-and-soak {
+#count-and-soak, #unit-details {
   .count-block {
     margin-left: 4%;
   }
   .char-block {
-    min-height: 156px;
-    max-width: 120px;
+    padding: 0;
+    border: 4px solid black;
+    background-color: saddlebrown;
     input {
-      height: 70px;
-      border: 2px solid black;
-      padding: 0 0 0 30px;
-      border-radius: 50%;
+      border: none;
+      border-radius: 0;
+      background-color: white;
+      padding-left: 47%;
     }
     label {
-      margin-top: 25%;
-      width: 75px;
+      margin-top: 0;
+      width: 100%;
+      color: white;
     }
   }
 }
@@ -55,8 +65,4 @@
   button {
     margin: 10px;
   }
-  // input:nth-of-type(2n) {
-  //   width: 300px;
-  //   height: 4.5em;
-  // }
 }

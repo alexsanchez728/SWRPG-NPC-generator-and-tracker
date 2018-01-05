@@ -1,11 +1,37 @@
 @import 'variables';
 
 #battle-page-wrapper {
-  padding-bottom: 30px;
+    .char {
+    padding: 15px 25px 0 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #b7361a;
+    color: white;
+    margin-bottom: 5%;
+    margin-left: 6%;
+    
+    p:nth-of-type(2n-1) {
+      padding-top: 0.6em;
+      height: 45px;
+      width: 45px;
+      margin-left: 0.3em;
+      border: $border;
+      border-radius: 50%;
+      color: black;
+      background-color: white;
+      padding-bottom: 30px;
+      }
+    p:nth-of-type(2n) {
+      margin-top: 25%;
+      font-size: 0.75em;
+    }
+  }
+  
   input {
     width: 48px;
     padding: 0 0 0 15px;
   }
+}
   .row {
     overflow-x: auto;
     white-space: nowrap;
@@ -17,7 +43,6 @@
       }
     }
   }
-}
 
 .unit-name {
   border-bottom: $border;

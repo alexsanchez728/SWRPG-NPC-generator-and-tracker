@@ -1,16 +1,37 @@
-#battle-page-wrapper {
-  padding-bottom: 30px; }
-  #battle-page-wrapper input {
-    width: 48px;
-    padding: 0 0 0 15px; }
-  #battle-page-wrapper .row {
-    overflow-x: auto;
-    white-space: nowrap; }
-    #battle-page-wrapper .row .unit-card {
-      display: inline-block;
-      float: none; }
-      #battle-page-wrapper .row .unit-card .detail-display {
-        white-space: normal; }
+#battle-page-wrapper .char {
+  padding: 15px 25px 0 25px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #b7361a;
+  color: white;
+  margin-bottom: 5%;
+  margin-left: 6%; }
+  #battle-page-wrapper .char p:nth-of-type(2n-1) {
+    padding-top: 0.6em;
+    height: 45px;
+    width: 45px;
+    margin-left: 0.3em;
+    border: 2px solid black;
+    border-radius: 50%;
+    color: black;
+    background-color: white;
+    padding-bottom: 30px; }
+  #battle-page-wrapper .char p:nth-of-type(2n) {
+    margin-top: 25%;
+    font-size: 0.75em; }
+
+#battle-page-wrapper input {
+  width: 48px;
+  padding: 0 0 0 15px; }
+
+.row {
+  overflow-x: auto;
+  white-space: nowrap; }
+  .row .unit-card {
+    display: inline-block;
+    float: none; }
+    .row .unit-card .detail-display {
+      white-space: normal; }
 
 .unit-name {
   border-bottom: 2px solid black;
@@ -72,16 +93,23 @@
   padding: 15px 0;
   background-color: white; }
 
+body {
+  background-color: #fffaf4;
+  font-family: sans-serif; }
+
 #newUnit1 {
   margin-bottom: 150px; }
   #newUnit1 .char-block {
     padding: 15px 25px 0 25px;
     border: 2px solid black;
-    border-radius: 10px; }
+    border-radius: 10px;
+    background-color: #b7361a;
+    color: white; }
     #newUnit1 .char-block input {
       border: 2px solid black;
       padding: 0 0 0 18px;
-      border-radius: 50%; }
+      border-radius: 50%;
+      cursor: default; }
     #newUnit1 .char-block label {
       margin-top: 25%;
       width: 50px; }
@@ -93,23 +121,25 @@
   max-height: 200px;
   overflow-y: scroll; }
 
-#count-and-soak, #name-and-buttons {
+#count-and-soak, #name-and-buttons, #unit-details {
   margin-top: 5%; }
 
-#count-and-soak .count-block {
+#count-and-soak .count-block, #unit-details .count-block {
   margin-left: 4%; }
 
-#count-and-soak .char-block {
-  min-height: 156px;
-  max-width: 120px; }
-  #count-and-soak .char-block input {
-    height: 70px;
-    border: 2px solid black;
-    padding: 0 0 0 30px;
-    border-radius: 50%; }
-  #count-and-soak .char-block label {
-    margin-top: 25%;
-    width: 75px; }
+#count-and-soak .char-block, #unit-details .char-block {
+  padding: 0;
+  border: 4px solid black;
+  background-color: saddlebrown; }
+  #count-and-soak .char-block input, #unit-details .char-block input {
+    border: none;
+    border-radius: 0;
+    background-color: white;
+    padding-left: 47%; }
+  #count-and-soak .char-block label, #unit-details .char-block label {
+    margin-top: 0;
+    width: 100%;
+    color: white; }
 
 #name-and-buttons button {
   margin: 10px; }

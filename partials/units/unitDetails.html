@@ -1,103 +1,117 @@
 <div id="details-wrapper">
-  <div id="unit-details" class="col-sm-12">
-    <h2>{{unitInfo.name}}</h2>
-    <div class="col-sm-12">
-      <h3>{{unitInfo.difficultyName}}</h3>
-      <p>{{unitInfo.description}}</p>
-      <div class="col-sm-12">
-        <h5>Characteristics</h5>
-        <div class="col-sm-2">
-          <p>{{unitInfo.brawn}}</p>
-          <p>BRAWN</p>
-        </div>
-        <div class="col-sm-2">
-          <p>{{unitInfo.agility}}</p>
-          <p>AGILITY</p>
-        </div>
-        <div class="col-sm-2">
-          <p>{{unitInfo.intellect}}</p>
-          <p>INTELLECT</p>
-        </div>
-        <div class="col-sm-2">
-          <p>{{unitInfo.cunning}}</p>
-          <p>CUNNING</p>
-        </div>
-        <div class="col-sm-2">
-          <p>{{unitInfo.willpower}}</p>
-          <p>WILLPOWER</p>
-        </div>
-        <div class="col-sm-2">
-          <p>{{unitInfo.presence}}</p>
-          <p>PRESENCE</p>
-        </div>
-        <!-- END CHAR BLOCK -->
-      </div>
-      <div class="col-sm-12">
-        <div class="col-sm-offset-4 col-sm-2">
-          <p>{{unitInfo.woundThreshold}}</p>
-          <p>Wound Threshold</p>
-        </div>
-        <div class="col-sm-2">
-          <p>{{unitInfo.strainThreshold}}</p>
-          <p>Strain Threshold</p>
-        </div>
-        <!-- END HEALTH BLOCK -->
-      </div>
-      <div class="col-sm-12">
-        <div class="col-sm-12">
-          <div class="col-sm-6">
-            <p>Soak</p>
-            <p>{{unitInfo.soak}}</p>
+
+
+
+
+  <div id="newUnit1">
+
+    <form novalidate name="newUnitForm" class="form-inline">
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="col-sm-4 text-center difficulty-block">
+            <h3>Name: {{unitInfo.name}}</h3>
+            <h5>Description: {{unitInfo.description}}</h5>
+            <h5>Difficulty: {{unitInfo.difficultyName}}</h5>
           </div>
-          <!-- END SOAK BLOCK !-->
-          <div class="col-sm-6">
-            <p>M / R Defense</p>
-            <p>{{unitInfo.meleeDef}} | {{unitInfo.rangeDef}}</p>
-          </div>
-        </div>
-        <!-- END DEFENSE BLOCK !-->
-        <div class="col-sm-12">
-          <div class="col-sm-6">
-            <div class="col-sm-12 text-center">
-              <p>Wound</p>
-              <p>Threshold | Current</p>
+          <!-- END .DIFFICULTY-BLOCK -->
+
+          <div class="col-xs-8 text-center">
+            <h2>Characteristics</h2>
+            <div class="col-xs-1 input-group input-group-lg char-block">
+              <input disabled type="number" ng-model="unitInfo.brawn" name="brawnSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+              <br />
+              <label for="brawnSelector">Brawn</label>
             </div>
-            <div class="col-sm-12">
-              <div>
-                <p class="col-sm-offset-2 col-sm-4">{{unitInfo.woundThreshold}}</p>
-                <p class="col-sm-4">{{unitInfo.currentStrain}}</p>
-              </div>
+            <div class="col-xs-1 input-group input-group-lg char-block">
+              <input disabled type="number" ng-model="unitInfo.agility" name="agilitySelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+              <br />
+              <label for="agilitySelector">Agility</label>
+            </div>
+            <div class="col-xs-1 input-group input-group-lg char-block">
+              <input disabled type="number" ng-model="unitInfo.intellect" name="intellectSelector" class="form-control" placeholder="0"
+                aria-describedby="sizing-addon1">
+              <br />
+              <label for="intellectSelector">Intellect</label>
+            </div>
+            <div class="col-xs-1 input-group input-group-lg char-block">
+              <input disabled type="number" ng-model="unitInfo.cunning" name="cunningSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+              <br />
+              <label for="cunningSelector">Cunning</label>
+            </div>
+            <div class="col-xs-1 input-group input-group-lg char-block">
+              <input disabled type="number" ng-model="unitInfo.willpower" name="willpowerSelector" class="form-control" placeholder="0"
+                aria-describedby="sizing-addon1">
+              <br />
+              <label for="willpowerSelector">Willpower</label>
+            </div>
+            <div class="col-xs-1 input-group input-group-lg char-block">
+              <input disabled type="number" ng-model="unitInfo.presence" name="presenceSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+              <br />
+              <label for="presenceSelector">Presence</label>
             </div>
           </div>
-          <!-- END WOUND BLOCK !-->
-          <div class="col-sm-6">
-            <div class="col-sm-12 text-center">
-              <p>Strain</p>
-              <p>Threshold | Current</p>
-            </div>
-            <div class="col-sm-12">
-              <p class="col-sm-offset-2 col-sm-4">{{unitInfo.strainThreshold}}</p>
-              <p class="col-sm-4">{{unitInfo.currentStrain}}</p>
-            </div>
-            <!-- END STRAIN BLOCK !-->
-          </div>
+          <!-- END CHARACTERISTICS -->
         </div>
+        <!-- END CHARS AND DIFFICULTY -->
+        <!-- <div class="col-xs-12" id="count-and-soak"> -->
+        <div class="col-xs-12" id="unit-details">
+          <div class="col-sm-4 text-center">
+            <h3>Weapons</h3>
+            <p>{{unitInfo.weaponName}}</p>
+            <p>{{unitInfo.weaponDescription}}</p>
+            <h3>Equipment</h3>
+            <p>{{unitInfo.equipmentName}}</p>
+            <p>{{unitInfo.equipmentDescription}}</p>
+          </div>
+          <!-- END ADD MORE -->
+          <div class="col-sm-offset-1 col-xs-7 count-block text-center">
+            <div class=" col-sm-2 input-group input-group-lg char-block">
+              <label for="soakSelector">Soak</label>
+              <br />
+              <input disabled type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+            </div>
+            <div class="col-sm-2 input-group input-group-lg char-block">
+              <label for="woundThresholdSelector">Wound Threshold</label>
+              <br />
+              <input disabled type="number" ng-model="unitInfo.woundThreshold" name="woundThresholdSelector" placeholder="0" class="form-control"
+                placeholder="0" aria-describedby="sizing-addon1">
+            </div>
+            <div class="col-sm-2 input-group input-group-lg char-block">
+              <label for="strainThresholdSelector">Strain Threshold</label>
+              <br />
+              <input disabled type="number" ng-model="unitInfo.strainThreshold" name="strainThresholdSelector" placeholder="0" class="form-control"
+                aria-describedby="sizing-addon1">
+            </div>
+            <div class="col-sm-2 input-group input-group-lg char-block">
+              <label for="meleeDefSelector">Melee Defense</label>
+              <br />
+              <input disabled type="number" ng-model="unitInfo.meleeDef" name="meleeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+            </div>
+            <div class="col-sm-2 input-group input-group-lg char-block">
+              <label for="rangeDefSelector">Ranged Defense</label>
+              <br />
+              <input disabled type="number" ng-model="unitInfo.rangeDef" name="rangeDefSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
+            </div>
+          </div>
+          <!-- END SOAK, THRESHOLDS -->
+        </div>
+        <!-- END ADD UNITS AND SOAKS -->
+
+        <!-- // NAME AND EXTRAS -->
+        <div id="name-and-buttons">
+          <div class="col-sm-12">
+            <div class="col-sm-4 text-center">
+            </div>
+            <div class="col-sm-offset-2 col-sm-6">
+              <button ng-click="toEditUnit(unitInfo.id)" class="btn btn-warning">Edit unit</button>
+              <button ng-click="toBattle(unitInfo.id)" class="btn btn-primary">Back to battle</button>
+
+            </div>
+          </div>
+          <!--  END OF NAME AND DESCRIPTION -->
+        </div>
+        <!-- END .FORM-GROUP -->
       </div>
-      <div>
-        <p>{{unitInfo.weaponName}}</p>
-        <p>{{unitInfo.weaponDescription}}</p>
-      </div>
-      <div>
-        <p>{{unitInfo.equipmentName}}</p>
-        <p>{{unitInfo.equipmentDescription}}</p>
-      </div>
-      <h4>Assigned Folder:</h4>
-      <p>{{unitInfo.folderName}}</p>
-      <div class="col-sm-12 unitButtons">
-        <button ng-click="toEditUnit(unitInfo.id)" class="btn btn-warning">Edit</button>
-        <button ng-click="toBattle(unitInfo.id)" class="btn btn-default">Back to battle</button>
-      </div>
-      <!-- END #unit-details -->
-    </div>
-    <!-- END PAGE WRAPPER -->
+    </form>
   </div>
+</div>
