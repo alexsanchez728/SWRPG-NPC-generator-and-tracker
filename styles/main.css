@@ -1,15 +1,16 @@
-#battle-page-wrapper input {
-  width: 48px;
-  padding: 0 0 0 15px; }
-
-#battle-page-wrapper .row {
-  overflow-x: auto;
-  white-space: nowrap; }
-  #battle-page-wrapper .row .unit-card {
-    display: inline-block;
-    float: none; }
-    #battle-page-wrapper .row .unit-card .detail-display {
-      white-space: normal; }
+#battle-page-wrapper {
+  padding-bottom: 30px; }
+  #battle-page-wrapper input {
+    width: 48px;
+    padding: 0 0 0 15px; }
+  #battle-page-wrapper .row {
+    overflow-x: auto;
+    white-space: nowrap; }
+    #battle-page-wrapper .row .unit-card {
+      display: inline-block;
+      float: none; }
+      #battle-page-wrapper .row .unit-card .detail-display {
+        white-space: normal; }
 
 .unit-name {
   border-bottom: 2px solid black;
@@ -27,6 +28,7 @@
 .unit-card {
   border: 2px solid black;
   height: 100%;
+  min-height: 708px;
   margin-bottom: 45px;
   padding: 0; }
   .unit-card .unit-info, .unit-card .char-block, .unit-card .thresholds, .unit-card .defences, .unit-card .char {
@@ -50,7 +52,7 @@
       padding: 0; }
 
 .card-top {
-  max-height: 400px;
+  height: 375px;
   overflow-y: scroll; }
 
 .defences {
@@ -65,8 +67,13 @@
 .card-bottom {
   padding: 0 0 50px 0; }
 
+#buttonWrapper {
+  border-top: 2px solid black;
+  padding: 15px 0;
+  background-color: white; }
+
 #newUnit1 {
-  margin-bottom: 450px; }
+  margin-bottom: 150px; }
   #newUnit1 .char-block {
     padding: 15px 25px 0 25px;
     border: 2px solid black;
@@ -86,14 +93,23 @@
   max-height: 200px;
   overflow-y: scroll; }
 
-#count-and-soak {
+#count-and-soak, #name-and-buttons {
   margin-top: 5%; }
-  #count-and-soak .char-block {
-    height: 140px; }
-    #count-and-soak .char-block input {
-      border: 2px solid black;
-      padding: 0 0 0 30px;
-      border-radius: 50%; }
-    #count-and-soak .char-block label {
-      margin-top: 25%;
-      width: 75px; }
+
+#count-and-soak .count-block {
+  margin-left: 4%; }
+
+#count-and-soak .char-block {
+  min-height: 156px;
+  max-width: 120px; }
+  #count-and-soak .char-block input {
+    height: 70px;
+    border: 2px solid black;
+    padding: 0 0 0 30px;
+    border-radius: 50%; }
+  #count-and-soak .char-block label {
+    margin-top: 25%;
+    width: 75px; }
+
+#name-and-buttons button {
+  margin: 10px; }

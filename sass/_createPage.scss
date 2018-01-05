@@ -1,5 +1,5 @@
 #newUnit1 {
-  margin-bottom: 450px;
+  margin-bottom: 150px;
   .char-block {
     padding: 15px 25px 0 25px;
     border: 2px solid black;
@@ -27,11 +27,19 @@
   overflow-y: scroll;
 }
 
-#count-and-soak {
+#count-and-soak, #name-and-buttons {
   margin-top: 5%;
+}
+
+#count-and-soak {
+  .count-block {
+    margin-left: 4%;
+  }
   .char-block {
-    height: 140px;
+    min-height: 156px;
+    max-width: 120px;
     input {
+      height: 70px;
       border: 2px solid black;
       padding: 0 0 0 30px;
       border-radius: 50%;
@@ -41,6 +49,14 @@
       width: 75px;
     }
   }
-
 }
 
+#name-and-buttons {
+  button {
+    margin: 10px;
+  }
+  // input:nth-of-type(2n) {
+  //   width: 300px;
+  //   height: 4.5em;
+  // }
+}

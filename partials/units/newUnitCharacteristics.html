@@ -16,6 +16,9 @@
             <label class="radio-inline">
               <input type="radio" name="difficultyRadio" ng-model="unitInfo.difficultyName" value="Nemesis">Nemesis</label>
           </div>
+          <div>
+            <button class="btn btn-success" ng-click="randomStatsForDifficulty(unitInfo.difficultyName)">Randomize</button>
+          </div>
         </div>
         <!-- END .DIFFICULTY-BLOCK -->
 
@@ -56,7 +59,7 @@
       </div>
       <!-- END CHARS AND DIFFICULTY -->
       <div class="col-xs-12" id="count-and-soak">
-        <div class="col-sm-3">
+        <div class="col-sm-4 text-center">
           <div class="btn-group">
             <label class="btn btn-primary" ng-model="checkModel.isGroup" uib-btn-checkbox>More than one baddie?</label>
           </div>
@@ -76,7 +79,7 @@
           </div>
         </div>
         <!-- END ADD MORE -->
-        <div class="col-sm-offset-1 col-sm-7 text-center">
+        <div class="col-sm-offset-1 col-xs-7 count-block text-center">
           <div class=" col-sm-2 input-group input-group-lg char-block">
             <input type="number" ng-model="unitInfo.soak" name="soakSelector" class="form-control" placeholder="0" aria-describedby="sizing-addon1">
             <br />
@@ -108,7 +111,69 @@
         <!-- END SOAK, THRESHOLDS -->
       </div>
       <!-- END ADD UNITS AND SOAKS -->
+
+      <!-- // NAME AND EXTRAS -->
+      <div id="name-and-buttons">
+        <div class="col-sm-12">
+          <div class="col-sm-4 text-center">
+            <h2>Name:</h2>
+            <input type="text" ng-model="unitInfo.name">
+
+            <h2>Description</h2>
+            <textarea cols="50" rows="3" type="text" ng-model="unitInfo.description"></textarea>
+          </div>
+          <div class="col-sm-offset-2 col-sm-6">
+            <div>
+              <button ng-click="addAndBattle(unitInfo)" type="submit" class="btn btn-primary btn-large center" value="Save">Save And Proceed To Battle
+              </button>
+            </div>
+            <div>
+              <button ng-click="addAndAgain(unitInfo)" type="submit" class="btn btn-primary btn-large center" value="Save">Save Unit And Make Another
+              </button>
+            </div>
+            <div>
+              <button ng-click="reset()" type="reset" class="btn btn-danger btn-large center">Clear All
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--  END OF NAME AND DESCRIPTION -->
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <h4>Weapons</h4>
+            <div class="btn-group" uib-dropdown is-open="weaponDropDown.isopen">
+              <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                Pick One
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-choice" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li ng-repeat="weapon in weapons" role="menuitem">
+                  <a ng-click="addWeapon(weapon.id)" ng-model="unitInfo.weapons">{{weapon.name}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- END ONE BUTTON -->
+          </div>
+          <div class="col-sm-6">
+            <h4>Equipment</h4>
+            <div class="btn-group" uib-dropdown is-open="equipmentDropDown.isopen">
+              <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                Pick One
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-choice" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li ng-repeat="equipment in equipments" role="menuitem">
+                  <a ng-click="addEquipment(equipment.id)" ng-model="unitInfo.equipment">{{equipment.name}}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- END ONE BUTTON -->
+          </div>
+          <!-- END NAME AND DESCRIPTION -->
+        </div>
+        <!-- END NAME AND BUTTONS -->
+      </div>
+      <!-- END .FORM-GROUP -->
     </div>
-    <!-- END .FORM-GROUP -->
   </form>
 </div>
