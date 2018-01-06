@@ -145,12 +145,15 @@ body {
 #count-and-soak .char-block, #unit-details .char-block {
   padding: 0;
   border: 4px solid black;
-  background-color: saddlebrown; }
+  background-color: saddlebrown;
+  min-height: 100px; }
   #count-and-soak .char-block input, #unit-details .char-block input {
     border: none;
     border-radius: 0;
     background-color: white;
-    padding-left: 47%; }
+    padding-left: 47%;
+    position: absolute;
+    top: 46px; }
   #count-and-soak .char-block label, #unit-details .char-block label {
     margin-top: 0;
     width: 100%;

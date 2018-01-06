@@ -47,11 +47,14 @@ body {
     padding: 0;
     border: 4px solid black;
     background-color: saddlebrown;
+    min-height: 100px;
     input {
       border: none;
       border-radius: 0;
       background-color: white;
       padding-left: 47%;
+      position: absolute;
+      top: 46px;
     }
     label {
       margin-top: 0;
