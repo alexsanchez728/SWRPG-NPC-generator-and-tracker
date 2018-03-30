@@ -13,33 +13,38 @@
 
 #battle-page-wrapper {
 
-    .char {
-    padding: 15px 25px 0 25px;
+  .row {
+    overflow-x: visible;
+  }
+  
+  .char {
+    padding: 1.5% 3.5% 0 3.5%;
     border: 2px solid black;
     border-radius: 10px;
     background-color: #b7361a;
     color: white;
     margin-bottom: 5%;
     margin-left: 6%;
-    
-    p:nth-of-type(2n-1) {
-      padding-top: 0.6em;
-      height: 45px;
-      width: 45px;
-      margin-left: 0.3em;
-      border: $border;
-      border-radius: 50%;
-      color: black;
-      background-color: white;
-      padding-bottom: 30px;
-      }
 
-    p:nth-of-type(2n) {
-      margin-top: 25%;
-      font-size: 0.75em;
+  p:nth-of-type(2n-1) {
+    padding-top: 0.6em;
+    height: 45px;
+    width: 45px;
+    margin-left: 0.3em;
+    border: $border;
+    border-radius: 50%;
+    color: black;
+    background-color: white;
+    padding-bottom: 30px;
+  }
+
+  p:nth-of-type(2n) {
+    margin-left: -6%;
+    margin-top: 25%;
+    font-size: 0.75em;
     }
   }
-  
+
   input {
     width: 48px;
     padding: 0 0 0 15px;
@@ -143,4 +148,20 @@
     text-decoration: underline;
   }
   background-color: rgba(81, 61, 44, 0.6);
+}
+
+@media (min-width: 401px) and (max-width: 991px) {
+  #battle-page-wrapper {
+    .char {
+      max-width: fit-content;
+    }
+  }
+  #battle-page-wrapper {
+    .char  {
+      p:nth-of-type(2n) {
+        width: 50px;
+        margin: 0 0 10px 0;
+      }
+    }
+  }
 }

@@ -6,7 +6,7 @@
       <i class="fa fa-arrow-down text-center" aria-hidden="true"></i>
 
     </div>
-    <div class="unit-card col-sm-offset-1 col-sm-3 col-xs-12" ng-repeat="unit in units">
+    <div class="unit-card col-md-offset-1 col-md-3 col-xs-12" ng-repeat="unit in units">
       <div class="col-xs-12 unit-name">
         <h4 class="col-sm-6">{{unit.name}}</h4>
         <h5 class="col-sm-6" ng-if="!unit.placeInGroup">Group: {{unit.groupName}}</h5>
@@ -97,7 +97,7 @@
                 <p>Threshold | Current</p>
               </div>
               <div class="col-xs-12 threshold-items">
-                <p class="col-xs-6 text-center">{{unit.woundThreshold}}</p>
+                <p class="col-md-offset-0 col-sm-offset-2 col-xs-4 text-center">{{unit.woundThreshold}}</p>
                 <div class="col-xs-4 input-group input-group-lg">
                   <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitWound(unit)" ng-model="unit.currentWound"
                     name="currentWoundSelector" class="form-control" aria-describedby="sizing-addon1">
@@ -111,7 +111,7 @@
                 <p>Threshold | Current</p>
               </div>
               <div class="col-xs-12 threshold-items">
-                <p class="col-xs-6 text-center">{{unit.strainThreshold}}</p>
+                <p class="col-md-offset-0 col-sm-offset-2 col-xs-4 text-center">{{unit.strainThreshold}}</p>
                 <div class="col-xs-4 input-group input-group-lg">
                   <input type="number" ng-model-options="{ debounce: 450, updateOn: 'default' }" ng-change="updateUnitStrain(unit)" ng-model="unit.currentStrain"
                     name="currentStrainSelector" class="form-control" aria-describedby="sizing-addon1">

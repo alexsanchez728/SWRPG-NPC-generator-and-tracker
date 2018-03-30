@@ -6,8 +6,11 @@
     font-size: 3em;
     padding-left: 2.7em; }
 
+#battle-page-wrapper .row {
+  overflow-x: visible; }
+
 #battle-page-wrapper .char {
-  padding: 15px 25px 0 25px;
+  padding: 1.5% 3.5% 0 3.5%;
   border: 2px solid black;
   border-radius: 10px;
   background-color: #b7361a;
@@ -25,6 +28,7 @@
     background-color: white;
     padding-bottom: 30px; }
   #battle-page-wrapper .char p:nth-of-type(2n) {
+    margin-left: -6%;
     margin-top: 25%;
     font-size: 0.75em; }
 
@@ -107,6 +111,13 @@
     color: white; }
   #myNav a:hover, #buttonWrapper a:hover {
     text-decoration: underline; }
+
+@media (min-width: 401px) and (max-width: 991px) {
+  #battle-page-wrapper .char {
+    max-width: fit-content; }
+  #battle-page-wrapper .char p:nth-of-type(2n) {
+    width: 50px;
+    margin: 0 0 10px 0; } }
 
 body {
   background-color: #fffaf4;
